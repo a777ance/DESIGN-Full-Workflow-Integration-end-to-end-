@@ -1,0 +1,25 @@
+{
+  "_comment": "Fictional sample intake submission. Maps 1:1 to household fields in 08-client-list-and-crm/schema.md. Never commit real PII.",
+  "name": "Sample Household (fictional)",
+  "email": "prime-time@example.com",
+  "phone": "+1-555-0100",
+  "address": {
+    "street": "100 Example St",
+    "city": "Sampleton",
+    "state": "TX",
+    "zip": "78701"
+  },
+  "home_profile": {
+    "devices_est": 14,
+    "concerns": ["kids' safety", "privacy", "streaming reliability"],
+    "isp": "Spectrum"
+  },
+  "source": "referral",
+  "referred_by": "HH-0007",
+  "consent": true,
+  "consent_source": "intake",
+  "consent_ts": "2026-06-03T15:04:00Z",
+  "booking": {
+    "requested": "weekday evenings"
+  }
+}

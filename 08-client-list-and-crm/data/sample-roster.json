@@ -1,0 +1,131 @@
+{
+  "_comment": "Fictional sample roster. Mirrors the localDNS statement archetypes (prime-time, home-office, connected-family) so the two repos line up. Never commit real PII. CHANGE_ME = placeholder.",
+  "routes": [
+    {
+      "id": "RT-0001",
+      "name": "Sampleton — Maple HOA (fictional)",
+      "zips": ["78701", "78702"],
+      "operator_id": "OP-0001",
+      "home_count": 4,
+      "target_density": 8,
+      "status": "building"
+    },
+    {
+      "id": "RT-0002",
+      "name": "Sampleton — Outlying (fictional)",
+      "zips": ["78745"],
+      "operator_id": null,
+      "home_count": 0,
+      "target_density": 8,
+      "status": "candidate"
+    }
+  ],
+  "operators": [
+    {
+      "id": "OP-0001",
+      "name": "Jose (fictional)",
+      "email": "jose@example.com",
+      "phone": "+1-555-0142",
+      "status": "active",
+      "converted_from": "HH-0007",
+      "routes": ["RT-0001"],
+      "dues": { "subscription_id": "CHANGE_ME", "status": "active" },
+      "vetting": {
+        "background_check": "passed",
+        "bond": "active",
+        "references": ["ref-1", "ref-2"],
+        "agreement_signed_ts": "2026-01-15T00:00:00Z"
+      },
+      "tax": {
+        "w9_on_file": true,
+        "w9_ts": "2026-01-15T00:00:00Z",
+        "tin_last4": "0000",
+        "ytd_paid": 0,
+        "form_1099_filed_ts": null
+      }
+    }
+  ],
+  "households": [
+    {
+      "id": "HH-0001",
+      "created_ts": "2026-04-01T00:00:00Z",
+      "status": "customer",
+      "route_id": "RT-0001",
+      "name": "Prime-Time Household (fictional)",
+      "email": "prime-time@example.com",
+      "phone": "+1-555-0100",
+      "address": { "street": "100 Example St", "city": "Sampleton", "state": "TX", "zip": "78701" },
+      "home_profile": { "devices_est": 14, "concerns": ["kids' safety", "streaming reliability"], "isp": "Spectrum" },
+      "source": "referral",
+      "referred_by": "HH-0007",
+      "consent": true,
+      "consent_source": "intake",
+      "consent_ts": "2026-04-01T15:04:00Z",
+      "operator_id": "OP-0001",
+      "billing": { "processor_customer_id": "CHANGE_ME", "plan": "retainer-32", "status": "active", "setup_paid_ts": "2026-04-12", "next_charge": "2026-07-01", "last_payment_ts": "2026-06-01" },
+      "statement": { "home_json_path": "localDNS/docs/statements/data/clients/archetype-prime-time.json", "last_generated": "2026-06-01", "last_delivered": "2026-06-02", "delivery_channels": ["email"] },
+      "operator_interest": false
+    },
+    {
+      "id": "HH-0002",
+      "created_ts": "2026-04-10T00:00:00Z",
+      "status": "customer",
+      "route_id": "RT-0001",
+      "name": "Home-Office Household (fictional)",
+      "email": "home-office@example.com",
+      "phone": "+1-555-0101",
+      "address": { "street": "102 Example St", "city": "Sampleton", "state": "TX", "zip": "78701" },
+      "home_profile": { "devices_est": 9, "concerns": ["privacy", "video-conf reliability", "upload sensitivity"], "isp": "Spectrum" },
+      "source": "content",
+      "referred_by": null,
+      "consent": true,
+      "consent_source": "intake",
+      "consent_ts": "2026-04-10T18:30:00Z",
+      "operator_id": "OP-0001",
+      "billing": { "processor_customer_id": "CHANGE_ME", "plan": "retainer-38", "status": "active", "setup_paid_ts": "2026-04-20", "next_charge": "2026-07-01", "last_payment_ts": "2026-06-01" },
+      "statement": { "home_json_path": "localDNS/docs/statements/data/clients/archetype-home-office.json", "last_generated": "2026-06-01", "last_delivered": "2026-06-02", "delivery_channels": ["email", "mail"] },
+      "operator_interest": true
+    },
+    {
+      "id": "HH-0003",
+      "created_ts": "2026-02-20T00:00:00Z",
+      "status": "customer",
+      "route_id": "RT-0001",
+      "name": "Connected-Family Household (fictional)",
+      "email": "connected-family@example.com",
+      "phone": "+1-555-0102",
+      "address": { "street": "104 Example St", "city": "Sampleton", "state": "TX", "zip": "78702" },
+      "home_profile": { "devices_est": 18, "concerns": ["kids' safety", "device sprawl"], "isp": "Spectrum" },
+      "source": "gbp",
+      "referred_by": null,
+      "consent": true,
+      "consent_source": "intake",
+      "consent_ts": "2026-02-20T12:00:00Z",
+      "operator_id": "OP-0001",
+      "billing": { "processor_customer_id": "CHANGE_ME", "plan": "retainer-32", "status": "past_due", "setup_paid_ts": "2026-03-02", "next_charge": "2026-06-01", "last_payment_ts": "2026-05-01" },
+      "statement": { "home_json_path": "localDNS/docs/statements/data/clients/archetype-connected-family.json", "last_generated": "2026-05-01", "last_delivered": "2026-05-02", "delivery_channels": ["email"] },
+      "operator_interest": false
+    },
+    {
+      "id": "HH-0007",
+      "created_ts": "2026-01-05T00:00:00Z",
+      "status": "customer",
+      "route_id": "RT-0001",
+      "name": "Referrer Household (fictional)",
+      "email": "referrer@example.com",
+      "phone": "+1-555-0107",
+      "address": { "street": "120 Example St", "city": "Sampleton", "state": "TX", "zip": "78701" },
+      "home_profile": { "devices_est": 11, "concerns": ["privacy"], "isp": "Spectrum" },
+      "source": "ad",
+      "referred_by": null,
+      "consent": true,
+      "consent_source": "intake",
+      "consent_ts": "2026-01-05T09:00:00Z",
+      "operator_id": "OP-0001",
+      "billing": { "processor_customer_id": "CHANGE_ME", "plan": "retainer-32", "status": "active", "setup_paid_ts": "2026-02-15", "next_charge": "2026-07-01", "last_payment_ts": "2026-06-01" },
+      "statement": { "home_json_path": "CHANGE_ME", "last_generated": "2026-06-01", "last_delivered": "2026-06-02", "delivery_channels": ["email"] },
+      "operator_interest": false,
+      "_note": "Converted to operator OP-0001 (converted_from). Demonstrates the dual-hat flywheel."
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+# Secrets and local-only files — this repo is internal; never commit real
+# credentials, client PII, or contractor records. Use CHANGE_ME placeholders
+# and keep the real values in .env (loaded into the live tool, not git).
+.env
+*.env
+secrets/
+*-private.*
+clients-real.*
+roster-real.*
+
+# Exported brand binaries (kept in the asset host, linked from brand-kit.md)
+*.psd
+*.ai
+*.sketch
+*.mp4
+*.mov
+
+# Editor scratch
+*~
+*.swp
+.vscode/
+.idea/
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# Python bytecode
+__pycache__/
+*.pyc
