@@ -52,7 +52,7 @@ one proves the stack; this one proves the machine that sells, delivers, and bill
   → `04-phone-and-comms/README.md`, `04-phone-and-comms/call-scripts.md`
 - **Service delivery on a cadence** — turning a one-off install into a recurring monthly
   artifact (the Statement) delivered by email, print/mail, and QR.
-  → `06-statements-delivery/README.md`
+  → `06-statements-delivery/README.md`, `06-statements-delivery/monthly-run.md`
 - **Self-service scheduling** — Setmore self-booking wired into both the customer funnel
   and the operator-interview funnel.
   → `03-funnels-and-capture/README.md`, `09-recruiting-and-guild/README.md`
@@ -72,7 +72,11 @@ one proves the stack; this one proves the machine that sells, delivers, and bill
   → `07-payments-receivables/README.md`, `07-payments-receivables/receivables.md`
 - **Data-driven document generation** — reusing `localDNS`'s JSON→HTML Statement
   pipeline as the delivery engine instead of rebuilding it.
-  → `06-statements-delivery/README.md`
+  → `06-statements-delivery/README.md`, `06-statements-delivery/monthly-run.md`
+- **Docs-as-system / self-verifying integration map** — the whole workflow is a
+  version-controlled spec where every cross-reference is link-checked in CI, so the map
+  can't silently rot (the analog of `localDNS`'s infra-as-config discipline).
+  → `tools/check-docs.py`, `CLAUDE.md`, `11-automations/automation-map.md`
 
 ---
 

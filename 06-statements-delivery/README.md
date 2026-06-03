@@ -11,6 +11,12 @@ sidecar, deliver on cadence, stop there.
 
 ---
 
+## What's here
+
+| File | What it is |
+| ---- | ---------- |
+| [`monthly-run.md`](monthly-run.md) | The monthly cadence checklist + the operator-sidecar authoring guide |
+
 ## The two Statements (built in localDNS)
 
 | Statement | Audience | Source |
@@ -43,6 +49,7 @@ So stage 06 touches the generator only through its intended inputs.
 ```
 
 Steps 1, 3, 4 are `localDNS`'s pipeline (run as-is). Steps 2, 5, 6 are this stage's job.
+The per-run checklist and the sidecar authoring guide live in [`monthly-run.md`](monthly-run.md).
 
 ## The sidecar — the personal, named proof of work
 

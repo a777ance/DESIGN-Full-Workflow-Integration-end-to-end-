@@ -232,6 +232,11 @@ If any arrow requires a human to retype data from one tool into another, that se
 `archetype-prime-time` household and confirm it carries fields written by stages
 02, 03, 05, and 07.
 
+**Doc integrity:** `python3 tools/check-docs.py` confirms every internal file link and
+cross-file anchor in this repo resolves — the analog of `localDNS`'s `tools/check-docs.py`,
+extended to recurse the stage folders. Run it before a commit; it exits non-zero on a
+broken link so it can gate CI.
+
 ---
 
 ## 3. Working philosophy
