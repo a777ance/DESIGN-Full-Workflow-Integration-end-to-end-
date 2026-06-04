@@ -36,33 +36,33 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      # Check out spoke repos side-by-side so ai-cto.py can load their context files
+      # Spoke repos inside the workspace (GitHub Actions can't write outside it)
       - name: Checkout localDNS
         uses: actions/checkout@v4
         with:
           repository: a777ance/localDNS
-          path: ../localDNS
+          path: spoke/localDNS
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Checkout MARKETING
         uses: actions/checkout@v4
         with:
           repository: a777ance/MARKETING
-          path: ../MARKETING
+          path: spoke/MARKETING
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Checkout claude-code-homelab
         uses: actions/checkout@v4
         with:
           repository: a777ance/claude-code-homelab
-          path: ../claude-code-homelab
+          path: spoke/claude-code-homelab
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Checkout azure-lab
         uses: actions/checkout@v4
         with:
           repository: a777ance/azure-lab
-          path: ../Azure-lab
+          path: spoke/Azure-lab
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up Python

@@ -34,19 +34,24 @@ import anthropic
 # ── Paths ────────────────────────────────────────────────────────────────────
 
 REPO_ROOT = Path(__file__).resolve().parent.parent          # DESIGN repo root
-PORTFOLIO_ROOT = REPO_ROOT.parent                           # parent of all repos
 HUB_DIR = REPO_ROOT / "docs" / "ai-cto"
 TODAY = date.today().isoformat()
+
+# In CI (GITHUB_ACTIONS=true) spokes are checked out under spoke/ inside the workspace.
+# Locally they sit side-by-side with the DESIGN repo (../localDNS etc.).
+IS_CI = bool(os.environ.get("GITHUB_ACTIONS"))
+SPOKE_ROOT = REPO_ROOT / "spoke" if IS_CI else REPO_ROOT.parent
+PORTFOLIO_ROOT = SPOKE_ROOT  # used by tool_read_file path resolution
 
 CONTEXT_FILES = [
     HUB_DIR / "portfolio.md",
     HUB_DIR / "roadmap.md",
     HUB_DIR / "tech-debt.md",
     HUB_DIR / "decisions.md",
-    PORTFOLIO_ROOT / "localDNS/docs/ai-cto/context.md",
-    PORTFOLIO_ROOT / "MARKETING/docs/ai-cto/context.md",
-    PORTFOLIO_ROOT / "claude-code-homelab/docs/ai-cto/context.md",
-    PORTFOLIO_ROOT / "Azure-lab/docs/ai-cto/context.md",
+    SPOKE_ROOT / "localDNS/docs/ai-cto/context.md",
+    SPOKE_ROOT / "MARKETING/docs/ai-cto/context.md",
+    SPOKE_ROOT / "claude-code-homelab/docs/ai-cto/context.md",
+    SPOKE_ROOT / "Azure-lab/docs/ai-cto/context.md",
 ]
 
 # ── System prompt ────────────────────────────────────────────────────────────
@@ -93,9 +98,12 @@ def load_context() -> str:
     for path in CONTEXT_FILES:
         if path.exists():
             try:
-                rel = path.relative_to(PORTFOLIO_ROOT)
+                rel = path.relative_to(REPO_ROOT)
             except ValueError:
-                rel = path
+                try:
+                    rel = path.relative_to(SPOKE_ROOT)
+                except ValueError:
+                    rel = path.name
             blocks.append(f"### {rel}\n\n{path.read_text()}")
         else:
             blocks.append(f"### {path.name}\n\n_(file not found — spoke repo may not be checked out)_")
@@ -104,15 +112,16 @@ def load_context() -> str:
 # ── Tool implementations ─────────────────────────────────────────────────────
 
 def tool_read_file(path: str) -> str:
-    p = (PORTFOLIO_ROOT / path).resolve()
-    # Safety: must stay inside PORTFOLIO_ROOT
-    try:
-        p.relative_to(PORTFOLIO_ROOT)
-    except ValueError:
-        return f"Access denied: {path} is outside the portfolio root."
-    if not p.exists():
-        return f"File not found: {path}"
-    return p.read_text()
+    # Try hub-relative first, then spoke-relative
+    for base in (REPO_ROOT, SPOKE_ROOT):
+        p = (base / path).resolve()
+        try:
+            p.relative_to(base)
+        except ValueError:
+            continue
+        if p.exists():
+            return p.read_text()
+    return f"File not found: {path}"
 
 
 def tool_update_portfolio(content: str) -> str:
