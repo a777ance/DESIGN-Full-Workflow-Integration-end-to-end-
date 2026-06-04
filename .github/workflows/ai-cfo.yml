@@ -1,0 +1,93 @@
+name: ZORT
+
+on:
+  # Run manually from the GitHub Actions tab — pick a mode from the dropdown
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: Session mode
+        required: true
+        default: review
+        type: choice
+        options:
+          - review
+          - metrics
+          - forecast
+          - end-session
+      extra:
+        description: Extra context (optional, used with end-session)
+        required: false
+        default: ''
+      iterations:
+        description: Number of successive passes (super-run; each builds on the last)
+        required: false
+        default: '1'
+
+  # Daily financial review at 05:00 ET (09:00 UTC / EDT; shifts to 04:00 ET in winter when EST kicks in)
+  # Runs one hour after NARF so CTO updates are visible if financially relevant.
+  schedule:
+    - cron: '0 9 * * *'
+
+jobs:
+  ai-cfo:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write   # push portfolio.md / budget.md / metrics.md updates back to the branch
+      issues: write     # create GitHub issues
+
+    steps:
+      - name: Checkout DESIGN (hub)
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      # Spoke repos inside the workspace (GitHub Actions can't write outside it)
+      # Public repos use GITHUB_TOKEN; private repos require SPOKE_PAT
+      - name: Checkout MARKETING
+        uses: actions/checkout@v4
+        with:
+          repository: a777ance/MARKETING
+          path: spoke/MARKETING
+          token: ${{ secrets.SPOKE_PAT }}
+
+      - name: Checkout localDNS
+        uses: actions/checkout@v4
+        with:
+          repository: a777ance/localDNS
+          path: spoke/localDNS
+          token: ${{ secrets.SPOKE_PAT || secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install -r tools/requirements.txt
+
+      - name: Run AI CFO
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          MODE="${{ github.event.inputs.mode || 'review' }}"
+          EXTRA="${{ github.event.inputs.extra || '' }}"
+          ITERATIONS="${{ github.event.inputs.iterations || '1' }}"
+          for i in $(seq 1 "$ITERATIONS"); do
+            echo "::group::ZORT pass $i of $ITERATIONS"
+            export ZORT_ITER="$i"
+            if [ -n "$EXTRA" ]; then
+              python3 tools/ai-cfo.py "$MODE" "$EXTRA"
+            else
+              python3 tools/ai-cfo.py "$MODE"
+            fi
+            echo "::endgroup::"
+          done
+
+      - name: Commit financial updates
+        run: |
+          git config user.name "AI CFO"
+          git config user.email "ai-cfo@a777ance.com"
+          git add docs/ai-cfo/
+          git diff --cached --quiet || git commit -m "ZORT session update — $(date -u +%Y-%m-%d)"
+          git push

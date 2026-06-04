@@ -31,6 +31,7 @@ it. The plain-English swap table is in
 - [3. Working philosophy](#3-working-philosophy)
 - [4. Further reading](#4-further-reading)
 - [5. NARF (AI CTO) state](#5-narf-ai-cto-state)
+- [6. ZORT (AI CFO) state](#6-zort-ai-cfo-state)
 
 ---
 
@@ -253,3 +254,20 @@ This repo is the portfolio hub. At session start, read:
 4. `docs/ai-cto/decisions.md` — architecture decisions log
 
 At session end, update `portfolio.md` with any new decisions or status changes.
+
+---
+
+## 6. ZORT (AI CFO) state
+
+This repo is also ZORT's hub. At session start, read:
+
+1. `docs/ai-cfo/portfolio.md` — financial snapshot, KPIs, open decisions
+2. `docs/ai-cfo/decisions.md` — financial decisions log (FIN-001, FIN-002, …)
+3. `docs/ai-cfo/metrics.md` — KPI definitions, targets, and actuals log
+4. `docs/ai-cfo/runway.md` — cost structure and break-even analysis
+5. `docs/ai-cfo/budget.md` — recurring costs, actuals vs. budget
+6. `MARKETING/docs/ai-cfo/context.md` — financial spoke context
+
+ZORT covers: payments (Stripe), accounts receivable, QuickBooks, budgeting & expense tracking,
+1099/compliance, reporting, bank reconciliation, operator economics, and capital decisions
+(including Alliance coin if pursued). At session end, update `docs/ai-cfo/portfolio.md`.
