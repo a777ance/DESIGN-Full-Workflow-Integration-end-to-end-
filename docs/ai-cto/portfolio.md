@@ -2,7 +2,7 @@
 
 NARF's working memory for the full portfolio. Read at session start; update at session end with new decisions, status changes, or priority shifts.
 
-**Last updated:** 2026-06-04
+**Last updated:** 2026-06-04 (portfolio review)
 
 ---
 
@@ -29,15 +29,21 @@ All repos develop on branch `claude/ai-cto-architecture-MZ2NF`.
 
 ---
 
-## Current Focus — 2026-06-04
+## Current Focus — 2026-06-04 (revised this review)
 
 **Phase:** 1 — Prove liquidity (now → 90 days)
 
-**Top priorities:**
-1. Generate a working Statement end-to-end for one real household (`localDNS`)
-2. Deploy nftables volume populator to the t630 (`localDNS`)
-3. Lock member dues amount and pricing — unblocks stages 05, 07, 09 (`MARKETING`)
-4. Wire stage 11 automations so no stage transition requires manual data re-entry (`DESIGN`)
+**Top 3 actionable now (in order):**
+1. **Deploy the nftables accounting layer to the t630** (`localDNS`). The code ships
+   (ruleset + populator + runbook). This is execution, not engineering — load the
+   ruleset, schedule `populate_sets.py`, verify counters. Unblocks TD-08, TD-13, and
+   the first real Statement. Runbook: `docs/statements/tools/collect/README.md`.
+2. **Generate the first real end-to-end Statement for one real household** (`localDNS`).
+   Gated on #1 (real volume) + a client data file. Ship it *scoped honestly* — omit
+   "How You Compare" rather than print invented peer averages. Don't wait on cohort data.
+3. **Lock the member dues amount** (`MARKETING`). Decision, not work. Recommend
+   $40–60/mo per operator; write it into `MARKETING/README.md` and remove the
+   `CHANGE_ME`. Unblocks Stage 09 onboarding + the operator pitch.
 
 ---
 
@@ -45,11 +51,27 @@ All repos develop on branch `claude/ai-cto-architecture-MZ2NF`.
 
 | Repo | Status | Last notable activity | Blocked on |
 | ---- | ------ | --------------------- | ---------- |
-| `localDNS` | Active | Statements PWA merged (#9) | nftables populator not deployed; no real client data file yet |
+| `localDNS` | Active | Statements PWA merged (#9); nftables accounting layer (ruleset + populator + runbook) now shipped in repo | **Deploy to t630** (needs SSH to 192.168.1.118); no real client data file yet |
 | `MARKETING` | Stable | Business model + roadmap drafted | Open decisions: dues, pricing validation, vetting standard |
-| `DESIGN` | Active | Workflow overhauled, doc checker added | Stage 11 automations not wired |
+| `DESIGN` | Active (path integrity issue) | Workflow overhauled, doc checker added | Stage 11 automations not wired; **hub files not at documented paths — see blocker** |
 | `claude-code-homelab` | Stable | Chronikomicon lessons added | — |
 | `azure-lab` | Stub | Initial commit only | Scope not defined |
+
+---
+
+## Active Blockers (surfaced 2026-06-04)
+
+1. **t630 access is the Phase-1 critical path.** Both top items (#1, #2) and the P2
+   security items (TD-01, TD-02) require SSH/physical access to `192.168.1.118`.
+   If founder access is intermittent, that is the true bottleneck — everything real
+   in Phase 1 is downstream of it. Bundle the security cleanup into the same visit.
+2. **DESIGN hub files not found at documented paths.** This review could not read
+   `DESIGN-Full-Workflow-Integration-end-to-end-/README.md` or `.../docs/ai-cto/portfolio.md`
+   at the paths the spoke context files reference. This breaks the one-source-of-truth
+   premise (Stage 08 master list = business facts). **Next action:** verify the DESIGN
+   repo's actual layout and correct the path references in all spoke `context.md` files.
+3. **Client data file source is ambiguous.** Context says it comes from "Stage 05/08
+   in DESIGN," but the hub can't currently be located (see #2). Resolve #2 to unblock #2-priority.
 
 ---
 
@@ -59,12 +81,12 @@ Resolve these before starting Phase 2. Each one has a downstream blocker listed.
 
 | Decision | Blocks | Where to resolve |
 | -------- | ------ | ---------------- |
-| Member dues amount + what they include | Stage 09 onboarding, operator pitch | `MARKETING/README.md` |
+| Member dues amount + what they include | Stage 09 onboarding, operator pitch | `MARKETING/README.md` — **recommend $40–60/mo, decide this week** |
 | Pricing validation ($175 setup + $32/mo) | Stage 05 sales, Statement ROI calc | 3-client pilot |
 | "Guild-certified" vetting standard | Stage 09 recruiting | Requires legal review |
 | Contractor vs. employee classification | Stage 10 compliance | Requires lawyer |
 | First channel partner to pilot | Phase 2 trigger | `MARKETING` |
-| Cohort data for "How You Compare" | Statement section | Blocked on nftables data layer |
+| Cohort data for "How You Compare" | Statement section (NOT the whole statement) | Blocked on nftables data layer + real cohort dataset |
 
 ---
 
@@ -73,6 +95,8 @@ Resolve these before starting Phase 2. Each one has a downstream blocker listed.
 | Date | Decision | See |
 | ---- | -------- | --- |
 | 2026-06-04 | Hub-and-spoke AI CTO: single agent, DESIGN as hub, per-repo context files in spoke repos | `decisions.md` ADR-001 |
+| 2026-06-04 | nftables accounting reclassified: code is shipped; remaining work is **deployment to t630**, not engineering. TD-03/TD-08 are now "ready to deploy," not "open dev." | this review |
+| 2026-06-04 | Cohort data does NOT block the first real Statement — it blocks one section. Ship statements scoped to Pi-hole + Uptime Kuma + nftables; omit "How You Compare" until real cohort data exists. | this review |
 
 ---
 
