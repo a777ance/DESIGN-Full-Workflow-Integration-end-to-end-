@@ -269,7 +269,8 @@ fictional sample data.
 - **[CLAUDE.md](CLAUDE.md)** — the authoritative briefing and stage map.
 - **[console/](console/README.md)** — the **Operator Console**: this whole workflow as
   one installable app — the Statement-Gallery format applied to every stage, runnable
-  and offline-capable. Internal only; never published.
+  and offline-capable. Run it with `python3 console/serve.py`; step-by-step run/install
+  walkthrough is in [console/README.md](console/README.md). Internal only; never published.
 - **[workflow-context.md](workflow-context.md)** — why each tool, why this order, the
   economics.
 - **[LAUNCH-NOTES.md](LAUNCH-NOTES.md)** — fresh-launch break points and their fixes.
