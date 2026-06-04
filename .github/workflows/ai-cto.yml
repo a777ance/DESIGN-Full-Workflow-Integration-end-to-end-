@@ -37,33 +37,35 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       # Spoke repos inside the workspace (GitHub Actions can't write outside it)
+      # Public repos use GITHUB_TOKEN; private repos require SPOKE_PAT
+      # (PAT: fine-grained, Contents:Read on localDNS, MARKETING, claude-code-homelab, azure-lab)
       - name: Checkout localDNS
         uses: actions/checkout@v4
         with:
           repository: a777ance/localDNS
           path: spoke/localDNS
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.SPOKE_PAT || secrets.GITHUB_TOKEN }}
 
       - name: Checkout MARKETING
         uses: actions/checkout@v4
         with:
           repository: a777ance/MARKETING
           path: spoke/MARKETING
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.SPOKE_PAT }}
 
       - name: Checkout claude-code-homelab
         uses: actions/checkout@v4
         with:
           repository: a777ance/claude-code-homelab
           path: spoke/claude-code-homelab
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.SPOKE_PAT || secrets.GITHUB_TOKEN }}
 
       - name: Checkout azure-lab
         uses: actions/checkout@v4
         with:
           repository: a777ance/azure-lab
           path: spoke/Azure-lab
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.SPOKE_PAT }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
