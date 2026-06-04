@@ -12,7 +12,7 @@ New decisions go at the bottom. Do not edit past decisions — add a superseding
 
 **Decision:** Operator/member dues to the platform are **$50/mo flat**. Recorded in `MARKETING/README.md`. Cross-referenced as ADR-005 in the CTO decisions log.
 
-**Why:** Stage 09 recruiting and the operator pitch were blocked on a concrete number. $50 sits in the middle of the $40–60/mo range that covers platform tooling, match priority, and brand while leaving operators a viable margin at even 2 homes ($32 × 2 = $64 > $50 dues).
+**Why:** Stage 09 recruiting and the operator pitch were blocked on a concrete number. $50 sits in the middle of the $40–60/mo range that covers platform tooling, match priority, and brand while leaving operators a viable margin at even 2 homes ($35 × 2 = $70 > $50 dues).
 
 **What's still open:** Exactly what the dues unlock — tooling tier access, match priority, bonding/background-check coverage. Revisit once real operator supply and per-operator unit economics exist.
 
@@ -54,15 +54,16 @@ New decisions go at the bottom. Do not edit past decisions — add a superseding
 
 ---
 
-## FIN-004 — Pricing hypothesis: $175 setup + $32/mo
+## FIN-004 — Pricing: $175 setup + $35/mo standard (ADR-007)
 
 **Date:** 2026-06-04
-**Status:** Working hypothesis — **not validated**
+**Status:** Set (cross-ref: MARKETING ADR-007) — **not yet validated by renewals**
 
-**Decision:** Use $175 setup + $32/mo as the working price test for Phase 1. These are the numbers in every stage spec, the Statement ROI calc, and the operator pitch.
+**Decision:** $175 one-time setup + $35/mo standard subscription. Price band $29–39/mo.
+Founding cohort (first ~5 customers): $29/mo locked for 12 months.
 
-**Why:** Anchored against ISP "advanced security" (~$10/mo, far less capability). A single-family home won't bear $80/mo. $32/mo + a one-time setup fee is defensible and covers tooling with room for operator margin. The setup fee covers real install labor and sets expectations.
+**Why:** Anchored against ISP "advanced security" (~$10/mo, far less capability). $35/mo is defensible and covers tooling with margin. The setup fee covers real install labor and anchors the relationship — never discount it. Founding rate ($29/mo) creates urgency without cutting the setup fee.
 
-**Validation required:** 3 pilot customers × 3+ months at posted price. Until then, treat all financial projections as hypotheses — label them clearly.
+**Validation required:** First cohort renews at $29/mo (founding) or $35/mo (standard) after 3+ months. Until then, all revenue projections are hypotheses.
 
-**What this rules out:** Discounting the setup fee to close a deal (it covers labor and anchors the relationship). Treating projections based on these numbers as validated revenue. Locking the price before the pilot completes.
+**What this rules out:** Discounting the setup fee. Treating any projection as validated before the first cohort renews. Adjusting the standard rate without a new FIN decision.

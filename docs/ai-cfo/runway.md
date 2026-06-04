@@ -23,18 +23,19 @@ Update when real costs or revenue change.
 
 | Scenario | Gross MRR | Net MRR (after Stripe) | Notes |
 | -------- | --------- | ---------------------- | ----- |
-| 1 customer | $32 | ~$31 | Covers tooling; net positive day 1 |
+| 1 customer | $35 (std) / $29 (founding) | ~$34/$28 | Covers tooling; net positive day 1 |
 | 3 customers (Phase 1 gate) | $96 | ~$92 | + $525 setup fees YTD |
-| 10 customers | $320 | ~$307 | Real side income; 1 operator covers dues |
-| 20 customers + 2 operators | $640 + $100 dues = $740 | ~$718 | Comfortable; operator model proving out |
+| 10 customers | $350 (std) | ~$337 | Real side income; 1 operator covers dues |
+| 20 customers + 2 operators | $700 + $100 dues = $800 | ~$770 | Comfortable; operator model proving out |
 
 ---
 
 ## Stripe Fee Impact
 
-At $32/mo per customer: fee = $0.30 + 2.9% × $32 = **$1.23/transaction**
+At $35/mo (standard): fee = $0.30 + 2.9% × $35 = **$1.32/transaction**
+At $29/mo (founding): fee = $0.30 + 2.9% × $29 = **$1.14/transaction**
 
-At scale (10 customers): $12.30/mo in fees on $320 gross → ~3.8% drag. Negligible.
+At scale (10 customers at $35): $13.20/mo in fees on $350 gross → ~3.8% drag. Negligible.
 
 For setup fees ($175 one-time): fee = $0.30 + 2.9% × $175 = **$5.38/transaction**. Still small.
 
@@ -56,8 +57,8 @@ Cost: Gusto or Track1099 — estimate **$5–10/form**. Minimal. Track start dat
 | Milestone | Revenue | Cost | Net |
 | --------- | ------- | ---- | --- |
 | Pre-launch | $0 | ~$20/mo | –$20 |
-| 1 customer | $32/mo | ~$20/mo | **+$12/mo** |
-| Phase 1 gate (3 customers) | $96/mo | ~$20/mo | **+$76/mo** |
-| 10 customers | $320/mo | ~$25/mo | **+$295/mo** |
+| 1 customer (founding) | $29/mo | ~$20/mo | **+$9/mo** |
+| Phase 1 gate (3 customers, std) | $105/mo | ~$20/mo | **+$85/mo** |
+| 10 customers (std) | $350/mo | ~$25/mo | **+$325/mo** |
 
 The constraint is founder time, not money. No runway problem at any realistic scenario.
