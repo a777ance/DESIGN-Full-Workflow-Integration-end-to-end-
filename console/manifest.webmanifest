@@ -1,0 +1,36 @@
+{
+  "name": "A777ance \u2014 Operator Console",
+  "short_name": "A7 Console",
+  "description": "The internal operator console for the A777ance guild \u2014 one installable view over the whole funnel: brand, demand, funnel, sales, the Statement, payments, recruiting, compliance, and the automations that carry a record stage-to-stage.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#13314f",
+  "theme_color": "#13314f",
+  "icons": [
+    {
+      "src": "icons/icon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512-maskable.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "maskable"
+    }
+  ]
+}

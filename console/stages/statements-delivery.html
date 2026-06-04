@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>06 · Statements Delivery — A7 Console</title>
+<link rel="manifest" href="../manifest.webmanifest">
+<meta name="theme-color" content="#13314f">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="A7 Console">
+<link rel="apple-touch-icon" href="../icons/apple-touch-icon.png">
+<link rel="icon" type="image/svg+xml" href="../icons/icon.svg">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{--navy:#13314f;--navy-2:#0e2640;--ink:#1f2733;--bronze:#a9803f;--bronze-soft:#c6a463;
+--paper:#fbfaf7;--rule:#e6e2d6;--muted:#8a93a0;--good:#3f7d52;--good-soft:#e6efe8;
+--watch:#8a5e16;--watch-soft:#f5ecd9;--warn:#9c4221;--warn-soft:#f6e7df;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+background:#e9ecf0;color:var(--ink);padding:0 0 64px;-webkit-font-smoothing:antialiased;}
+.wrap{max-width:1020px;margin:0 auto;padding:0 24px;}
+a{color:var(--bronze);}
+/* header */
+.header{background:var(--navy);color:#fff;border-bottom:3px solid var(--bronze);}
+.header .wrap{padding:28px 24px 24px;display:flex;align-items:center;gap:15px;}
+.monogram{width:46px;height:46px;border-radius:10px;background:linear-gradient(150deg,#1c4a73,var(--navy-2));
+border:1px solid var(--bronze);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.monogram span{font-family:Georgia,serif;font-size:20px;font-weight:700;color:var(--bronze-soft);}
+.brand{font-size:21px;font-weight:700;letter-spacing:0.16em;}
+.brand-sub{font-size:9px;color:#8fb0cc;letter-spacing:0.2em;text-transform:uppercase;margin-top:5px;}
+.badge{margin-left:auto;font-size:9.5px;letter-spacing:0.16em;text-transform:uppercase;color:var(--bronze-soft);
+border:1px solid rgba(201,164,99,0.5);border-radius:999px;padding:5px 11px;white-space:nowrap;}
+/* lead */
+.lead{max-width:780px;margin:34px auto 0;padding:0 24px;}
+.lead h1{font-family:Georgia,serif;font-size:27px;color:var(--navy);font-weight:700;}
+.lead p{font-size:14px;color:#3a4553;line-height:1.65;margin-top:11px;}
+.lead .note{margin-top:15px;font-size:12px;color:#5a5446;background:#f2efe7;border-left:3px solid var(--bronze);
+padding:11px 14px;border-radius:0 6px 6px 0;}
+.lead .install{margin-top:12px;font-size:12px;color:#3a4553;line-height:1.55;}
+.lead .install b{color:var(--navy);}
+/* featured product banner */
+.feature{display:block;max-width:972px;margin:30px auto 0;border-radius:14px;overflow:hidden;
+background:linear-gradient(135deg,#1b456b,var(--navy-2));border:1px solid var(--bronze);
+box-shadow:0 10px 30px rgba(14,38,64,0.28);text-decoration:none;color:#fff;}
+.feature .inner{padding:24px 26px;display:flex;gap:20px;align-items:center;}
+.feature .mark{font-family:Georgia,serif;font-size:23px;font-weight:700;color:var(--navy-2);
+background:var(--bronze-soft);width:54px;height:54px;border-radius:12px;display:flex;align-items:center;
+justify-content:center;flex-shrink:0;}
+.feature .kicker{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--bronze-soft);}
+.feature h2{font-family:Georgia,serif;font-size:21px;margin-top:5px;}
+.feature p{font-size:12.5px;color:#cfe0ef;line-height:1.55;margin-top:7px;max-width:600px;}
+.feature .go{margin-left:auto;font-size:13px;color:var(--bronze-soft);font-weight:700;white-space:nowrap;align-self:center;}
+/* sections */
+.sect{margin-top:40px;}
+.sect-h{display:flex;align-items:baseline;gap:12px;border-bottom:1px solid var(--rule);
+padding-bottom:10px;margin-bottom:20px;flex-wrap:wrap;}
+.sect-h h2{font-size:13px;text-transform:uppercase;letter-spacing:0.16em;color:var(--navy);}
+.sect-h span{font-size:11.5px;color:var(--muted);font-style:italic;}
+/* grid + stage cards */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.card{background:var(--paper);border:1px solid var(--rule);border-radius:12px;
+box-shadow:0 4px 16px rgba(0,0,0,0.06);transition:transform .12s,box-shadow .12s;
+text-decoration:none;color:inherit;display:flex;flex-direction:column;overflow:hidden;}
+.card:hover{transform:translateY(-3px);box-shadow:0 10px 26px rgba(0,0,0,0.12);}
+.card .top{display:flex;align-items:center;gap:11px;padding:15px 16px 0;}
+.num{font-family:Georgia,serif;font-size:14px;font-weight:700;color:#fff;background:var(--navy);
+width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.card .t{font-size:14.5px;font-weight:700;color:var(--navy);line-height:1.25;}
+.card .body{padding:10px 16px 15px;display:flex;flex-direction:column;flex:1;}
+.card .tool{font-size:10.5px;color:var(--bronze);font-weight:600;letter-spacing:0.02em;line-height:1.4;}
+.card .d{font-size:12.5px;color:#5a6573;line-height:1.5;margin-top:7px;flex:1;}
+.card .cfoot{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:13px;}
+.open{font-size:12px;color:var(--bronze);font-weight:600;white-space:nowrap;}
+/* chips */
+.chip{font-size:9px;letter-spacing:0.07em;text-transform:uppercase;font-weight:700;border-radius:999px;
+padding:3px 8px;white-space:nowrap;}
+.chip.ok{color:var(--good);background:var(--good-soft);}
+.chip.watch{color:var(--watch);background:var(--watch-soft);}
+.chip.warn{color:var(--warn);background:var(--warn-soft);}
+.chip.ext{color:var(--navy);background:#e7eef5;}
+/* cross-repo cards */
+.repo-card{background:#fff;border:1px solid var(--rule);border-radius:12px;padding:17px 18px 15px;
+text-decoration:none;color:inherit;display:flex;flex-direction:column;
+transition:transform .12s,box-shadow .12s;box-shadow:0 4px 16px rgba(0,0,0,0.05);}
+.repo-card:hover{transform:translateY(-3px);box-shadow:0 10px 26px rgba(0,0,0,0.12);}
+.repo-card .rh{display:flex;align-items:center;gap:9px;}
+.repo-card .rt{font-size:15px;font-weight:700;color:var(--navy);}
+.vis{font-size:8.5px;letter-spacing:0.1em;text-transform:uppercase;font-weight:700;padding:3px 8px;border-radius:999px;margin-left:auto;}
+.vis.public{color:var(--good);background:var(--good-soft);}
+.vis.private{color:var(--warn);background:var(--warn-soft);}
+.repo-card .src{font-size:11px;color:var(--muted);margin-top:4px;font-family:ui-monospace,Menlo,monospace;}
+.repo-card .d{font-size:12.5px;color:#5a6573;line-height:1.55;margin-top:9px;flex:1;}
+.repo-card .cta{margin-top:12px;font-size:12px;color:var(--bronze);font-weight:700;}
+/* footer */
+.foot{margin-top:48px;padding-top:20px;border-top:1px solid var(--rule);font-size:11.5px;color:var(--muted);line-height:1.65;}
+.foot a{color:var(--bronze);text-decoration:none;}
+/* ===== stage detail page ===== */
+.crumb{max-width:840px;margin:20px auto 0;padding:0 24px;font-size:12px;color:var(--muted);}
+.crumb a{text-decoration:none;}
+.stage{max-width:840px;margin:0 auto;padding:0 24px;}
+.stage-head{display:flex;align-items:flex-start;gap:16px;margin-top:14px;}
+.num-lg{font-family:Georgia,serif;font-size:22px;font-weight:700;color:#fff;background:var(--navy);
+width:52px;height:52px;border-radius:11px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.stage-head .kicker{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--bronze);font-weight:700;}
+.stage-head h1{font-family:Georgia,serif;font-size:26px;color:var(--navy);margin-top:4px;}
+.stage-head .tagline{font-size:13.5px;color:#5a6573;margin-top:6px;line-height:1.5;}
+.stage-head .chip{margin-left:auto;margin-top:4px;align-self:flex-start;}
+.meta{margin-top:22px;border:1px solid var(--rule);border-radius:10px;background:#fff;overflow:hidden;}
+.meta-row{display:flex;gap:14px;padding:11px 15px;border-bottom:1px solid var(--rule);font-size:13px;}
+.meta-row:last-child{border-bottom:0;}
+.meta-row .k{flex:0 0 84px;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;font-size:10px;padding-top:2px;}
+.meta-row .v{color:var(--ink);line-height:1.45;}
+.summary{font-size:14.5px;color:#33404e;line-height:1.7;margin-top:22px;}
+.callout{margin-top:16px;font-size:12.5px;color:#5a5446;background:#f2efe7;border-left:3px solid var(--bronze);
+padding:11px 14px;border-radius:0 6px 6px 0;line-height:1.55;}
+.gallery-btn{display:flex;align-items:center;gap:14px;margin-top:20px;background:linear-gradient(135deg,#1b456b,var(--navy-2));
+border:1px solid var(--bronze);border-radius:12px;padding:18px 20px;text-decoration:none;color:#fff;}
+.gallery-btn .gt{font-family:Georgia,serif;font-size:16px;}
+.gallery-btn .gd{font-size:12px;color:#cfe0ef;margin-top:3px;}
+.gallery-btn .ga{margin-left:auto;color:var(--bronze-soft);font-weight:700;white-space:nowrap;}
+.files{margin-top:30px;}
+.files h3{font-size:12px;text-transform:uppercase;letter-spacing:0.14em;color:var(--navy);
+border-bottom:1px solid var(--rule);padding-bottom:9px;}
+.files ul{list-style:none;margin-top:6px;}
+.files li{display:flex;align-items:center;gap:12px;padding:10px 2px;border-bottom:1px solid #efece3;}
+.files li a{font-size:13.5px;font-weight:600;text-decoration:none;color:var(--navy);font-family:ui-monospace,Menlo,monospace;}
+.files li .kind{margin-left:auto;font-size:9.5px;letter-spacing:0.06em;text-transform:uppercase;
+color:var(--muted);background:#eef0f3;border-radius:999px;padding:3px 9px;}
+.spec-link{display:inline-block;margin-top:14px;font-size:13px;font-weight:700;color:var(--bronze);text-decoration:none;}
+.prevnext{display:flex;justify-content:space-between;gap:12px;margin-top:34px;}
+.prevnext a{flex:1;border:1px solid var(--rule);border-radius:10px;padding:12px 15px;text-decoration:none;
+background:#fff;color:var(--navy);font-size:13px;font-weight:600;}
+.prevnext a.next{text-align:right;}
+.prevnext a .pn{display:block;font-size:9.5px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:3px;}
+.prevnext .spacer{flex:1;}
+@media (max-width:760px){.grid{grid-template-columns:1fr;}.feature .inner{flex-direction:column;align-items:flex-start;}
+.feature .go{margin-left:0;margin-top:6px;}.stage-head .chip{margin-left:0;}}
+</style>
+</head>
+<body>
+  <div class="header"><div class="wrap">
+    <div class="monogram"><span>A7</span></div>
+    <div><div class="brand">A777ANCE</div><div class="brand-sub">Residential Network Services</div></div>
+    <div class="badge">Internal · Operator Console</div>
+  </div></div>
+  <div class="crumb"><a href="../index.html">&larr; Operator Console</a> &nbsp;·&nbsp; The product</div>
+  <div class="stage">
+    <div class="stage-head">
+      <div class="num-lg">06</div>
+      <div>
+        <div class="kicker">The product</div>
+        <h1>Statements Delivery</h1>
+        <div class="tagline">The product. Generate, email, print / mail, QR — every month.</div>
+      </div>
+      <span class="chip ext">Lives in localDNS</span>
+    </div>
+    <div class="meta">
+      <div class="meta-row"><span class="k">Lives in</span><span class="v">localDNS generator (docs/statements/) + email + print/mail + QR</span></div>
+      <div class="meta-row"><span class="k">Go live</span><span class="v">Monthly run; email + mail the Statement; QR codes go live</span></div>
+    </div>
+    <p class="summary">The center. Reads the paid roster and produces the monthly Network Activity Statement and operator portfolio, delivered by email, on paper, and by QR. This repo orchestrates the cadence; the artifacts themselves live and render in localDNS under the honesty-of-the-kept-document rule.</p>
+    <div class="callout">The Statements live in the public localDNS repo — open the gallery from the cross-repo links.</div>
+    <a class="gallery-btn" href="https://a777ance.github.io/localDNS/" target="_blank" rel="noopener">
+      <div><div class="gt">Open the Statement Gallery</div><div class="gd">The live client statements + operator portfolio — the product itself, in localDNS.</div></div>
+      <span class="ga">localDNS &rarr;</span>
+    </a>
+    <div class="files">
+      <h3>What's in this stage</h3>
+      <ul>
+        <li><a href="../../06-statements-delivery/README.md">README.md</a><span class="kind">Spec</span></li>
+        <li><a href="../../06-statements-delivery/monthly-run.md">monthly-run.md</a><span class="kind">Doc</span></li>
+      </ul>
+      <a class="spec-link" href="../../06-statements-delivery/README.md">Open the full spec &rarr;</a>
+    </div>
+    <div class="prevnext">
+      <a class="prev" href="sales-and-onboarding.html"><span class="pn">&larr; Previous</span>05 Sales &amp; Onboarding</a>
+      <a class="next" href="payments-receivables.html"><span class="pn">Next &rarr;</span>07 Payments &amp; Receivables</a>
+    </div>
+    <div class="foot">
+      Stage spec lives in <code>06-statements-delivery/</code> · generated by the Operator Console. &nbsp;·&nbsp; <strong>Internal — do not publish.</strong>
+    </div>
+  </div>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.register('../sw.js').catch(function () {});
+      });
+    }
+  </script>
+</body>
+</html>

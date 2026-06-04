@@ -261,6 +261,10 @@ broken link so it can gate CI.
 
 - **README.md** — complete operations guide; the funnel stage-by-stage, with the
   topology diagram and per-stage detail.
+- **[console/](console/README.md)** — the **Operator Console**: this whole workflow as
+  one installable (PWA) launcher — the Statement-Gallery format pointed at every stage,
+  with honest status chips and live links across all three repos. Generated from
+  `console/data/console.json`. **Internal only — never published.**
 - **workflow-context.md** — design rationale: why this tool at each stage, why the
   funnel order, the economics, and the trust-first sequencing.
 - **LAUNCH-NOTES.md** — fresh-launch simulation: every break point between an empty

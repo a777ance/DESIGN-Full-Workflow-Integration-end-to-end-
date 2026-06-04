@@ -1,0 +1,211 @@
+{
+  "brand": {
+    "name": "A777ANCE",
+    "tagline": "Residential Network Services",
+    "app_name": "A777ance — Operator Console",
+    "app_short": "A7 Console",
+    "app_desc": "The internal operator console for the A777ance guild — one installable view over the whole funnel: brand, demand, funnel, sales, the Statement, payments, recruiting, compliance, and the automations that carry a record stage-to-stage."
+  },
+  "lead": "The machine around the Statement, on one screen. Every card below is a stage of the lifecycle — how a stranger becomes a household with a monthly Statement, and how a household becomes an operator who produces Statements for others. Each opens its spec; the cross-repo links reach the product (localDNS) and the model (MARKETING).",
+  "phases": [
+    {
+      "id": "product",
+      "label": "The product",
+      "blurb": "What they pay for, every month — the center everything else surrounds."
+    },
+    {
+      "id": "acquire",
+      "label": "Earn the first Statement",
+      "blurb": "Find a household, win its trust, close it, and bill it — everything above the pay-for-value line."
+    },
+    {
+      "id": "flywheel",
+      "label": "Spin the flywheel",
+      "blurb": "Turn a happy customer's raised hand into the next operator."
+    },
+    {
+      "id": "platform",
+      "label": "The platform underneath",
+      "blurb": "Brand, storefront, the system of record, and the glue every other stage stands on."
+    }
+  ],
+  "stages": [
+    {
+      "num": "00",
+      "slug": "brand-identity",
+      "folder": "00-brand-identity",
+      "title": "Brand Identity",
+      "phase": "platform",
+      "tool": "Figma + brand asset host / press kit",
+      "golive": "Export assets; update the brand-kit links everything inherits",
+      "tagline": "The look, voice, and marks every surface inherits.",
+      "summary": "The single source of truth for palette, type, logo usage, and voice — “pest control, not lawn care; your home, by name.” Every downstream surface links to the brand kit rather than hard-coding a value, so a brand change is a one-file edit plus a Figma re-export.",
+      "status": "draft",
+      "status_note": "Palette and type tokens are still CHANGE_ME; voice and usage rules are set."
+    },
+    {
+      "num": "01",
+      "slug": "web-presence",
+      "folder": "01-web-presence",
+      "title": "Web Presence",
+      "phase": "platform",
+      "tool": "Squarespace / WordPress · Google Business Profile · GitHub Pages",
+      "golive": "Publish site; verify GBP listing; Pages deploys from localDNS",
+      "tagline": "The storefront: site, Google Business Profile, the Statements gallery.",
+      "summary": "The public face a lead lands on after an ad or a search, and the verified local listing that earns trust. The Statements gallery is published from localDNS as the proof surface this storefront points to.",
+      "status": "spec"
+    },
+    {
+      "num": "02",
+      "slug": "demand-generation",
+      "folder": "02-demand-generation",
+      "title": "Demand Generation",
+      "phase": "acquire",
+      "tool": "Meta / Google Ads · local SEO · Mailchimp",
+      "golive": "Launch campaign; sync the geo-targeted audience",
+      "tagline": "“Pest control for your network” — local SEO, geo-targeted ads, email.",
+      "summary": "Teaches a category the household doesn't know it needs, zip code by zip code, and writes a lead record the CRM can segment. Owns the positioning line and the geo-targeting that keeps spend local and dense.",
+      "status": "spec"
+    },
+    {
+      "num": "03",
+      "slug": "funnels-and-capture",
+      "folder": "03-funnels-and-capture",
+      "title": "Funnels & Capture",
+      "phase": "acquire",
+      "tool": "Landing pages + intake form + Setmore + demo",
+      "golive": "Publish funnel; wire form → CRM (08) via automations (11)",
+      "tagline": "Landing page → intake form → self-booking → demo.",
+      "summary": "Converts a click into a booked consult and a CRM lead with intake answers attached — no human retyping. The hand-off into the system of record is the seam automations (11) must carry.",
+      "status": "spec"
+    },
+    {
+      "num": "04",
+      "slug": "phone-and-comms",
+      "folder": "04-phone-and-comms",
+      "title": "Phone & Comms",
+      "phase": "acquire",
+      "tool": "Business line / VoIP (Google Voice / OpenPhone)",
+      "golive": "Set hours, greeting, call routing; log every call to the CRM",
+      "tagline": "Answer the call, confirm the visit — the human touch, logged.",
+      "summary": "The voice that confirms a booking and reassures a first-time household, with every call logged back to its record. Calm and specific, never a phone tree — the trust-first stage between booking and consult.",
+      "status": "spec"
+    },
+    {
+      "num": "05",
+      "slug": "sales-and-onboarding",
+      "folder": "05-sales-and-onboarding",
+      "title": "Sales & Onboarding",
+      "phase": "acquire",
+      "tool": "CRM + proposal / e-sign → handoff to localDNS deploy",
+      "golive": "Send quote; on close, provision the stack and collect setup fee",
+      "tagline": "Consult, quote, setup fee, close — then provision the stack.",
+      "summary": "Runs the consult, sends the quote, and on a signed close flips the record lead → customer and triggers the stack provisioning in localDNS. The quote template carries the working price hypotheses, not gospel.",
+      "status": "spec",
+      "status_note": "Pricing ($25–40/mo + ~$150–200 setup) is an unvalidated hypothesis from MARKETING."
+    },
+    {
+      "num": "06",
+      "slug": "statements-delivery",
+      "folder": "06-statements-delivery",
+      "title": "Statements Delivery",
+      "phase": "product",
+      "tool": "localDNS generator (docs/statements/) + email + print/mail + QR",
+      "golive": "Monthly run; email + mail the Statement; QR codes go live",
+      "tagline": "The product. Generate, email, print / mail, QR — every month.",
+      "summary": "The center. Reads the paid roster and produces the monthly Network Activity Statement and operator portfolio, delivered by email, on paper, and by QR. This repo orchestrates the cadence; the artifacts themselves live and render in localDNS under the honesty-of-the-kept-document rule.",
+      "status": "external",
+      "status_note": "The Statements live in the public localDNS repo — open the gallery from the cross-repo links.",
+      "featured": true
+    },
+    {
+      "num": "07",
+      "slug": "payments-receivables",
+      "folder": "07-payments-receivables",
+      "title": "Payments & Receivables",
+      "phase": "acquire",
+      "tool": "Stripe / payment processor + accounting",
+      "golive": "Create the plan; collect setup fee + monthly retainer; reconcile",
+      "tagline": "One-time setup fee + monthly retainer; reconcile.",
+      "summary": "Stands up the billing plan, collects the setup fee and the recurring retainer, and writes billing status back to the record so delivery (06) can gate on a paid account. The flat retainer is what makes every incident a cost, not revenue.",
+      "status": "spec",
+      "status_note": "Amounts inherit the same unvalidated pricing hypothesis as stage 05."
+    },
+    {
+      "num": "08",
+      "slug": "client-list-and-crm",
+      "folder": "08-client-list-and-crm",
+      "title": "Client List & CRM",
+      "phase": "platform",
+      "tool": "CRM / Airtable — the system of record",
+      "golive": "Maintain the roster; it feeds the Statement generator and every stage",
+      "tagline": "The system of record — one record per household, operator, and route.",
+      "summary": "The single source of truth every other stage reads and writes: one record per household, per operator, per route. A field is either in the schema or it does not exist — no stray spreadsheet columns, the business analog of localDNS's data-driven generator.",
+      "status": "spec"
+    },
+    {
+      "num": "09",
+      "slug": "recruiting-and-guild",
+      "folder": "09-recruiting-and-guild",
+      "title": "Recruiting & Guild",
+      "phase": "flywheel",
+      "tool": "Operator funnel + vetting + Setmore (interviews)",
+      "golive": "Open applications; run vetting; onboard into the guild",
+      "tagline": "The customer→operator flywheel — vetting + onboarding.",
+      "summary": "Catches the “Connect in the Alliance” hand-raise from a Statement and runs it through vetting and onboarding into the guild. Every happy customer is a latent operator; this is where the flywheel turns.",
+      "status": "draft",
+      "status_note": "The “guild-certified” vetting standard is a first draft, not a legal standard — define with counsel."
+    },
+    {
+      "num": "10",
+      "slug": "gig-workers-compliance",
+      "folder": "10-gig-workers-compliance",
+      "title": "Gig-Workers Compliance",
+      "phase": "flywheel",
+      "tool": "1099 / payroll platform (Gusto / Track1099) + e-sign",
+      "golive": "Collect W-9; pay contractors; file 1099-NEC by Jan 31",
+      "tagline": "W-9, 1099-NEC, contractor agreement.",
+      "summary": "Collects the W-9, e-signs the contractor agreement, and files the 1099-NEC on time for operators paid as gig workers. Documents the 1099 path; worker classification is the real risk and must be confirmed before scaling.",
+      "status": "counsel",
+      "status_note": "Confirm 1099-vs-W-2 classification with counsel — misclassification is the live risk."
+    },
+    {
+      "num": "11",
+      "slug": "automations",
+      "folder": "11-automations",
+      "title": "Automations",
+      "phase": "platform",
+      "tool": "Zapier / Make + the localDNS pipeline",
+      "golive": "Enable the zaps that carry a record stage→stage; never hand-copy",
+      "tagline": "The glue that carries a record stage→stage — never hand-copy.",
+      "summary": "The connective tissue that moves a record from one stage to the next without a human retyping it. If any arrow in the funnel needs a copy-paste, that seam is a bug here — not a feature.",
+      "status": "spec"
+    }
+  ],
+  "crossrepo": [
+    {
+      "title": "Statement Gallery",
+      "repo": "localDNS",
+      "visibility": "public",
+      "href": "https://a777ance.github.io/localDNS/",
+      "desc": "The product itself — the installable gallery of client Network Activity Statements and the operator Alliance Member Portfolio. This console surrounds it; that gallery is what every stage exists to earn, produce, and deliver.",
+      "cta": "Open the gallery"
+    },
+    {
+      "title": "The Model",
+      "repo": "MARKETING",
+      "visibility": "private",
+      "href": "https://github.com/a777ance/marketing",
+      "desc": "The why: the two-sided guild, pricing, unit economics, and the conversion flywheel. The strategy this console executes — the source of the pricing and dues hypotheses the stages treat as CHANGE_ME defaults.",
+      "cta": "Open the repo"
+    },
+    {
+      "title": "The Stack",
+      "repo": "localDNS",
+      "visibility": "public",
+      "href": "https://github.com/a777ance/localdns",
+      "desc": "The technical delivery vehicle: the DNS + monitoring + VPN stack on the t630 that produces the real figures a Statement is allowed to print. The moat is the guild; this is how the quiet gets made.",
+      "cta": "Open the repo"
+    }
+  ]
+}
