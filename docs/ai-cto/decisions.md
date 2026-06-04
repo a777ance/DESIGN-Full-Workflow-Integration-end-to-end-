@@ -56,3 +56,18 @@ New decisions go at the bottom. Do not edit past decisions — add a superseding
 **Why:** Liquidity before app. The Statement does three jobs today (value receipt, salesperson, referral engine) without requiring any infrastructure beyond GitHub Pages. Building an app before proving customers pay would burn time on surface instead of moat.
 
 **What this rules out:** A customer/operator toggle app, in-app payments, and dynamic statement rendering until the Phase 2 gate conditions are met (see `portfolio.md`).
+
+---
+
+## ADR-005 — Member dues: $50/mo flat
+
+**Date:** 2026-06-04
+**Status:** Accepted (working number)
+
+**Decision:** Operator/member dues to the platform are **$50/mo flat**, recorded in `MARKETING/README.md`. This sits in the middle of NARF's recommended $40–60/mo range.
+
+**Why:** Stage 09 (recruiting) and the operator pitch were blocked on a concrete number — a `CHANGE_ME` can't be used in an onboarding flow or a sales conversation. $50 is a clean, defensible mid-point: high enough to fund tooling, matching, and the brand; low enough that an operator covers it with a single home's margin.
+
+**What's still open:** Exactly what the dues *unlock* (tooling tier, match priority, bonding/background-check coverage). Revisit the amount once real operator supply and per-operator economics exist — this is a price test, not gospel.
+
+**What this rules out:** Per-job platform rake (the model is subscriptions, not a cut of every job — see ADR/MARKETING). Treating $50 as locked: it's the working number for the pilot, explicitly revisitable.

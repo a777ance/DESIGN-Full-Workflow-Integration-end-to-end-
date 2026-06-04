@@ -81,7 +81,7 @@ Resolve these before starting Phase 2. Each one has a downstream blocker listed.
 
 | Decision | Blocks | Where to resolve |
 | -------- | ------ | ---------------- |
-| Member dues amount + what they include | Stage 09 onboarding, operator pitch | `MARKETING/README.md` — **recommend $40–60/mo, decide this week** |
+| ~~Member dues amount~~ — **set to $50/mo (2026-06-04, ADR-005)** | ~~Stage 09 onboarding~~ unblocked | What dues *unlock* still open |
 | Pricing validation ($175 setup + $32/mo) | Stage 05 sales, Statement ROI calc | 3-client pilot |
 | "Guild-certified" vetting standard | Stage 09 recruiting | Requires legal review |
 | Contractor vs. employee classification | Stage 10 compliance | Requires lawyer |
@@ -97,6 +97,7 @@ Resolve these before starting Phase 2. Each one has a downstream blocker listed.
 | 2026-06-04 | Hub-and-spoke AI CTO: single agent, DESIGN as hub, per-repo context files in spoke repos | `decisions.md` ADR-001 |
 | 2026-06-04 | nftables accounting reclassified: code is shipped; remaining work is **deployment to t630**, not engineering. TD-03/TD-08 are now "ready to deploy," not "open dev." | this review |
 | 2026-06-04 | Cohort data does NOT block the first real Statement — it blocks one section. Ship statements scoped to Pi-hole + Uptime Kuma + nftables; omit "How You Compare" until real cohort data exists. | this review |
+| 2026-06-04 | Member dues set to **$50/mo flat** (mid-point of NARF's $40–60 range). Unblocks Stage 09 + operator pitch. | `decisions.md` ADR-005 |
 
 ---
 
