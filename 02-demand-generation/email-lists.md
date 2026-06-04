@@ -56,7 +56,7 @@ These lists are pulled automatically from the customer list — nobody maintains
 > background-checked, bonded neighbor who patched your TV while you slept and put their name
 > on it. That's the whole idea.
 >
-> No contract, cancel anytime, setup's a one-time $175 and it's $32/month after. Grab a free
+> No contract, cancel anytime, setup's a one-time $175 and it's $35/month after. Grab a free
 > look here: **[booking link]**
 
 ## Customer — monthly statement note

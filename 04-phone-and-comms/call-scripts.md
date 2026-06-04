@@ -16,7 +16,7 @@ jotted onto the customer's record.
    — we quietly keep the bad stuff out, and every month we send you a simple statement that
    shows what we handled."
 4. **One next step.** Book the free look in Setmore (03), or confirm the one they already have.
-5. **Money, said plainly.** Mention the one-time $175 setup and the $32/month up front — never
+5. **Money, said plainly.** Mention the one-time $175 setup and the $35/month up front — never
    spring it on them at the quote (05). "There's no contract; you can cancel anytime."
 6. **Write it down.**
 

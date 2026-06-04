@@ -21,7 +21,7 @@ that's what it is.
 ## The path
 
 ```
-warm consult (04 wrote it up) ─► look at the home ─► quote ($175 setup + $32/mo)
+warm consult (04 wrote it up) ─► look at the home ─► quote ($175 setup + $35/mo)
         ─► they sign ─► collect the setup fee (07) ─► set up the box ─► first statement (06)
 ```
 

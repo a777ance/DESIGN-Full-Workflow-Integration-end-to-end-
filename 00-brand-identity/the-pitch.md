@@ -113,7 +113,7 @@ Say them with confidence anyway; a number you hedge on is a number people haggle
 
 - **One-time setup: $175.** "That's the visit and the install on your equipment. We don't
   discount it, because it's real work — and there's no contract after."
-- **Monthly: $32.** "That's the ongoing quiet and the statement. Cancel anytime."
+- **Monthly: $35.** "That's the ongoing quiet and the statement. Cancel anytime."
 - **Paper statement mailed: +$2/mo.** "If you like something on the fridge."
 
 Full quote walkthrough (worked end to end) is in

@@ -10,7 +10,7 @@ box — that's the moment the promise becomes real
 ## When they sign
 
 - [ ] Flip the record: lead → **customer**; save the signed quote.
-- [ ] **Collect the $175 setup fee** and start the $32/month plan (07). Make sure the first
+- [ ] **Collect the $175 setup fee** and start the $35/month plan (07). Make sure the first
       charge actually clears *before* you drive out.
 - [ ] Lock in the install day (Setmore / a quick call, 04).
 

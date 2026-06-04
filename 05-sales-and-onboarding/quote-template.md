@@ -34,7 +34,7 @@ record.
 > | | Amount | |
 > | --- | --- | --- |
 > | One-time setup | **$175** | the visit + the install on your gear — never discounted |
-> | Monthly | **$32** | the ongoing quiet + your statement |
+> | Monthly | **$35** | the ongoing quiet + your statement |
 >
 > *No contract. Cancel anytime — the reason to stay is the monthly proof, not a lock-in.*
 >
@@ -67,7 +67,7 @@ record.
 > | | Amount | |
 > | --- | --- | --- |
 > | One-time setup | **$175** | the visit + install — never discounted |
-> | Monthly | **$32** `[or $38 if upload-heavy / extra devices]` | the quiet + the statement |
+> | Monthly | **$35** `[or $45 if upload-heavy / extra devices]` | the quiet + the statement |
 >
 > *No contract. Cancel anytime.*
 >

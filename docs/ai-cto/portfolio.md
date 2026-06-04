@@ -2,7 +2,7 @@
 
 NARF's working memory for the full portfolio. Read at session start; update at session end with new decisions, status changes, or priority shifts.
 
-**Last updated:** 2026-06-04 (first customer onboarded — new private `customers` repo + ADR-006)
+**Last updated:** 2026-06-04 (first customer onboarded — `customers` repo + ADR-006; customer pricing set — ADR-007)
 
 ---
 
@@ -88,7 +88,7 @@ Resolve these before starting Phase 2. Each one has a downstream blocker listed.
 | Decision | Blocks | Where to resolve |
 | -------- | ------ | ---------------- |
 | ~~Member dues amount~~ — **set to $50/mo (2026-06-04, ADR-005)** | ~~Stage 09 onboarding~~ unblocked | What dues *unlock* still open |
-| Pricing validation ($175 setup + $32/mo) | Stage 05 sales, Statement ROI calc | 3-client pilot |
+| Pricing **set** — $175 + $35/mo, band $29–39, founding $29/mo locked (ADR-007); *validation* (cohort renews at price) still pending | Stage 05 ROI calc | first paying cohort |
 | "Guild-certified" vetting standard | Stage 09 recruiting | Requires legal review |
 | Contractor vs. employee classification | Stage 10 compliance | Requires lawyer |
 | First channel partner to pilot | Phase 2 trigger | `MARKETING` |
@@ -100,6 +100,7 @@ Resolve these before starting Phase 2. Each one has a downstream blocker listed.
 
 | Date | Decision | See |
 | ---- | -------- | --- |
+| 2026-06-04 | Customer pricing set vs. 2026 comparables: **$175 + $35/mo** standard (band $29–39, headroom to $39 on proven ROI); setup never discounted; founding cohort **$29/mo locked 12mo** (monthly concession, not a setup cut) | `decisions.md` ADR-007 |
 | 2026-06-04 | Real customer data → new private `customers` repo (one repo, per-household folders); `localDNS` generator renders privately via `--data-dir/--out-dir`; founder personal workspace under HH-0001 | `decisions.md` ADR-006 |
 | 2026-06-04 | Hub-and-spoke AI CTO: single agent, DESIGN as hub, per-repo context files in spoke repos | `decisions.md` ADR-001 |
 | 2026-06-04 | nftables accounting reclassified: code is shipped; remaining work is **deployment to t630**, not engineering. TD-03/TD-08 are now "ready to deploy," not "open dev." | this review |

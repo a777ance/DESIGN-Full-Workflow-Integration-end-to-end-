@@ -1,7 +1,7 @@
 # 07 — Payments & receivables
 
 **Lives in:** Stripe (or a similar card processor) + your bookkeeping.
-**Go-live:** set up the plan; collect the $175 setup fee + the $32/month; keep the books straight.
+**Go-live:** set up the plan; collect the $175 setup fee + the $35/month; keep the books straight.
 
 Getting paid — and one rule that protects the whole model: **the statement only goes to people
 who've paid.** There are two charges, kept separate on purpose because they answer two different
@@ -21,7 +21,7 @@ questions in the customer's head.
 | Charge | When | Working number | Why it's its own line |
 | ------ | ---- | -------------- | --------------------- |
 | **Setup fee** | Once, when they sign (05) | $175, never discounted | Pays for the real visit + install; answers "is this a serious service?" |
-| **Monthly** | Every month | $32 (or $38 for a heavier home) | The ongoing quiet + the statement; answers "is it worth keeping?" |
+| **Monthly** | Every month | $35 (or $45 for a heavier home) | The ongoing quiet + the statement; answers "is it worth keeping?" |
 
 > Two money flows in the guild (`MARKETING`): the **platform** collects the customer's
 > membership and the operator's dues; the **operator** bills the customer for the service

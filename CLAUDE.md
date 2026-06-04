@@ -68,7 +68,7 @@ LEAD ─────► 03 booking form → pick a time → the free look
    ▼
 CUSTOMER ─► 05 sales — consult · quote · $175 setup · YES
    │            └──► set up the box ───────────────►  localDNS
-   │   07 payments — $175 setup + $32/month
+   │   07 payments — $175 setup + $35/month
    ▼
 ══════════ THE PRODUCT — what they pay for, every month ════════════════════════
    06  THE STATEMENT  ◄── the gold standard · localDNS/docs/statements
@@ -180,7 +180,7 @@ that discipline: a Statement goes out for money only with numbers the box actual
 | The "How You Compare" neighbor data | Still a placeholder — don't print made-up neighbor averages on a document people keep. Carried from `localDNS`/`MARKETING`. |
 | A by-category gigabyte breakdown | The measuring layer is scaffolded in `localDNS`, not stood up yet — keep statements to the figures we *do* measure until it's real. |
 | Member dues amount + what they include | Working ballpark ~$50/mo flat (a price test, not final); what it *unlocks* is still open in `MARKETING`. |
-| Pricing isn't validated | $175 setup + $32/mo are a working **price test** (`MARKETING`); stage 05 uses them as confident defaults, not gospel. |
+| Pricing | $175 setup + $35/mo — **market-validated band $29–39/mo** (ADR-007 / `MARKETING`); setup never discounted; founding cohort (first ~5) gets **$29/mo locked 12mo**, not a setup cut. *Validation* = first cohort renews at price. |
 | The vetting standard | "Guild-certified" isn't defined concretely yet — `09-recruiting-and-guild/vetting-checklist.md` is a first draft, not a legal standard. |
 | Contractor vs. employee | `10-gig-workers-compliance/` documents the 1099 path; confirm the classification with a lawyer before scaling — misclassification is the real risk. |
 | Secrets & personal info | Every key, password, and real record is a `CHANGE_ME`/`.env` placeholder here. Don't commit the real thing. |

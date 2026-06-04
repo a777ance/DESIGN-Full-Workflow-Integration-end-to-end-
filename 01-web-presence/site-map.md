@@ -13,7 +13,7 @@ buttons competing for the click.
 | `/` (home) | The category line + a real statement as proof | Book a free look (03) |
 | `/how-it-works` | The pest-control analogy; what gets installed; the monthly statement | Book a free look (03) |
 | `/the-statement` | Embeds/links the **live gallery** (`a777ance.github.io/localDNS/`) | Book a free look (03) |
-| `/pricing` | $175 setup + $32/mo, said plainly (working numbers — see `MARKETING`) | Book a free look (03) |
+| `/pricing` | $175 setup + $35/mo, said plainly (working numbers — see `MARKETING`) | Book a free look (03) |
 | `/become-an-operator` | The guild pitch + the "you could do this too" story | Apply to operate (09) |
 | `/contact` | Phone (04) + the form | Book a free look (03) |
 

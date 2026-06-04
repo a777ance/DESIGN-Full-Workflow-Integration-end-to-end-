@@ -33,7 +33,7 @@ A homeowner streams every night and hates the idea of their internet company sel
 browsing. One evening they read a post of ours — "Is your smart TV watching you back?" — and
 book a free look. Jose, an operator two miles away, calls to confirm, then sits with them,
 walks the house, and shows them a real statement on his phone. They sign: $175 to set up,
-$32 a month. Jose installs a small box that quietly keeps the junk off every device. A month
+$35 a month. Jose installs a small box that quietly keeps the junk off every device. A month
 later they get their first statement — *"three things happened to your home this month; you
 felt none of them"* — and tap "refer a neighbor." Eight months in, they're so into it they
 tap "Connect in the Alliance" and start looking after a few homes themselves.
@@ -74,7 +74,7 @@ What the machine ultimately makes more of: statements, at scale
  │     ▼                                                                         │
  │  CUSTOMER ─► 05 sales — consult · quote · setup fee · YES                     │
  │     │            └─► set up the box ─────────────────►  localDNS              │
- │     │  07 payments — the $175 setup + the $32/month                           │
+ │     │  07 payments — the $175 setup + the $35/month                           │
  │     ▼                                                                         │
  │  (gets a statement every month — back up to 06)                              │
  └───────────────────────────────────────────────────────────────────────────┘

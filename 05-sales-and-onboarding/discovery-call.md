@@ -15,7 +15,7 @@ cares about privacy, like the home in the live example statement.
 - Read the record. The call note said: *streams every night, hates the idea of their internet
   company selling their browsing, mentioned the smart TV "does weird stuff."* That's your whole
   opening.
-- Have a real statement ready on your phone, and know the price cold ($175 / $32 / +$2 mailed).
+- Have a real statement ready on your phone, and know the price cold ($175 / $35 / +$2 mailed).
 
 ## The arc (this is the 2-minute pitch, slowed down)
 
@@ -64,7 +64,7 @@ Write down what they say in their words — it goes straight into their first st
 Pull up the quote (see [`quote-template.md`](quote-template.md)) and say it plainly, no hedging:
 
 > "For your place — about 12 devices, mostly the streaming and privacy side — it's a one-time
-> $175 to come out and set up the box, and then $32 a month for the ongoing quiet and the
+> $175 to come out and set up the box, and then $35 a month for the ongoing quiet and the
 > statement. No contract; cancel any time. Want it mailed on paper for the fridge, that's two
 > bucks more — most folks just use the phone version."
 

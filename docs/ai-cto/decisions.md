@@ -99,3 +99,33 @@ homes"). A real CRM, if stood up later, may supersede `roster.json` as the busin
 
 **What this rules out:** Committing real customer PII to any public repo, or to `DESIGN`.
 Repo-per-customer sprawl at pilot scale.
+
+---
+
+## ADR-007 — Customer pricing: $175 setup + $35/mo (market-validated band)
+
+**Date:** 2026-06-04
+**Status:** Accepted (working numbers; *validation* = first cohort renews at price)
+
+**Decision:** Standard customer price is **$175 one-time setup + $35/mo**, confirmed against
+2026 comparables rather than guessed (the playbook's prior $32 nudged to $35 — cleaner, signals
+"managed," still in-band). Defensible band: **$29–39/mo, $150–199 setup**, with headroom toward
+$39 once the Statement demonstrates ROI (threats blocked, uptime). The **setup fee is never
+discounted** — it filters for serious buyers and signals a real service. **Founding cohort
+(first ~5 homes):** hold the $175 setup and concede on the recurring instead — **$29/mo locked
+12 months + a referral credit** — in exchange for a testimonial/case study.
+
+**Why:** Comparables (2026): DIY managed DNS $2–6/mo (NextDNS, Control D); router-security
+bundle $10/mo (eero Plus); family digital-safety $30/mo (Aura); in-home setup visits $99–250
+(Geek Squad / HelloTech). A777ance is a superset — on-prem appliance + encrypted DNS + VPN +
+monitoring + QoS + a human who handles incidents + a monthly Statement that proves the work —
+so it prices above the consumer-app tier and around the household "safety subscription" anchor.
+
+**What's still open:** Validation (a cohort renewing at the posted price) is pending. The
+two-sided split — customer *platform membership* vs. *operator fee*, and whether the $50
+operator dues (ADR-005) hold against a $35 retainer — only needs resolving when a *separate*
+operator runs homes; that math will push either the customer price up or dues down.
+
+**What this rules out:** Discounting the setup fee (including for founders — the founding break
+is on the monthly). Competing on price with DIY tools — the pitch is "we run it and prove it,"
+not "cheapest DNS."

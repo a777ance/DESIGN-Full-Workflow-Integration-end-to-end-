@@ -38,10 +38,10 @@ two houses on either side, and grew from there.
 
 ## The money (working numbers — honest about what's still open)
 
-You **bill your homes the monthly yourself** ($32 is the working rate), and you pay the platform
+You **bill your homes the monthly yourself** ($35 is the working rate), and you pay the platform
 a membership due (a ballpark ~$50/mo — a working number, not final, `MARKETING`). Rough shape of it:
 
-- **8 homes on a route** × $32/mo ≈ **$256/month** coming in, recurring.
+- **8 homes on a route** × $35/mo ≈ **$280/month** coming in, recurring.
 - **Plus a $175 setup** each time you add a home — that's your install labor.
 - **Minus** your platform dues (~$50/mo, a working number) and your own costs (your time, the box hardware, gas).
 
