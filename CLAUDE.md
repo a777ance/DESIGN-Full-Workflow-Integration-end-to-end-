@@ -30,7 +30,7 @@ it. The plain-English swap table is in
 - [2. Verification](#2-verification)
 - [3. Working philosophy](#3-working-philosophy)
 - [4. Further reading](#4-further-reading)
-- [5. AI CTO state](#5-ai-cto-state)
+- [5. NARF (AI CTO) state](#5-narf-ai-cto-state)
 
 ---
 
