@@ -40,12 +40,12 @@ All repos develop on branch `claude/ai-cto-architecture-MZ2NF`.
    ruleset, schedule `populate_sets.py`, verify counters. Unblocks TD-08, TD-13, and
    the first real Statement. Runbook: `docs/statements/tools/collect/README.md`.
 2. **Generate the first real end-to-end Statement for one real household** (`localDNS` + `customers`).
-   The household is **Dave = HH-0001**. The private home + pipeline now exist (`customers` repo;
-   `generate_client.py` gained `--data-dir/--out-dir` so real statements render off the public
-   repo). Remaining: (a) run `collect_stats.py` on the t630 for real figures, and (b) teach
-   `compose.py`/`generate_client.py` to **omit empty sections** — no cohort → no "How You
-   Compare"; no nftables volume → no GB donut; no second member → no Alliance match — so month
-   one ships honestly. Don't fake those sections.
+   The household is **Dave = HH-0001**. The private home + pipeline exist (`customers` repo), the
+   generator renders off the public repo (`--data-dir/--out-dir`), and it now **self-scopes** —
+   omitting any section without honest data (commit `8dcb7fe`: no cohort → no "How You Compare";
+   no volume → no donut/profile; no match → no Alliance card), so month one is honest by
+   construction. **Only remaining:** run `collect_stats.py` on the t630 for real figures (needs
+   box access); deploying nftables additionally lights up the volume + profile sections.
 3. **Lock the member dues amount** (`MARKETING`). Decision, not work. Recommend
    $40–60/mo per operator; write it into `MARKETING/README.md` and remove the
    `CHANGE_ME`. Unblocks Stage 09 onboarding + the operator pitch.
@@ -56,7 +56,7 @@ All repos develop on branch `claude/ai-cto-architecture-MZ2NF`.
 
 | Repo | Status | Last notable activity | Blocked on |
 | ---- | ------ | --------------------- | ---------- |
-| `localDNS` | Active | Statements PWA (#9); nftables layer shipped; generator now renders to a **private** dir via `--data-dir/--out-dir` (pushed to `main`) | **Deploy nftables to t630** (SSH 192.168.1.118); first real `stats.json` not yet collected |
+| `localDNS` | Active | Statements PWA (#9); nftables layer shipped; generator renders to a **private** dir (`--data-dir/--out-dir`) and **self-scopes to honest sections** (omit-empty, `8dcb7fe`) | **Deploy nftables to t630** (SSH 192.168.1.118); first real `stats.json` not yet collected |
 | `MARKETING` | Stable | Business model + roadmap drafted | Open decisions: dues, pricing validation, vetting standard |
 | `DESIGN` | Active (path integrity issue) | Workflow overhauled, doc checker added | Stage 11 automations not wired; **hub files not at documented paths — see blocker** |
 | `claude-code-homelab` | Stable | Chronikomicon lessons added | — |
