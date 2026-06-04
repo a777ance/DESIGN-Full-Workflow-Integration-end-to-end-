@@ -1,6 +1,6 @@
-# AI CTO Portfolio — A777ance
+# NARF — AI CTO Portfolio — A777ance
 
-The AI CTO's working memory for the full portfolio. Read at session start; update at session end with new decisions, status changes, or priority shifts.
+NARF's working memory for the full portfolio. Read at session start; update at session end with new decisions, status changes, or priority shifts.
 
 **Last updated:** 2026-06-04
 

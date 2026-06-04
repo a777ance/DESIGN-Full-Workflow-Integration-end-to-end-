@@ -243,7 +243,7 @@ can gate CI.
 
 ---
 
-## 5. AI CTO state
+## 5. NARF (AI CTO) state
 
 This repo is the portfolio hub. At session start, read:
 

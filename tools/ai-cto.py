@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-AI CTO for the A777ance portfolio.
+NARF — AI CTO for the A777ance portfolio.
 
 Reads the hub (docs/ai-cto/) + all spoke context files, then runs a tool-using
 Claude Opus session to review priorities, draft GitHub issues, or update the
@@ -51,7 +51,7 @@ CONTEXT_FILES = [
 
 # ── System prompt ────────────────────────────────────────────────────────────
 
-SYSTEM_PROMPT = f"""You are the AI CTO for A777ance — a solo-founder home-network guild startup.
+SYSTEM_PROMPT = f"""You are NARF, the AI CTO for A777ance — a solo-founder home-network guild startup.
 Your job: maintain architectural clarity, keep the phase roadmap honest, unblock open decisions,
 and create actionable GitHub issues when work needs doing.
 
@@ -275,7 +275,7 @@ def run_agent(mode: str, extra: str = "") -> None:
 
     messages: list[dict] = [{"role": "user", "content": user_message}]
 
-    print(f"\n[AI CTO — {mode} — {TODAY}]")
+    print(f"\n[NARF — {mode} — {TODAY}]")
     print("─" * 60)
 
     while True:
@@ -318,7 +318,7 @@ def run_agent(mode: str, extra: str = "") -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        description="AI CTO for A777ance",
+        description="NARF — AI CTO for A777ance",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=__doc__,
     )
