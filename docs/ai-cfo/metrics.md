@@ -36,4 +36,6 @@ Run these whenever real transaction data exists:
 
 Appended by ZORT's `log_metric` tool. Each entry: `DATE | KPI | VALUE | NOTES`
 
-_(no entries yet — first real data appears after the first customer payment clears)_
+`2026-06-04` | paying_customers | 0 | 2026-06-04 first ZORT review. Pre-revenue. Phase 1 gate not met. Blocker: Stripe not connected (Stage 07) — no way to collect a dollar today.
+`2026-06-04` | MRR | $0 | No active subscriptions. $0 is $0. All revenue figures in files are labeled hypotheses until first transaction clears.
+`2026-06-04` | net_burn | ~$11-27/mo | Within <$30 pre-revenue target. Recommend staying on free tiers (Wave/GitHub Pages/Google Voice) to customer #3; defer QuickBooks.
