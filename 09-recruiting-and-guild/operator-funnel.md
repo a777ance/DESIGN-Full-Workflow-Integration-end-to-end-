@@ -44,7 +44,7 @@ makes an operator worth it; an operator makes density serviceable.
 
 ## Still being decided (from MARKETING)
 
-- The **dues** amount and what membership includes.
+- What membership **dues** buy you (the amount is a ~$50/mo working number; what it unlocks is still open).
 - What "guild-certified" means in concrete terms (the vetting bar — see
   [`vetting-checklist.md`](vetting-checklist.md)).
 - The conversion rate to aim for — what share of customers become operators — as the flywheel's

@@ -46,7 +46,7 @@ made-up filled-in example is in [`data/sample-roster.json`](data/sample-roster.j
 | `status` | `applicant`·`vetting`·`active`·`suspended` | 09 | |
 | `converted_from` | a `HH-####` or nothing | 09 | the customer they used to be (the dual-hat flywheel) |
 | `routes` | a list of `RT-####` | 09 | their book of homes, by neighborhood |
-| `dues` | their platform membership | 09 | amount still TBD (`MARKETING`) |
+| `dues` | their platform membership | 09 | ~$50/mo, a working number — not final (`MARKETING`) |
 | `vetting` | background check, bond, references, signed agreement | 09 | the gate to going active |
 | `tax` | W-9 on file, last-4 of their TIN, paid this year, 1099 filed | 10 | the year-end 1099 trail |
 

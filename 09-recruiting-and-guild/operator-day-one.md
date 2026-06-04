@@ -39,11 +39,11 @@ two houses on either side, and grew from there.
 ## The money (working numbers — honest about what's still open)
 
 You **bill your homes the monthly yourself** ($32 is the working rate), and you pay the platform
-a membership due (the exact dues number is still being set — `MARKETING`). Rough shape of it:
+a membership due (a ballpark ~$50/mo — a working number, not final, `MARKETING`). Rough shape of it:
 
 - **8 homes on a route** × $32/mo ≈ **$256/month** coming in, recurring.
 - **Plus a $175 setup** each time you add a home — that's your install labor.
-- **Minus** your platform dues and your own costs (your time, the box hardware, gas).
+- **Minus** your platform dues (~$50/mo, a working number) and your own costs (your time, the box hardware, gas).
 
 The point of filling a *tight block* instead of scattered homes is exactly this: eight houses on
 one street is a pleasant afternoon a month; eight houses across the metro is a part-time job in
@@ -62,6 +62,6 @@ your car. Density is what makes homes #2 through #20 worth it instead of exhaust
   did.
 - **You're an independent contractor**, not an employee — you run your own homes your own way,
   and you handle your own taxes (we send you a 1099; stage 10).
-- **The dues number isn't final yet** — we'll be straight with you about it before you commit.
+- **Dues are a ballpark (~$50/mo) and not locked yet** — we'll be straight with you about the number before you commit.
 
 Ready? The path from here is in [`operator-funnel.md`](operator-funnel.md).

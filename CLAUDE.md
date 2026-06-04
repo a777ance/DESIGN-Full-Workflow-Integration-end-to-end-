@@ -179,7 +179,7 @@ that discipline: a Statement goes out for money only with numbers the box actual
 | ----- | ---------- |
 | The "How You Compare" neighbor data | Still a placeholder — don't print made-up neighbor averages on a document people keep. Carried from `localDNS`/`MARKETING`. |
 | A by-category gigabyte breakdown | The measuring layer is scaffolded in `localDNS`, not stood up yet — keep statements to the figures we *do* measure until it's real. |
-| Member dues amount + what they include | Open in `MARKETING`; stage 09 assumes a flat monthly (`CHANGE_ME`). |
+| Member dues amount + what they include | Working ballpark ~$50/mo flat (a price test, not final); what it *unlocks* is still open in `MARKETING`. |
 | Pricing isn't validated | $175 setup + $32/mo are a working **price test** (`MARKETING`); stage 05 uses them as confident defaults, not gospel. |
 | The vetting standard | "Guild-certified" isn't defined concretely yet — `09-recruiting-and-guild/vetting-checklist.md` is a first draft, not a legal standard. |
 | Contractor vs. employee | `10-gig-workers-compliance/` documents the 1099 path; confirm the classification with a lawyer before scaling — misclassification is the real risk. |

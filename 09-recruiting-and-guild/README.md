@@ -39,7 +39,7 @@ An operator is a real entry on the list (08 → operator): their status (applica
 active), the customer they used to be, the routes they cover, their member dues, their vetting,
 and their tax info (stage 10). The shape of the deal: operators pay the **platform** a membership
 due and **bill their own customers** for the service directly — the platform doesn't take a cut
-of every job. The exact dues number is still open (`MARKETING`).
+of every job. Dues are a flat ~$50/mo — a working number, not final (`MARKETING`).
 
 ## Hand-offs
 

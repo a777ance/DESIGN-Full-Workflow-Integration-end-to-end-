@@ -198,7 +198,7 @@ that seam is the next bug to fix.
 ## Still being figured out
 
 The full list — pricing still a working test, the neighbor-comparison data not built yet,
-operator dues still TBD, contractor classification to confirm with a lawyer — is in
+operator dues a ~$50/mo ballpark, contractor classification to confirm with a lawyer — is in
 **[CLAUDE.md § 1](CLAUDE.md#1-known-issues--open-decisions)**. Short version: the *workflow* is
 settled, but a few *inputs* it uses (prices, dues, the comparison data) are still open and owned
 by `MARKETING`, and all committed data is fictional.
