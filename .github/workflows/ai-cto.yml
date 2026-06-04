@@ -19,9 +19,9 @@ on:
         required: false
         default: ''
 
-  # Daily review at 04:00 UTC
+  # Daily review at 04:00 ET (08:00 UTC / EDT; shifts to 03:00 ET in winter when EST kicks in)
   schedule:
-    - cron: '0 4 * * *'
+    - cron: '0 8 * * *'
 
 jobs:
   ai-cto:
