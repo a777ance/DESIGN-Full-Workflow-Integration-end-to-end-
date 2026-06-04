@@ -1,0 +1,95 @@
+name: AI CTO
+
+on:
+  # Run manually from the GitHub Actions tab — pick a mode from the dropdown
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: Session mode
+        required: true
+        default: review
+        type: choice
+        options:
+          - review
+          - priorities
+          - issues
+          - end-session
+      extra:
+        description: Extra context (optional, used with end-session)
+        required: false
+        default: ''
+
+  # Weekly review every Monday at 09:00 UTC
+  schedule:
+    - cron: '0 9 * * 1'
+
+jobs:
+  ai-cto:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write   # push portfolio.md updates back to the branch
+      issues: write     # create GitHub issues
+
+    steps:
+      - name: Checkout DESIGN (hub)
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      # Check out spoke repos side-by-side so ai-cto.py can load their context files
+      - name: Checkout localDNS
+        uses: actions/checkout@v4
+        with:
+          repository: a777ance/localDNS
+          path: ../localDNS
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Checkout MARKETING
+        uses: actions/checkout@v4
+        with:
+          repository: a777ance/MARKETING
+          path: ../MARKETING
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Checkout claude-code-homelab
+        uses: actions/checkout@v4
+        with:
+          repository: a777ance/claude-code-homelab
+          path: ../claude-code-homelab
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Checkout azure-lab
+        uses: actions/checkout@v4
+        with:
+          repository: a777ance/azure-lab
+          path: ../Azure-lab
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install -r tools/requirements.txt
+
+      - name: Run AI CTO
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          MODE="${{ github.event.inputs.mode || 'review' }}"
+          EXTRA="${{ github.event.inputs.extra || '' }}"
+          if [ -n "$EXTRA" ]; then
+            python3 tools/ai-cto.py "$MODE" "$EXTRA"
+          else
+            python3 tools/ai-cto.py "$MODE"
+          fi
+
+      - name: Commit portfolio updates
+        run: |
+          git config user.name "AI CTO"
+          git config user.email "ai-cto@a777ance.com"
+          git add docs/ai-cto/portfolio.md
+          git diff --cached --quiet || git commit -m "AI CTO session update — $(date -u +%Y-%m-%d)"
+          git push
