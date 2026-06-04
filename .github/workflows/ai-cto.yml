@@ -18,6 +18,10 @@ on:
         description: Extra context (optional, used with end-session)
         required: false
         default: ''
+      iterations:
+        description: Number of successive passes (super-run; each builds on the last)
+        required: false
+        default: '1'
 
   # Daily review at 04:00 ET (08:00 UTC / EDT; shifts to 03:00 ET in winter when EST kicks in)
   schedule:
@@ -82,11 +86,17 @@ jobs:
         run: |
           MODE="${{ github.event.inputs.mode || 'review' }}"
           EXTRA="${{ github.event.inputs.extra || '' }}"
-          if [ -n "$EXTRA" ]; then
-            python3 tools/ai-cto.py "$MODE" "$EXTRA"
-          else
-            python3 tools/ai-cto.py "$MODE"
-          fi
+          ITERATIONS="${{ github.event.inputs.iterations || '1' }}"
+          for i in $(seq 1 "$ITERATIONS"); do
+            echo "::group::NARF pass $i of $ITERATIONS"
+            export NARF_ITER="$i"
+            if [ -n "$EXTRA" ]; then
+              python3 tools/ai-cto.py "$MODE" "$EXTRA"
+            else
+              python3 tools/ai-cto.py "$MODE"
+            fi
+            echo "::endgroup::"
+          done
 
       - name: Commit portfolio updates
         run: |

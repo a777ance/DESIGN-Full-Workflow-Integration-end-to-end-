@@ -329,9 +329,15 @@ def run_agent(mode: str, extra: str = "") -> None:
     if final_text_parts:
         reviews_dir = HUB_DIR / "reviews"
         reviews_dir.mkdir(exist_ok=True)
-        log_path = reviews_dir / f"{TODAY}-{mode}.md"
+        # NARF_ITER lets a multi-pass "super-run" give each iteration its own log
+        # file instead of overwriting the same dated file.
+        iter_tag = os.environ.get("NARF_ITER", "")
+        suffix = f"-{iter_tag}" if iter_tag else ""
+        log_path = reviews_dir / f"{TODAY}-{mode}{suffix}.md"
         log_path.write_text(
-            f"# NARF — {mode} — {TODAY}\n\n" + "\n\n".join(final_text_parts) + "\n"
+            f"# NARF — {mode} — {TODAY}{(' — pass ' + iter_tag) if iter_tag else ''}\n\n"
+            + "\n\n".join(final_text_parts)
+            + "\n"
         )
         print(f"\n[saved log: {log_path.relative_to(REPO_ROOT)}]")
 
