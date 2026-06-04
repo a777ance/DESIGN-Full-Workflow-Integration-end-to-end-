@@ -19,9 +19,9 @@ on:
         required: false
         default: ''
 
-  # Weekly review every Monday at 09:00 UTC
+  # Daily review at 04:00 UTC
   schedule:
-    - cron: '0 9 * * 1'
+    - cron: '0 4 * * *'
 
 jobs:
   ai-cto:
