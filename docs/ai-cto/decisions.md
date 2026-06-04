@@ -71,3 +71,31 @@ New decisions go at the bottom. Do not edit past decisions — add a superseding
 **What's still open:** Exactly what the dues *unlock* (tooling tier, match priority, bonding/background-check coverage). Revisit the amount once real operator supply and per-operator economics exist — this is a price test, not gospel.
 
 **What this rules out:** Per-job platform rake (the model is subscriptions, not a cut of every job — see ADR/MARKETING). Treating $50 as locked: it's the working number for the pilot, explicitly revisitable.
+
+---
+
+## ADR-006 — Real customer data: one private `customers` repo
+
+**Date:** 2026-06-04
+**Status:** Accepted (working structure for the pilot)
+
+**Decision:** Real customer identities and statement data live in a new **private** repo,
+`a777ance/customers`, one folder per household (`households/<id>/`). Each holds the home's
+`sidecar.json`, collected `stats/`, composed `data/`, and rendered `statements/`; the live
+roster is `roster.json` at the repo root. The public `localDNS` statement generator renders
+*into* this repo via new `--data-dir`/`--out-dir` flags, so `localDNS` never holds real data.
+The founder household (`HH-0001-dave`) also carries a `personal/` workspace (novel, job hunt,
+ADHD organization) — scoped to that household, not a product feature.
+
+**Why:** `localDNS` is public (GitHub Pages) and `MARKETING`/`DESIGN` keep only fictional
+samples — so nothing had a home for a real household's name and figures. One private repo
+(not repo-per-customer) fits Phase 1 (N=1–3): it mirrors the public `data/clients/` layout,
+supports one monthly batch, and preserves one source of truth. Real PII stays out of `DESIGN`;
+its `08-client-list-and-crm/sample-roster.json` remains the fictional schema reference.
+
+**Threshold to revisit:** Split to a repo-per-operator-book when there are real operators
+needing GitHub access scoped to their own homes (the Phase-2 gate: "≥1 real operator running
+homes"). A real CRM, if stood up later, may supersede `roster.json` as the business-fact source.
+
+**What this rules out:** Committing real customer PII to any public repo, or to `DESIGN`.
+Repo-per-customer sprawl at pilot scale.

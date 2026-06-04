@@ -71,4 +71,6 @@ made-up filled-in example is in [`data/sample-roster.json`](data/sample-roster.j
 - **Add it here first**, then to the form or tool that fills it in.
 - **Business facts here; network facts in `localDNS`.** The two meet only at the pointer to
   the home's data file.
-- **No real personal info in git.** The samples are fake; live records stay in the CRM.
+- **No real personal info in git here.** The samples in this repo are fictional. For the
+  pilot, the **live** roster lives in the private `customers` repo (see
+  [ADR-006](../docs/ai-cto/decisions.md)) — out of this repo and out of public `localDNS`.

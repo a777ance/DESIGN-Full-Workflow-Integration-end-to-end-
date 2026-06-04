@@ -2,7 +2,7 @@
 
 NARF's working memory for the full portfolio. Read at session start; update at session end with new decisions, status changes, or priority shifts.
 
-**Last updated:** 2026-06-04 (portfolio review)
+**Last updated:** 2026-06-04 (first customer onboarded — new private `customers` repo + ADR-006)
 
 ---
 
@@ -24,6 +24,7 @@ NARF's working memory for the full portfolio. Read at session start; update at s
 | `DESIGN-Full-Workflow-Integration-end-to-end-` | End-to-end workflow — the how (this repo, the hub) | Private/internal |
 | `claude-code-homelab` | Claude Code setup guide (meta) | Public |
 | `azure-lab` | Azure infrastructure (stub, scope undefined) | Private |
+| `customers` | Real customer data: live roster, per-home statement data + rendered statements, founder personal workspace | **Private** |
 
 All repos develop on branch `claude/ai-cto-architecture-MZ2NF`.
 
@@ -38,9 +39,13 @@ All repos develop on branch `claude/ai-cto-architecture-MZ2NF`.
    (ruleset + populator + runbook). This is execution, not engineering — load the
    ruleset, schedule `populate_sets.py`, verify counters. Unblocks TD-08, TD-13, and
    the first real Statement. Runbook: `docs/statements/tools/collect/README.md`.
-2. **Generate the first real end-to-end Statement for one real household** (`localDNS`).
-   Gated on #1 (real volume) + a client data file. Ship it *scoped honestly* — omit
-   "How You Compare" rather than print invented peer averages. Don't wait on cohort data.
+2. **Generate the first real end-to-end Statement for one real household** (`localDNS` + `customers`).
+   The household is **Dave = HH-0001**. The private home + pipeline now exist (`customers` repo;
+   `generate_client.py` gained `--data-dir/--out-dir` so real statements render off the public
+   repo). Remaining: (a) run `collect_stats.py` on the t630 for real figures, and (b) teach
+   `compose.py`/`generate_client.py` to **omit empty sections** — no cohort → no "How You
+   Compare"; no nftables volume → no GB donut; no second member → no Alliance match — so month
+   one ships honestly. Don't fake those sections.
 3. **Lock the member dues amount** (`MARKETING`). Decision, not work. Recommend
    $40–60/mo per operator; write it into `MARKETING/README.md` and remove the
    `CHANGE_ME`. Unblocks Stage 09 onboarding + the operator pitch.
@@ -51,11 +56,12 @@ All repos develop on branch `claude/ai-cto-architecture-MZ2NF`.
 
 | Repo | Status | Last notable activity | Blocked on |
 | ---- | ------ | --------------------- | ---------- |
-| `localDNS` | Active | Statements PWA merged (#9); nftables accounting layer (ruleset + populator + runbook) now shipped in repo | **Deploy to t630** (needs SSH to 192.168.1.118); no real client data file yet |
+| `localDNS` | Active | Statements PWA (#9); nftables layer shipped; generator now renders to a **private** dir via `--data-dir/--out-dir` (pushed to `main`) | **Deploy nftables to t630** (SSH 192.168.1.118); first real `stats.json` not yet collected |
 | `MARKETING` | Stable | Business model + roadmap drafted | Open decisions: dues, pricing validation, vetting standard |
 | `DESIGN` | Active (path integrity issue) | Workflow overhauled, doc checker added | Stage 11 automations not wired; **hub files not at documented paths — see blocker** |
 | `claude-code-homelab` | Stable | Chronikomicon lessons added | — |
 | `azure-lab` | Stub | Initial commit only | Scope not defined |
+| `customers` | New (local only) | Repo built + committed locally: roster, HH-0001 (Dave) statement pipeline, personal OS | **Not yet on GitHub** — integration can't create repos (403); founder must create the private remote, then push |
 
 ---
 
@@ -94,6 +100,7 @@ Resolve these before starting Phase 2. Each one has a downstream blocker listed.
 
 | Date | Decision | See |
 | ---- | -------- | --- |
+| 2026-06-04 | Real customer data → new private `customers` repo (one repo, per-household folders); `localDNS` generator renders privately via `--data-dir/--out-dir`; founder personal workspace under HH-0001 | `decisions.md` ADR-006 |
 | 2026-06-04 | Hub-and-spoke AI CTO: single agent, DESIGN as hub, per-repo context files in spoke repos | `decisions.md` ADR-001 |
 | 2026-06-04 | nftables accounting reclassified: code is shipped; remaining work is **deployment to t630**, not engineering. TD-03/TD-08 are now "ready to deploy," not "open dev." | this review |
 | 2026-06-04 | Cohort data does NOT block the first real Statement — it blocks one section. Ship statements scoped to Pi-hole + Uptime Kuma + nftables; omit "How You Compare" until real cohort data exists. | this review |
