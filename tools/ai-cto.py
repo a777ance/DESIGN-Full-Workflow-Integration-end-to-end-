@@ -287,6 +287,8 @@ def run_agent(mode: str, extra: str = "") -> None:
     print(f"\n[NARF — {mode} — {TODAY}]")
     print("─" * 60)
 
+    final_text_parts: list[str] = []  # accumulate NARF's narration for the dated log
+
     while True:
         response = client.messages.create(
             model="claude-opus-4-8",
@@ -299,6 +301,7 @@ def run_agent(mode: str, extra: str = "") -> None:
         for block in response.content:
             if hasattr(block, "text") and block.text:
                 print(block.text)
+                final_text_parts.append(block.text)
 
         if response.stop_reason == "end_turn":
             break
@@ -320,6 +323,17 @@ def run_agent(mode: str, extra: str = "") -> None:
 
         messages.append({"role": "assistant", "content": response.content})
         messages.append({"role": "user", "content": tool_results})
+
+    # Always write a permanent dated review log so every run leaves a committable
+    # artifact — proof NARF ran, and a history independent of portfolio.md rewrites.
+    if final_text_parts:
+        reviews_dir = HUB_DIR / "reviews"
+        reviews_dir.mkdir(exist_ok=True)
+        log_path = reviews_dir / f"{TODAY}-{mode}.md"
+        log_path.write_text(
+            f"# NARF — {mode} — {TODAY}\n\n" + "\n\n".join(final_text_parts) + "\n"
+        )
+        print(f"\n[saved log: {log_path.relative_to(REPO_ROOT)}]")
 
     print("\n" + "─" * 60)
 

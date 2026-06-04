@@ -92,6 +92,6 @@ jobs:
         run: |
           git config user.name "AI CTO"
           git config user.email "ai-cto@a777ance.com"
-          git add docs/ai-cto/portfolio.md
-          git diff --cached --quiet || git commit -m "AI CTO session update — $(date -u +%Y-%m-%d)"
+          git add docs/ai-cto/
+          git diff --cached --quiet || git commit -m "NARF session update — $(date -u +%Y-%m-%d)"
           git push
