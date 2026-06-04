@@ -3,9 +3,9 @@
 **Lives in:** the customer list + a proposal/e-sign tool → then the hand-off to set up the box.
 **Go-live:** send the quote; when they say yes, set up the box and collect the setup fee (07).
 
-Where a lead becomes a customer. It's a consult, not a hard sell: you sit with someone like
-David, walk his house, show him a real statement, put a fair number on it, and — if it's a
-fit — get him set up. The whole thing should feel like hiring a good tradesperson, because
+Where a lead becomes a customer. It's a consult, not a hard sell: you sit with the
+homeowner, walk their house, show them a real statement, put a fair number on it, and — if
+it's a fit — get them set up. The whole thing should feel like hiring a good tradesperson, because
 that's what it is.
 
 ---
@@ -15,7 +15,7 @@ that's what it is.
 | File | What it is |
 | ---- | ---------- |
 | [`discovery-call.md`](discovery-call.md) | **The consult, start to finish** — how to open, what to ask, how to present the number, and how to handle the pushback |
-| [`quote-template.md`](quote-template.md) | The quote — David Allum's worked end-to-end, plus a blank to copy |
+| [`quote-template.md`](quote-template.md) | The quote — one worked end-to-end, plus a blank to copy |
 | [`onboarding-checklist.md`](onboarding-checklist.md) | The steps from "yes" to their first statement, in order |
 
 ## The path

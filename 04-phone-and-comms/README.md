@@ -7,8 +7,8 @@ the customer record.
 This is the most human stage, and on purpose. Every software instinct says "automate the
 phone away." A trust business does the opposite. When someone is deciding whether to let a
 stranger onto their home network, a real person picking up and saying "yeah, here's exactly
-what we'd do" **is the product** — right at the moment of biggest doubt. Margaret isn't going
-to hand her Wi-Fi to a chatbot.
+what we'd do" **is the product** — right at the moment of biggest doubt. A nervous homeowner isn't going
+to hand their Wi-Fi to a chatbot.
 
 ---
 

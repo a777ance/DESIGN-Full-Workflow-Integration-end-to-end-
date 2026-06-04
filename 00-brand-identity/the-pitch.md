@@ -116,7 +116,7 @@ Say them with confidence anyway; a number you hedge on is a number people haggle
 - **Monthly: $32.** "That's the ongoing quiet and the statement. Cancel anytime."
 - **Paper statement mailed: +$2/mo.** "If you like something on the fridge."
 
-Full quote walkthrough (David Allum's, worked end to end) is in
+Full quote walkthrough (worked end to end) is in
 [`../05-sales-and-onboarding/quote-template.md`](../05-sales-and-onboarding/quote-template.md).
 
 ---

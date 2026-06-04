@@ -5,25 +5,26 @@ The free look. By the time you're here, someone booked a slot (03) and a call go
 house, show the proof, and put a fair, specific number on it. If it's a fit, getting to "yes"
 is easy. If it isn't, you both find out in fifteen minutes.
 
-We'll walk it as David Allum's consult — the same David whose statement is the live example.
+We'll walk it as a typical **prime-time household** — someone who streams every night and
+cares about privacy, like the home in the live example statement.
 
 ---
 
 ## Before you knock
 
-- Read the record. David's call note said: *streams every night, hates the idea of his
-  internet company selling his browsing, mentioned the smart TV "does weird stuff."* That's
-  your whole opening.
+- Read the record. The call note said: *streams every night, hates the idea of their internet
+  company selling their browsing, mentioned the smart TV "does weird stuff."* That's your whole
+  opening.
 - Have a real statement ready on your phone, and know the price cold ($175 / $32 / +$2 mailed).
 
 ## The arc (this is the 2-minute pitch, slowed down)
 
-**1. Name the invisible problem — using his own words.**
-> "You mentioned the TV does weird stuff and you're not crazy about your provider watching
-> what you stream. That's exactly the stuff we deal with. Right now everything on your
-> Wi-Fi — the TV, the phones, the speaker — is chatting with the internet all day, and a lot
-> of it is junk you never agreed to: trackers, the TV reporting what you watch, your provider
-> seeing every site."
+**1. Name the invisible problem — using their own words.**
+> "You mentioned the TV does weird stuff and you're not crazy about your provider watching what
+> you stream. That's exactly the stuff we deal with. Right now everything on your Wi-Fi — the
+> TV, the phones, the speaker — is chatting with the internet all day, and a lot of it is junk
+> you never agreed to: trackers, the TV reporting what you watch, your provider seeing every
+> site."
 
 **2. The quiet someone keeps.**
 > "We put a small box on your network. It filters that out for every device at once — nothing
@@ -31,7 +32,7 @@ We'll walk it as David Allum's consult — the same David whose statement is the
 > normally your stream would stutter, your operator fixes it before you're even up."
 
 **3. Show the proof — don't describe it.**
-Hand him your phone. Scan the QR, scroll a real statement. Let him read a "Handled For You"
+Hand them your phone. Scan the QR, scroll a real statement. Let them read a "Handled For You"
 line out loud.
 > "Three things happened to this home last month. They felt none of them — that's the whole
 > point. And see how every fix is signed? Jose did those. A real person, two miles away."
@@ -49,11 +50,11 @@ line out loud.
 You're not auditing anything — you're getting a feel for the house so the quote isn't
 boilerplate:
 
-- "Roughly how many things are on the Wi-Fi?" (David: about 12.)
-- "Anyone you especially want covered — kids, an older parent?" (David: just him, mostly the
-  privacy and the streaming.)
-- "Anything been driving you nuts lately?" (David: the TV freezing.)
-- "Who's your internet company?" (David: Spectrum.)
+- "Roughly how many things are on the Wi-Fi?" (Say they've got about 12.)
+- "Anyone you especially want covered — kids, an older parent?" (Just them, mostly the privacy
+  and the streaming.)
+- "Anything been driving you nuts lately?" (The TV freezing.)
+- "Who's your internet company?" (Spectrum.)
 
 Write down what they say in their words — it goes straight into their first statement's
 "Handled For You" intro and the quote's "what we're covering."
@@ -88,6 +89,6 @@ On "yes": they e-sign, you collect the $175 (07), and you book the install. Then
 
 ## After the consult — write it on the record
 
-Whether it's a yes, a no, or a "thinking about it," jot the outcome on David's record: what
-he cares about (privacy + streaming), the number you quoted, and the next step. A "thinking
-about it" with no follow-up date is a lead you just dropped.
+Whether it's a yes, a no, or a "thinking about it," jot the outcome on the customer's record:
+what they care about (privacy + streaming), the number you quoted, and the next step. A
+"thinking about it" with no follow-up date is a lead you just dropped.

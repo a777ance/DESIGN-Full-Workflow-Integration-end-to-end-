@@ -1,7 +1,7 @@
 {
-  "_comment": "Fictional sample booking-form submission — this is David Allum's, the night Jose's neighbor referral brought him in. Maps 1:1 to the household fields in 08-client-list-and-crm/schema.md. Never commit real PII.",
-  "name": "David Allum",
-  "email": "david@example.com",
+  "_comment": "Fictional sample booking-form submission — the prime-time household (who becomes HH-0001), brought in by a neighbor referral. Maps 1:1 to the household fields in 08-client-list-and-crm/schema.md. Never commit real PII.",
+  "name": "Prime-Time Household",
+  "email": "prime-time@example.com",
   "phone": "+1-555-0100",
   "address": {
     "street": "100 Example St",

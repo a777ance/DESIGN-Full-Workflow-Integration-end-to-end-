@@ -16,7 +16,7 @@ README is the stage-by-stage guide.
 
 ## Contents
 
-- [Follow David](#follow-david)
+- [Follow one household](#follow-one-household)
 - [The whole funnel, one page](#the-whole-funnel-one-page)
 - [How the money works](#how-the-money-works)
 - [The stages](#the-stages)
@@ -27,19 +27,19 @@ README is the stage-by-stage guide.
 
 ---
 
-## Follow David
+## Follow one household
 
-David Allum streams every night and hates the idea of his internet company selling his
-browsing. One evening he reads a post of ours — "Is your smart TV watching you back?" — and
-books a free look. Jose, an operator two miles away, calls to confirm, then sits with David,
-walks his house, and shows him a real statement on his phone. David signs: $175 to set up,
+A homeowner streams every night and hates the idea of their internet company selling their
+browsing. One evening they read a post of ours — "Is your smart TV watching you back?" — and
+book a free look. Jose, an operator two miles away, calls to confirm, then sits with them,
+walks the house, and shows them a real statement on his phone. They sign: $175 to set up,
 $32 a month. Jose installs a small box that quietly keeps the junk off every device. A month
-later David gets his first statement — *"three things happened to your home this month; you
-felt none of them"* — and taps "refer a neighbor." Eight months in, David's so into it he
-taps "Connect in the Alliance" and starts looking after a few homes himself.
+later they get their first statement — *"three things happened to your home this month; you
+felt none of them"* — and tap "refer a neighbor." Eight months in, they're so into it they
+tap "Connect in the Alliance" and start looking after a few homes themselves.
 
-**Every folder in this repo is one chapter of that story.** The numbers are the order David
-travels them.
+**Every folder in this repo is one chapter of that story.** The numbers are the order they
+travel it.
 
 ## The whole funnel, one page
 
@@ -145,7 +145,7 @@ it. Summaries here; open the folder for the rest.
 
 ## Follow one customer all the way through
 
-David again — this time as the path the [verification walk](CLAUDE.md#2-verification) checks:
+The same household — this time as the path the [verification walk](CLAUDE.md#2-verification) checks:
 
 ```
 02 a post / an ad ─► 01 the website ─► 03 the booking form

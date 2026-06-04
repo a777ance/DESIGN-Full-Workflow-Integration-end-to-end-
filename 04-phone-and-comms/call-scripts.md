@@ -56,7 +56,7 @@ You don't need many. These tee up a personal quote later:
 After **every** call, add a couple of lines to that household's record — who you talked to,
 what they care about, what's next:
 
-> *June 3, inbound, talked to Margaret. Worried about the grandkids' tablets when they visit.
+> *June 3, inbound, talked to the homeowner. Worried about the grandkids' tablets when they visit.
 > Booked a free look for Thursday PM. Next: text her the address reminder Wednesday.*
 
 A call nobody wrote down didn't happen, as far as the consult is concerned

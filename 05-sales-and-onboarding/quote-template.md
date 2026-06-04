@@ -1,17 +1,18 @@
 # The quote
 
 A quote that's **specific to their house** — it names what they're getting, so the monthly
-price is anchored to real value instead of a round number. Below is David Allum's, worked end
-to end, then a blank you can copy. The prices are our working numbers (see `MARKETING`); the
-setup fee is never discounted. When signed, it gets saved on the customer's record.
+price is anchored to real value instead of a round number. Below is one worked end to end for a
+typical customer, then a blank you can copy. The prices are our working numbers (see
+`MARKETING`); the setup fee is never discounted. When signed, it gets saved on the customer's
+record.
 
 ---
 
-## Worked example — David Allum
+## Worked example — a prime-time household
 
 > # A777ance — your quote
-> **Prepared by:** Jose Marín · A777ance guild
-> **For:** David Allum · 100-block, Maple Grove · (route RT-0001)
+> **Prepared by:** Jose · A777ance guild
+> **For:** `[your customer]` · Maple Grove · (route RT-0001)
 > **Date:** June 4, 2026
 >
 > ### What you get

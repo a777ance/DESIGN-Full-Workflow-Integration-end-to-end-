@@ -37,6 +37,6 @@ automation that carries it, so nobody retypes anything
 
 ## How to check it works
 
-Walk one customer — David Allum — through rows 1→9 and confirm each fact lands on his record
-**without anyone typing it twice.** Any arrow that needs a human to move data between tools is
+Walk one customer — the sample household (HH-0001) — through rows 1→9 and confirm each fact
+lands on its record **without anyone typing it twice.** Any arrow that needs a human to move data between tools is
 the next bug to close. (This is the same walk-through as [CLAUDE.md § 2](../CLAUDE.md#2-verification).)

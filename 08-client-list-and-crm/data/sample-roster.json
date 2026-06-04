@@ -1,5 +1,5 @@
 {
-  "_comment": "Fictional sample roster — all names and addresses are made up. Mirrors the localDNS statement archetypes so the two repos line up: David Allum = prime-time (statement A77-001), Okonkwo = home-office, Delgado = connected-family. Jose Marín is the operator, himself a converted customer (the dual-hat flywheel). Never commit real PII. CHANGE_ME = placeholder.",
+  "_comment": "Fictional sample roster — all names and addresses are made up. Households are labeled by archetype (prime-time, home-office, connected-family) to mirror the localDNS statement samples. 'Jose' is the sample operator, himself a converted customer (the dual-hat flywheel). Never commit real PII. CHANGE_ME = placeholder.",
   "routes": [
     {
       "id": "RT-0001",
@@ -23,8 +23,8 @@
   "operators": [
     {
       "id": "OP-0001",
-      "name": "Jose Marín",
-      "email": "jose@example.com",
+      "name": "Jose",
+      "email": "operator@example.com",
       "phone": "+1-555-0142",
       "status": "active",
       "converted_from": "HH-0007",
@@ -51,8 +51,8 @@
       "created_ts": "2026-04-01T00:00:00Z",
       "status": "customer",
       "route_id": "RT-0001",
-      "name": "David Allum",
-      "email": "david@example.com",
+      "name": "Prime-Time Household",
+      "email": "prime-time@example.com",
       "phone": "+1-555-0100",
       "address": { "street": "100 Example St", "city": "Maple Grove", "state": "TX", "zip": "78701" },
       "home_profile": { "devices_est": 12, "concerns": ["privacy", "streaming reliability"], "isp": "Spectrum" },
@@ -71,8 +71,8 @@
       "created_ts": "2026-04-10T00:00:00Z",
       "status": "customer",
       "route_id": "RT-0001",
-      "name": "Okonkwo Household",
-      "email": "okonkwo@example.com",
+      "name": "Home-Office Household",
+      "email": "home-office@example.com",
       "phone": "+1-555-0101",
       "address": { "street": "102 Example St", "city": "Maple Grove", "state": "TX", "zip": "78701" },
       "home_profile": { "devices_est": 9, "concerns": ["privacy", "video-call reliability", "upload sensitivity"], "isp": "Spectrum" },
@@ -91,8 +91,8 @@
       "created_ts": "2026-02-20T00:00:00Z",
       "status": "customer",
       "route_id": "RT-0001",
-      "name": "Delgado Household",
-      "email": "delgado@example.com",
+      "name": "Connected-Family Household",
+      "email": "connected-family@example.com",
       "phone": "+1-555-0102",
       "address": { "street": "104 Example St", "city": "Maple Grove", "state": "TX", "zip": "78702" },
       "home_profile": { "devices_est": 18, "concerns": ["kids' safety", "device sprawl"], "isp": "Spectrum" },
@@ -111,8 +111,8 @@
       "created_ts": "2026-01-05T00:00:00Z",
       "status": "customer",
       "route_id": "RT-0001",
-      "name": "Marín Household",
-      "email": "marin@example.com",
+      "name": "Referrer Household",
+      "email": "referrer@example.com",
       "phone": "+1-555-0107",
       "address": { "street": "120 Example St", "city": "Maple Grove", "state": "TX", "zip": "78701" },
       "home_profile": { "devices_est": 11, "concerns": ["privacy"], "isp": "Spectrum" },
@@ -125,7 +125,7 @@
       "billing": { "processor_customer_id": "CHANGE_ME", "plan": "retainer-32", "status": "active", "setup_paid_ts": "2026-02-15", "next_charge": "2026-07-01", "last_payment_ts": "2026-06-01" },
       "statement": { "home_json_path": "CHANGE_ME", "last_generated": "2026-06-01", "last_delivered": "2026-06-02", "delivery_channels": ["email"] },
       "operator_interest": false,
-      "_note": "This is Jose's own home. He referred David Allum (HH-0001) and later became operator OP-0001 (converted_from). Demonstrates the dual-hat flywheel."
+      "_note": "This is the sample operator's own home. The operator (OP-0001) converted from this household (converted_from) and it referred HH-0001 — demonstrating the dual-hat flywheel."
     }
   ]
 }

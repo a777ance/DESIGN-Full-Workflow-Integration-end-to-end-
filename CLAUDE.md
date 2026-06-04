@@ -206,7 +206,7 @@ retyping data by hand. Walk it:
 
 If any arrow needs a human to retype data from one tool into another, that seam is a **bug in
 stage 11**, not a feature. Spot-check: open the record for the worked-example household
-(David Allum) and confirm it carries facts written by stages 02, 03, 05, and 07.
+(the sample household, HH-0001) and confirm it carries facts written by stages 02, 03, 05, and 07.
 
 **Doc integrity:** `python3 tools/check-docs.py` confirms every internal link and cross-file
 anchor in this repo resolves. Run it before a commit; it exits non-zero on a broken link so it
