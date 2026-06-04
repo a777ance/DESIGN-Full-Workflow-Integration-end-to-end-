@@ -267,6 +267,8 @@ broken link so it can gate CI.
   funnel and a paying customer, severity-tagged with its fix.
 - **SKILLS.md** — the go-to-market / RevOps / compliance skills the workflow
   exercises, each mapped to the artifact that proves it.
+- **PLUGINS.md** — which Claude Code Directory plugins to enable for this repo (and
+  which to skip), scoped per repo with the reasoning.
 - **`MARKETING`** (private) — the business model, pricing, and guild mechanics this
   workflow executes.
 - **[`localDNS`](https://a777ance.github.io/localDNS/)** (public) — the technical stack
