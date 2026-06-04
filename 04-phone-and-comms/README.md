@@ -1,11 +1,14 @@
 # 04 — Phone & comms
 
-**Lives in:** a business line / VoIP (Google Voice / OpenPhone) + SMS.
-**Go-live / sync:** set hours, greeting, and routing; log every call to the CRM record.
+**Lives in:** a business phone line (Google Voice / OpenPhone) + text.
+**Go-live:** set your hours, record the greeting, decide who picks up; write every call onto
+the customer record.
 
-The human touch a trust business runs on. Every software instinct says automate the
-phone away; a guild built on *trust* does the opposite — a real person answering "is this
-safe to let into my house?" **is** the product at the moment of highest doubt.
+This is the most human stage, and on purpose. Every software instinct says "automate the
+phone away." A trust business does the opposite. When someone is deciding whether to let a
+stranger onto their home network, a real person picking up and saying "yeah, here's exactly
+what we'd do" **is the product** — right at the moment of biggest doubt. Margaret isn't going
+to hand her Wi-Fi to a chatbot.
 
 ---
 
@@ -13,29 +16,29 @@ safe to let into my house?" **is** the product at the moment of highest doubt.
 
 | File | What it is |
 | ---- | ---------- |
-| [`call-scripts.md`](call-scripts.md) | Inbound / booking-confirm / voicemail scripts + the logging discipline |
+| [`call-scripts.md`](call-scripts.md) | What to say on the inbound call, the confirmation, and voicemail — plus the one logging rule |
 
-## Small in tooling, large in discipline
+## Small in gear, big in discipline
 
-| Setting | Value |
-| ------- | ----- |
-| Business line | `CHANGE_ME` (Google Voice / OpenPhone number) |
-| Hours | `CHANGE_ME` — publish them on the GBP (01) and honor them |
-| Greeting / voicemail | Brand voice (00); see `call-scripts.md` |
-| Routing | To the owning operator for the route (02), else the founders |
-| SMS | Appointment reminders + "your Statement is ready" nudges |
+| Setting | What it is |
+| ------- | ---------- |
+| The number | `CHANGE_ME` (Google Voice / OpenPhone) |
+| Hours | `CHANGE_ME` — post them on the Google listing (01) and actually keep them |
+| Greeting / voicemail | The brand voice (00); see `call-scripts.md` |
+| Who picks up | The operator who covers that route (02); otherwise the founders |
+| Text | Appointment reminders + "your statement's ready" nudges |
 
-## The one rule: log every call to the CRM
+## The one rule: write down every call
 
-Every inbound/outbound call is written to the household record's `call_log[]` so the
-consult (05) starts **warm** — no making the prospect repeat what they already said
-(corrosive for a trust pitch). See
-[LAUNCH-NOTES #6](../LAUNCH-NOTES.md#6-call-not-logged-to-the-crm--consult-starts-cold).
-The write-back is an automation (11) where the phone tool supports it, manual where it
-doesn't — but it is never skipped.
+After every call — in or out — jot a couple of lines onto that household's record (`call_log`).
+That way the consult (05) starts *warm*: nobody makes the customer repeat the thing they
+already explained, which is exactly the kind of small disrespect that sinks a trust pitch
+([LAUNCH-NOTES #6](../LAUNCH-NOTES.md#6-call-not-logged-to-the-crm--consult-starts-cold)). Where
+the phone tool can write the note for you, great (11); where it can't, you type it — but it
+never gets skipped.
 
 ## Hand-offs
 
-- **← 03 funnels:** booked consults and inbound callers arrive here to be confirmed.
-- **→ 08 CRM:** every call appends to `call_log[]` on the record.
-- **→ 05 sales:** a confirmed, logged consult is the warm input to the sales conversation.
+- **← 03 funnels:** booked consults and inbound callers show up here to be confirmed.
+- **→ 08 customer list:** every call gets jotted onto the record.
+- **→ 05 sales:** a confirmed, written-up call is the warm start to the sales conversation.

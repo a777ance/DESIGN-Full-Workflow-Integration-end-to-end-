@@ -1,6 +1,6 @@
 household_id,name,route_id,billing_status,setup_fee,setup_paid_ts,monthly_retainer,last_payment_ts,next_charge,notes
-HH-0001,Prime-Time (fictional),RT-0001,active,175.00,2026-04-12,32.00,2026-06-01,2026-07-01,paying on time
-HH-0002,Home-Office (fictional),RT-0001,active,175.00,2026-04-20,38.00,2026-06-01,2026-07-01,upload-sensitive add-on
-HH-0003,Connected-Family (fictional),RT-0001,past_due,175.00,2026-03-02,32.00,2026-05-01,2026-06-01,card expired - dunning day 3
-HH-0007,Referrer Household (fictional),RT-0001,active,175.00,2026-02-15,32.00,2026-06-01,2026-07-01,referred HH-0001
-HH-0011,Lapsed Household (fictional),RT-0002,canceled,175.00,2025-11-10,32.00,2026-03-01,,churned - statement gate closed
+HH-0001,David Allum,RT-0001,active,175.00,2026-04-12,32.00,2026-06-01,2026-07-01,paying on time
+HH-0002,Okonkwo Household,RT-0001,active,175.00,2026-04-20,38.00,2026-06-01,2026-07-01,upload-heavy home - $38 plan
+HH-0003,Delgado Household,RT-0001,past_due,175.00,2026-03-02,32.00,2026-05-01,2026-06-01,card expired - reminder day 3
+HH-0007,Marín Household,RT-0001,active,175.00,2026-02-15,32.00,2026-06-01,2026-07-01,Jose's own home; referred David (HH-0001)
+HH-0011,Whitfield Household,RT-0002,canceled,175.00,2025-11-10,32.00,2026-03-01,,churned - statements stopped

@@ -1,43 +1,41 @@
-# Operator vetting checklist — the gate to `active`
+# The vetting checklist — the gate to going active
 
-Vetting **is** the trust pitch — the thing cheap-tech competitors can never copy. An
-operator goes into people's home networks, so this gate is heavy on purpose and is *not*
-optional ([LAUNCH-NOTES #12](../LAUNCH-NOTES.md#12-operator-onboarded-without-vetting)).
+Vetting **is** the trust we sell — the thing the cheap-tech competitors can never copy. An
+operator goes onto people's home networks and into their homes, so this gate is strict on
+purpose and is **not** optional ([LAUNCH-NOTES #12](../LAUNCH-NOTES.md#12-operator-onboarded-without-vetting)).
 
-> **Status:** first draft, not a finalized legal standard. "Guild-certified" must be
-> defined with counsel before scaling (open decision, `MARKETING`). Treat the items below
-> as the intended bar, and confirm the legal specifics (what checks are permissible in
-> the jurisdiction, bonding/insurance requirements) before relying on them.
+> **Heads up:** this is a first draft, not a finished legal standard. What "guild-certified"
+> means has to be nailed down with a lawyer before scaling (still open — `MARKETING`). Treat the
+> items below as the bar we're aiming for, and confirm the legal specifics — what checks are
+> allowed where you operate, what bonding/insurance is required — before you rely on them.
 
 ---
 
-## The gate (`status: vetting → active`)
+## The gate (status: vetting → active)
 
-- [ ] **Identity verified** — government ID matches the application.
-- [ ] **Background check** — passed (scope/provider `CHANGE_ME`, confirm with counsel).
-- [ ] **Bond / liability insurance** — active (a service entering homes; `CHANGE_ME` limits).
-- [ ] **References** — at least two checked (a converted customer has the best reference:
-      their own operator and their Statement history).
-- [ ] **Technical competency** — can follow `localDNS`'s setup guide and pass its
-      verification block unaided (DNSSEC `ad` flag, DoT split, services up).
-- [ ] **Contractor agreement e-signed** (stage 10) — relationship + scope + data handling.
-- [ ] **W-9 on file** (stage 10) — *before* any payout.
-- [ ] **Data-handling briefing** — the honesty rule (no invented figures), the privacy
-      note (aggregate-only; categories never domains — see the live Statement), and PII
-      discipline.
+- [ ] **Who they are** — government ID matches the application.
+- [ ] **Background check** — passed (which check / which provider is `CHANGE_ME`; confirm with
+      counsel).
+- [ ] **Bonded / insured** — active (they're entering homes; coverage limits `CHANGE_ME`).
+- [ ] **References** — at least two, actually checked. (A converted customer comes with the best
+      reference there is: their own operator and a year of their own statements.)
+- [ ] **Can do the work** — they can follow `localDNS`'s install guide on a real home and pass
+      its built-in check on their own, no hand-holding.
+- [ ] **Agreement signed** (stage 10) — the relationship, the scope, how they handle data.
+- [ ] **W-9 on file** (stage 10) — before any payment goes out.
+- [ ] **Data-handling briefing** — the honesty rule (never invent a number on a statement), the
+      privacy rule (statements show categories, never the actual sites someone visited), and how
+      to handle customers' personal info.
 
-## Writes to the record (08 → `operator.vetting`)
+## What gets saved (08 → operator.vetting)
 
-```json
-{ "background_check": "passed", "bond": "active",
-  "references": ["ref-1", "ref-2"], "agreement_signed_ts": "..." }
-```
+The background check passed, the bond is active, references checked, the agreement signed-on
+date. Only when **every** box is ticked does the operator go **active** — and only then can they
+be matched to a route and paid.
 
-Only when every box is checked does `status` flip to `active` and the operator may be
-assigned a route and paid.
+## Why this is the product, not red tape
 
-## Why it's the product, not overhead
-
-The whole moat argument: Tailscale + NextDNS replicate most of the *tech* for ~$30/yr;
-they cannot replicate **a vetted, bonded, local human you trust in your home.** Every hour
-spent on vetting buys defensibility the competition can't.
+The whole moat in one sentence: anyone can buy most of the *tech* for about $30 a year — what
+nobody can buy off a shelf is **a vetted, bonded, local person they trust in their home.** Every
+hour spent vetting buys the kind of defensibility a competitor with cheaper software simply
+can't match.

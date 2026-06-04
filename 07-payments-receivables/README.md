@@ -1,11 +1,11 @@
 # 07 — Payments & receivables
 
-**Lives in:** Stripe (or equivalent processor) + accounting.
-**Go-live / sync:** create the plan; collect the setup fee + monthly retainer; reconcile.
+**Lives in:** Stripe (or a similar card processor) + your bookkeeping.
+**Go-live:** set up the plan; collect the $175 setup fee + the $32/month; keep the books straight.
 
-Getting paid, and the **delivery gate**: a Statement (the value receipt) goes out only to
-a paid account. Two line items — the one-time setup fee and the monthly retainer —
-because they answer different objections (labor vs. ongoing value).
+Getting paid — and one rule that protects the whole model: **the statement only goes to people
+who've paid.** There are two charges, kept separate on purpose because they answer two different
+questions in the customer's head.
 
 ---
 
@@ -13,44 +13,45 @@ because they answer different objections (labor vs. ongoing value).
 
 | File | What it is |
 | ---- | ---------- |
-| [`receivables.md`](receivables.md) | Billing states, dunning, reconciliation, the delivery gate |
-| [`data/sample-receivables.csv`](data/sample-receivables.csv) | Fictional example billing rows |
+| [`receivables.md`](receivables.md) | The billing states, gentle dunning, monthly reconciliation, and the paid-only gate |
+| [`data/sample-receivables.csv`](data/sample-receivables.csv) | A few made-up billing rows |
 
-## Two line items
+## Two charges
 
-| Charge | When | Default (`MARKETING`, `CHANGE_ME`) | Why separate |
-| ------ | ---- | ---------------------------------- | ------------ |
-| **Setup fee** | Once, on close (05) | ~$150–200, never discounted | Covers real install labor; sets "professional service" expectation |
-| **Monthly retainer** | Recurring | ~$25–40/mo | The ongoing quiet + the Statement |
+| Charge | When | Working number | Why it's its own line |
+| ------ | ---- | -------------- | --------------------- |
+| **Setup fee** | Once, when they sign (05) | $175, never discounted | Pays for the real visit + install; answers "is this a serious service?" |
+| **Monthly** | Every month | $32 (or $38 for a heavier home) | The ongoing quiet + the statement; answers "is it worth keeping?" |
 
-> Note the two money flows in the guild (`MARKETING`): the **platform** collects the
-> customer membership and operator dues; the **operator** bills the customer for service
-> directly. This stage handles the platform-side collection and the customer plan; the
-> operator's direct billing is theirs, and the operator's *dues* are in stage 09.
+> Two money flows in the guild (`MARKETING`): the **platform** collects the customer's
+> membership and the operator's dues; the **operator** bills the customer for the service
+> directly. This stage handles the platform side and the customer's plan. The operator's own
+> billing is theirs, and the operator's dues are over in stage 09.
 
-## The delivery gate (the key invariant)
+## The paid-only rule (the one that matters)
 
-Sending the Statement to an unpaid/churned account gives away the proof of value for free
-and trains non-payment. So **delivery (06) is gated on `billing.status = active`**,
-enforced by an automation (11) — not by an operator remembering
-([LAUNCH-NOTES #9](../LAUNCH-NOTES.md#9-statement-delivered-to-an-unpaid-account)). Dunning
-is gentle (the model is retention, not collections), but the gate is firm.
+The statement is the proof of value. Send it to someone who stopped paying and you've handed
+over the goods for free and taught them they don't need to pay to keep getting it. So **a
+statement only goes out to an account that's paid up**, and that check happens automatically
+(11), not by an operator remembering ([LAUNCH-NOTES #9](../LAUNCH-NOTES.md#9-statement-delivered-to-an-unpaid-account)).
+Chasing a missed payment is *gentle* — we're about keeping people, not collections — but the
+gate is firm.
 
-## Billing states (on the CRM record, `billing.status`)
+## What state an account can be in
 
 ```
-none ─►(setup paid)─► active ─►(charge fails)─► past_due ─►(recovered)─► active
-                                     │
-                                     └─►(dunning exhausted)─► canceled  ──► Statement gate CLOSES
+new ─►(setup fee paid)─► paid up ─►(a charge fails)─► behind ─►(card fixed)─► paid up
+                                          │
+                                          └─►(no luck after a couple weeks)─► canceled  ──► statements stop
 ```
 
-Full state handling and reconciliation in [`receivables.md`](receivables.md).
+The full handling and the monthly reconciliation are in [`receivables.md`](receivables.md).
 
 ## Hand-offs
 
-- **← 05 sales:** on close, create the customer + plan; collect the setup fee.
-- **→ 06 statements:** supplies the paid/unpaid gate for the monthly run.
-- **↔ 08 CRM:** `billing.*` lives on the household record; Stripe is the processor, the
-  CRM is the truth.
-- **↔ 10 compliance:** operator payouts and the 1099 trail are the contractor side; this
-  stage is the customer side. Keep them distinct.
+- **← 05 sales:** on "yes," set up the customer + plan and collect the setup fee.
+- **→ 06 statements:** tells the monthly run who's paid up and who to skip.
+- **↔ 08 customer list:** the billing status lives on the customer's record; Stripe moves the
+  money, but the record is the truth.
+- **↔ 10 compliance:** paying *operators* (and their taxes) is a separate ledger — keep the two
+  from mixing.

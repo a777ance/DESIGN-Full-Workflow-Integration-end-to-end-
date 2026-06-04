@@ -1,14 +1,12 @@
 # Workflow Context
 
-Documents the rationale behind the workflow that the Statements depend on. This is not
-reproduced by README.md — README is the stage-by-stage operations guide; this file
-explains the non-obvious *why*: why this tool at each stage, why the funnel runs in
-this order, and where the economics force a decision. Sections follow the same order as
-README's "stages," so each "Stage NN" here lines up with the matching folder.
+The *why* behind the workflow — the non-obvious calls, explained. README.md tells you what
+each stage does; this file tells you why it's built that way: why this tool, why this order,
+and where the money forces the decision. Sections line up with README's stages.
 
-The one idea everything else falls out of: **the moat is the human guild, not the
-software; the stack is the delivery vehicle.** Re-derive any decision from that and you
-will land where this repo landed.
+The one idea everything falls out of: **the moat is the human guild, not the software; the
+software just delivers it.** Whenever a decision is unclear, reason from that and you'll land
+where this repo landed.
 
 ---
 
@@ -33,203 +31,162 @@ will land where this repo landed.
 
 ## Stage order — why the funnel runs this way
 
-The folders are numbered in **funnel order**, not priority order, for the same reason
-`localDNS`'s folders are numbered in *install* order: it lets a new reader follow one
-unit (there, a DNS query; here, a household) through the whole system in sequence.
+The folders are numbered in the order a household actually travels them — stranger first,
+operator last — so a new reader can follow one family through the whole thing in sequence
+instead of jumping around.
 
-The order is forced by the dependency chain: you cannot capture a lead (03) without a
-storefront to land on (01), which inherits a brand (00); you cannot sell (05) what
-demand-gen (02) has not surfaced; you cannot deliver a Statement (06) to an account
-that has not paid (07); and you cannot recruit an operator (09) from a customer who has
-not yet received the Statement that raises their hand. The two cross-cutting stages —
-the CRM (08) and automations (11) — are numbered *after* the linear path because they
-are the substrate the path runs on, not steps in it.
-
----
+The order isn't arbitrary; each step needs the one before it. You can't capture a lead (03)
+without a website to land on (01), which needs a brand (00). You can't sell (05) what marketing
+(02) hasn't surfaced. You can't deliver a statement (06) to someone who hasn't paid (07). And
+you can't recruit an operator (09) out of a customer who hasn't yet gotten the statement that
+makes them want in. The two stages that touch everything — the master list (08) and the
+automations (11) — are numbered last because they're the ground the whole path runs on, not
+steps along it.
 
 ## Stage 00. Brand & identity — why a single inherited kit
 
-A trust business is judged on consistency. If the logo, voice, and color drift between
-the Squarespace site, the WordPress blog, the Google Business Profile, the intake form,
-and the Statement itself, the household reads "amateur" — fatal for a service you let
-inside the home network. So brand is **stage 00**: defined once, in Figma, and *linked*
-(never re-pasted) by every downstream surface. The brand kit is to this repo what
-`tuning.conf` is to `localDNS` — the single place a value lives so it cannot diverge.
+A trust business gets judged on whether it looks like it has its act together. If the logo,
+the voice, and the colors don't match between the website, the booking form, the postcard, and
+the statement, a homeowner reads "amateur" — and amateur is fatal for someone you're asking to
+let onto their home network. So the brand is settled once, here, and every other surface points
+back to it instead of inventing its own. One place the value lives, so it can't drift.
 
-The voice is set by the category analogy ("pest control, not lawn care"): calm,
-specific, never alarmist. The Statement's "Handled For You" copy is the canonical
-sample of that voice, which is why the brand kit points at it.
-
----
+The voice comes straight from the analogy — "pest control, not lawn care": calm, specific,
+never alarmist. The statement's "Handled For You" copy is the gold-standard sample of that
+voice, which is why the brand kit points at it.
 
 ## Stage 01. Web presence — why three surfaces, not one
 
-Squarespace, WordPress, and a Google Business Profile look redundant; they are not, they
-serve three different intents:
+The website, the blog, and the Google listing look redundant. They're not — they catch three
+different kinds of person:
 
-- **Google Business Profile** catches *local high-intent* discovery ("network help near
-  me") and is the single biggest local-SEO lever — it is free and most competitors
-  neglect it.
-- **Squarespace (Circle)** is the fast, low-maintenance brochure + funnel host: dull to
-  run, which matches the "keep everything dull" rule. Circle is the partner/agency tier
-  that lets one operator manage multiple client sites.
-- **WordPress** is the content/SEO engine for the category-education play (stage 02) —
-  long-form "is your smart TV spying on you?" content ranks better and is more
-  ownable than locked-platform pages.
+- **The Google listing** catches the *local, ready-to-act* searcher ("network help near me").
+  It's the single biggest free local-search lever, and most competitors can't be bothered with
+  it.
+- **The website (Squarespace)** is the fast, low-fuss brochure and booking flow: boring to run,
+  which is exactly the point. Its agency tier lets one person manage several customers' sites.
+- **The blog** is the engine for teaching the category — long "is my smart TV spying on me?"
+  posts rank well over time and are ours to keep, unlike a locked platform.
 
-The published **Statement gallery** is the fourth surface, and it is deliberately *not*
-rebuilt here: it is served by GitHub Pages straight from `localDNS/docs/statements/`,
-so the marketing site links to the real artifact rather than a mockup of it.
-
----
+The statement **gallery** is the fourth surface, and on purpose it's *not* rebuilt here: it's
+served straight from `localDNS`, so the website links to the real, live artifact instead of a
+screenshot that goes stale.
 
 ## Stage 02. Demand generation — why category + density before spend
 
-Two non-obvious choices, both from the business model:
+Two non-obvious calls, both straight from the business model:
 
-1. **Category education before lead-gen.** Nobody wakes up wanting encrypted DNS; they
-   do understand "someone's watching so the bad stuff stays out." Spending on
-   bottom-funnel lead-gen before the market understands the *category* burns money
-   teaching one prospect at a time. Content + local SEO around the analogy teaches the
-   market at scale, and it compounds — the DoorDash lesson applied to awareness.
-2. **Geo-clustering over reach.** A scattered customer exhausts the operator; a dense
-   route is profitable and makes referrals compound (a happy neighbor refers the next
-   neighbor). So campaigns are bought *zip-code-at-a-time* and the unit metric is
-   **homes per route**, not impressions. This is why the referral CTA is surfaced
-   *inside the Statement* — the cheapest density you can buy is a customer's word to the
-   house next door.
+1. **Teach the problem before selling the fix.** Nobody wakes up wanting "encrypted DNS." They
+   do get "something's watching the kids' tablets, and we keep it out." Running "buy now" ads
+   before people understand the *problem* means paying to educate them one at a time. Teaching
+   the category — posts and local search built on the analogy — educates the whole market at
+   once, and it compounds.
+2. **Fill a block, don't chase the metro.** Scattered customers wear the operator out; a full
+   block is profitable, and a happy neighbor sells the next one. So ads are bought one
+   neighborhood's ZIPs at a time, and the number we watch is **homes on the route**, not
+   impressions. The cheapest new customer there is is a current one's word over the fence —
+   which is exactly why the "refer a neighbor" ask lives *inside* the monthly statement.
 
-Email lists are run off the system of record (08) with strict consent, because a trust
-business cannot afford a spam complaint.
-
----
+The email list runs off the master list (08) with strict consent, because a trust business
+can't afford a spam complaint.
 
 ## Stage 03. Funnels — why the intake form is the contract
 
-The intake form is the single most important integration seam in the funnel: it is
-where unstructured attention becomes a **structured CRM record**. So every field on the
-form maps one-to-one to a field in `08-client-list-and-crm/schema.md`. If the form asks
-something the schema cannot store, the data dies on submit; if the schema needs
-something the form never asks, the record is born incomplete. Treat the form and the
-schema as two views of one contract — change them together.
+The booking form is the most important connection in the funnel: it's where loose interest
+becomes a real, structured lead. So every question on the form lines up one-to-one with a field
+on the customer record (08). Ask for something the record can't hold and the answer dies on
+submit; leave out something the record needs and the lead is born half-finished. Treat the form
+and the record as two views of one thing, and change them together.
 
-Setmore (self-booking) is chosen over "we'll call you" because letting the prospect pick
-the slot removes the phone-tag that kills local-service conversion, and it writes the
-appointment straight onto the record.
-
----
+Self-booking (Setmore) beats "we'll call you to schedule" because letting people grab their own
+slot kills the phone-tag that murders local-service bookings — and it writes the appointment
+straight onto the record.
 
 ## Stage 04. Phone & comms — why a human answers
 
-Every instinct in a software product says automate the phone away. A guild built on
-*trust* does the opposite: a real human answering "is this safe to let into my house?"
-*is* the product at the moment of highest doubt. The phone stage is therefore small in
-tooling (one business line, set hours, a greeting) and large in discipline: every call
-is logged back to the CRM record so the consult (05) starts warm. The scripts exist so
-that the human touch is consistent, not improvised.
-
----
+Every software instinct says automate the phone away. A business built on *trust* does the
+opposite: a real person answering "is it safe to let you onto my Wi-Fi?" *is* the product, right
+at the moment of biggest doubt. So this stage is small in gear (one line, set hours, a greeting)
+and big in discipline: every call gets written onto the record so the consult (05) starts warm.
+The scripts exist so the calm voice is consistent, not improvised.
 
 ## Stage 05. Sales — why a setup fee that is never discounted
 
-The setup fee (~$150–200, a `MARKETING` hypothesis) is deliberately **not** discounted,
-for two reasons that are about psychology, not margin: it covers real install labor, and
-it sets the expectation that this is a professional service, not a free app. A prospect
-who balks at the setup fee is a prospect who will balk at the retainer — better to learn
-that before the truck rolls. The quote is *scoped* (it names the homes/devices) so the
-retainer is anchored to delivered value, not a round number.
+The $175 setup fee (a working number — `MARKETING`) is deliberately **not** discounted, and
+it's about psychology, not margin: it pays for a real visit and install, and it sets the
+expectation that this is a professional service, not a free app. Someone who balks at the setup
+fee will balk at the monthly — better to find that out before the truck rolls. The quote is
+*specific to their house* (it names their devices and their worry), so the monthly is anchored
+to real value, not a round number.
 
-Provisioning is the clean hand-off point between this repo and `localDNS`: the moment
-the deal closes, the household's t630 is deployed by following `localDNS`'s setup guide.
-This repo does not document the deploy — it points at the one that does.
-
----
+Setting up the box is the clean hand-off between this repo and `localDNS`: the moment the deal
+closes, the box gets installed by following `localDNS`'s guide. This repo doesn't repeat that
+guide — it points at the one that has it.
 
 ## Stage 06. Statements — why we deliver, not rebuild
 
-The strongest temptation in this whole repo is to "improve" the Statement here. Resist
-it. The Statement is the gold standard precisely because it has *one* source of truth
-(`localDNS/docs/statements/`), is JSON-driven, self-contained, and honest about which
-figures are real. Forking it into this repo would create exactly the drift stage 00
-exists to prevent. So stage 06 is a **delivery runbook**, not a generator: it schedules
-the monthly run, assembles the operator sidecar ("Handled For You" log + Alliance match),
-delivers by email / print-mail / QR, and stops there. The only seam stage 06 owns that
-`localDNS` flags as a future swap is `compose_prose()` — the point where a Claude (Haiku)
-call can write richer copy at ~$0.01/home once wanted.
-
----
+The biggest temptation in this whole repo is to "improve" the statement here. Don't. The
+statement is the gold standard precisely *because* it has one home (`localDNS`), gets built the
+same way every time, and is honest about which numbers are real. Hand-editing a copy here would
+create exactly the drift stage 00 exists to prevent — and could put a stale or made-up number on
+a document people keep. So stage 06 is a *delivery routine*, not a builder: it schedules the
+monthly run, writes the human "Handled For You" notes, sends the statement, and stops there.
 
 ## Stage 07. Payments — why delivery is gated on paid
 
-The Statement is the value receipt; sending it to an unpaid account inverts the
-incentive — it hands over the proof-of-value for free and trains churned customers that
-they keep getting the goods. So delivery (06) is **gated on a paid account** in stage
-07, enforced by an automation (11), not by an operator remembering. Dunning is gentle
-(the model is retention, not collections) but the gate is firm. Setup fee and retainer
-are separate line items because they answer different objections (labor vs. ongoing
-value) and should be visible as such.
-
----
+The statement is the proof of value; sending it to someone who stopped paying hands over the
+goods for free and teaches them they don't need to pay to keep getting it. So a statement only
+goes out to a paid-up account, and that check is automatic (11), not an operator remembering.
+Chasing a missed payment is gentle — we're about keeping people, not collections — but the gate
+is firm. The setup fee and the monthly are separate lines because they answer two different
+questions in the customer's head (is this serious? is it worth keeping?).
 
 ## Stage 08. CRM — why one schema, no shadow spreadsheets
 
-This is the direct analog of `localDNS`'s "all tuning in one file" rule. The instant a
-second source of truth appears — an operator's personal spreadsheet of "their" homes —
-the Statement generator can render stale data, the receivables can bill the wrong plan,
-and the 1099 can miss a contractor. So there is exactly **one record per household, per
-operator, per route**, and a field exists only if it is in `schema.md`. The route record
-is first-class (not just an address tag) because density is the core unit of the
-business (stage 02) and the operator portfolio rolls up *by route*.
-
----
+The instant a second source of truth shows up — an operator's private spreadsheet of "their"
+homes — the statement can get built from stale info, billing can charge the wrong plan, and a
+1099 can miss a contractor. So there's exactly **one entry per household, per operator, per
+route**, and a fact exists only if it's in the shared definition. The route gets its own entry
+(not just an address tag) because density is the whole game (02) and the operator's portfolio is
+organized by route.
 
 ## Stage 09. Recruiting — why the customer is the operator pipeline
 
-DoorDash had to recruit dashers and diners separately. A777ance does not: **a happy
-customer is a latent operator** — they like the stack, they are handy, they want gig
-income. That dual-hat conversion flywheel is the growth loop and the moat, so the
-operator funnel is wired to start *inside the Statement* (the "Connect in the Alliance"
-hand-raise), not as a separate cold-recruiting effort. Vetting is heavy on purpose:
-background-checked and bonded members *are* the trust pitch competitors with cheaper
-tech can never copy — vetting is the product, not overhead.
-
----
+DoorDash had to recruit drivers and diners separately. We don't: **a happy customer is an
+operator waiting to happen** — they trust the box, they're a little handy, and they want the side
+income. That customer→operator conversion is the growth loop and the moat, so the operator funnel
+starts *inside the statement* (the "Connect in the Alliance" tap), not as a separate cold-hiring
+effort. Vetting is heavy on purpose: background-checked, bonded local people *are* the trust
+pitch a cheaper-tech competitor can never copy — the vetting is the product, not overhead.
 
 ## Stage 10. Compliance — why 1099, and the classification risk
 
-Operators are independent businesses billing customers directly; that is structurally a
-**1099-NEC** relationship, not employment, which is what keeps the platform light. The
-documented flow is therefore W-9 on onboarding → payout records through the year →
-1099-NEC filed by Jan 31 for anyone paid ≥ the IRS threshold.
+Operators are independent businesses billing their own customers; that's structurally a
+**1099-NEC** relationship, not employment, which is what keeps the platform light. So the flow
+is: W-9 at onboarding → track payments through the year → file the 1099-NEC by January 31 for
+anyone paid at or above the IRS threshold.
 
-The honest risk, flagged loudly: if the platform starts *directing how* operators work
-(routes, scripts, pricing) heavily enough, a worker-classification challenge could
-reclassify them as employees. This is a legal judgment, not a config value — the repo
-documents the 1099 path and tells the reader to **confirm classification with counsel
-before scaling.** Better to flag it than to pretend the line is obvious.
-
----
+The honest risk, flagged loudly: if the platform starts dictating *how* operators work (routes,
+scripts, prices) hard enough, a regulator can reclassify them as employees. That's a legal call,
+not a setting — so the repo documents the contractor path and tells you to **confirm the
+classification with a lawyer before scaling.** Better to flag it than pretend the line is
+obvious.
 
 ## Stage 11. Automations — why the glue is its own stage
 
-In `localDNS`, the components are useless until DNS *flows* between them; the analog
-here is that the stages are useless until a *record* flows between them. Making
-automation its own stage (rather than a footnote on each) forces a single map of every
-hand-off and a single owner for the seams. The rule mirrors the network one: if moving a
-record from tool A to tool B requires a human to retype it, that is a dropped packet —
-a bug in stage 11 — not an acceptable manual step. The `localDNS` Statement pipeline is
-itself the largest automation in the map: roster → generator → rendered Statement.
-
----
+The stages are useless until a customer's info *flows* between them without anyone retyping it.
+Making the glue its own stage forces a single map of every hand-off and a single person
+responsible for the gaps. The rule: if moving a customer's info from one tool to the next means
+someone types it twice, that's a bug here — not an acceptable manual step. The biggest piece of
+glue is the statement run itself: the master list → `localDNS`'s tool → a finished statement.
 
 ## On the DoorDash-style toggle app
 
-The customer↔operator **toggle app** (one login, two modes) is the right long-term
-product idea — *more* right than DoorDash's, because here the customers *are* the
-operator pipeline. But it is **stack, not moat**, and a marketplace app is worthless
-without liquidity. The three screens of that app already exist as artifacts: the client
-Statement, the operator portfolio, and the Alliance match card. So the standing
-guidance (from `MARKETING`'s roadmap) is: **do not build the app to manufacture
-liquidity — build it once the funnel in this repo proves liquidity exists**, and build
-it as a dull PWA, not a native app, because "easy to debug at 11pm" is the real
-constraint for a small operator team.
+The customer↔operator **toggle app** (one login, two modes) is the right long-term product idea
+— *more* right than DoorDash's, because here the customers *are* the operator pipeline. But it's
+**tech, not moat**, and a marketplace app is worthless without people on both sides to match.
+The three screens of that app already exist as real artifacts: the customer statement, the
+operator portfolio, and the "Connect in the Alliance" card. So the standing guidance (from
+`MARKETING`'s roadmap) is: **don't build the app to manufacture demand — build it once the funnel
+in this repo proves the demand is real**, and build it as a dull, simple web app, because "easy
+to fix at 11pm" is the real constraint for a small operator team.

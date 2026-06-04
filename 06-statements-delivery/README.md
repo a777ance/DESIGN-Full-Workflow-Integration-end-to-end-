@@ -1,13 +1,13 @@
 # 06 — Statements delivery
 
-**Lives in:** the `localDNS` generator (`docs/statements/`) + email + print/mail + QR.
-**Go-live / sync:** run the monthly generate-from-roster job; email + mail the Statement;
-QR codes go live.
+**Lives in:** the `localDNS` statement tool + email + print/mail + the QR codes.
+**Go-live:** run the monthly job; email and mail the statements; the QR codes are live.
 
-**The center.** This is what everything else surrounds — and **this stage does not own
-or rebuild the Statement.** The artifact is the gold standard, built and published in
-`localDNS`. Stage 06 is a *delivery runbook*: schedule the run, assemble the operator
-sidecar, deliver on cadence, stop there.
+**This is the center — the thing everyone pays for.** And the most important rule of this
+whole stage: **we don't build or rewrite the statement here.** The statement is the
+gold-standard artifact, built and published over in `localDNS`. This stage is the *delivery
+routine* around it: run the monthly job, write the human notes that make it personal, send
+it, and stop there.
 
 ---
 
@@ -15,76 +15,64 @@ sidecar, deliver on cadence, stop there.
 
 | File | What it is |
 | ---- | ---------- |
-| [`monthly-run.md`](monthly-run.md) | The monthly cadence checklist + the operator-sidecar authoring guide |
+| [`monthly-run.md`](monthly-run.md) | The monthly checklist + how to write the "Handled For You" notes |
 
-## The two Statements (built in localDNS)
+## The two statements
 
-| Statement | Audience | Source |
-| --------- | -------- | ------ |
-| **Network Activity Statement** | The homeowner — a 1–2 page monthly value receipt, the "sticker on the door" | `localDNS/docs/statements/client/*.html` |
-| **Alliance Member Portfolio** | The operator — one fleet view over a book of homes | `localDNS/docs/statements/operator/*.html` |
+| Statement | Who it's for | Where it's built |
+| --------- | ------------ | ---------------- |
+| **Network Activity Statement** | The homeowner — a one-page monthly proof, the "sticker on the door" | `localDNS/docs/statements/client/` |
+| **Alliance Member Portfolio** | The operator — one view across their whole book of homes | `localDNS/docs/statements/operator/` |
 
-What's on each (Account Summary, "Handled For You," Traffic Allocation, Household
-Profile, "How You Compare," "Connect in the Alliance," the QR codes) is documented and
-rendered in `localDNS/docs/statements/README.md` — read it; don't restate it here.
+What's actually on each one (the account summary, the "Handled For You" log, the traffic
+donut, "How You Compare," the "Connect in the Alliance" card, the QR codes) is documented and
+built in `localDNS` — read it there; we don't restate it here.
 
-## Why we deliver, not rebuild
+## Why we deliver instead of rebuild
 
-The Statement is the gold standard precisely because it has **one** source of truth
-(`localDNS/docs/statements/`), is JSON-driven, self-contained, and honest about which
-figures are real. Forking it here would create the exact drift stage 00 exists to
-prevent, and could print stale or invented numbers
-([LAUNCH-NOTES #8](../LAUNCH-NOTES.md#8-statement-forkededited-in-this-repo-instead-of-generated-from-localdns)).
-So stage 06 touches the generator only through its intended inputs.
+The statement is the gold standard precisely *because* it has one home (`localDNS`), is built
+the same way every time, and is honest about which numbers are real. If we started hand-editing
+copies here, we'd have two versions that drift apart — and we'd risk printing a stale or
+made-up figure on a document people keep ([LAUNCH-NOTES #8](../LAUNCH-NOTES.md#8-statement-forkededited-in-this-repo-instead-of-generated-from-localdns)).
+So we feed the tool good inputs and let it do the rendering.
 
-## The monthly run
+## The monthly run, in plain steps
 
 ```
-1. collect/refresh stats on each box   localDNS: collect_stats.py  (Pi-hole/Kuma/wg/nft)
-2. assemble the operator SIDECAR       this stage: "Handled For You" log + Alliance match + prior/YTD
-3. compose → home-JSON                 localDNS: compose.py
-4. render the Statements               localDNS: generate_client.py / generate_operator.py
-5. GATE on a paid account (07)         this stage: skip unpaid — never give away the receipt
-6. deliver                             this stage: email + print/mail + QR
+1. refresh each box's numbers      localDNS does this — the real measured stuff
+2. write the human notes           ← this stage's real job: the "Handled For You" log
+3. build the statements            localDNS does this from the numbers + your notes
+4. skip anyone who hasn't paid (07) ← never give the proof away for free
+5. send it                         email + mailed paper + the QR codes
 ```
 
-Steps 1, 3, 4 are `localDNS`'s pipeline (run as-is). Steps 2, 5, 6 are this stage's job.
-The per-run checklist and the sidecar authoring guide live in [`monthly-run.md`](monthly-run.md).
+Steps 1 and 3 are `localDNS`'s job — you just run them. Steps 2, 4, and 5 are this stage's.
+The checklist and the note-writing guide are in [`monthly-run.md`](monthly-run.md).
 
-## The sidecar — the personal, named proof of work
+## The human notes — the part that makes it personal
 
-The one input this stage genuinely *owns* is the **operator sidecar** (`localDNS`'s
-`tools/collect/sample-sidecar.json` shape): the "Handled For You" log written like local
-patch notes and **attributed by name** ("*Cloudflare pushed a security update; your
-appliance was patched the same day — Jose*"), plus the Alliance match and the prior/YTD
-figures. This is where the human touch enters the artifact. Keep it in the calm voice
-(00) and *your home / your appliance*, never generic IT-speak.
+The one thing this stage genuinely *writes* each month is the **"Handled For You" log**: the
+real work done, in plain language, **signed by name**. This is where the human shows up in the
+artifact:
 
-## Delivery
+> *"Your living-room smart-TV hung on a bad connection; it was cleared remotely at 11:40pm."*
+> — Fixed in your home by Jose · while you slept
 
-| Channel | How | Note |
-| ------- | --- | ---- |
-| **Email** | "Your Statement is ready" → link to the online scrollable statement | The default |
-| **Print / mail** | Print the self-contained HTML → mail (~$1) | The literal "sticker on the door" for homes that value paper |
-| **QR** | Already inlined in the artifact (segno) | Status page + online statement; real, not mock |
+Keep it in the calm voice (00) — *your home, your TV* — never generic tech-speak. And if
+nothing happened, say exactly that: *"nothing to change this month, beautifully boring."* Never
+invent work to fill the page.
 
-## The honesty gate (inherited from localDNS)
+## The honesty rule (carried over from localDNS)
 
-Per `localDNS`'s "Data sourcing" table: queries/blocks/uptime/latency/VPN sessions are
-**real today**; per-category GB volume is **buildable** (flow-accounting scaffolded, not
-yet stood up); peer-average benchmarks **need a real cohort dataset**. **Do not print a
-figure the box didn't measure** ([LAUNCH-NOTES #10](../LAUNCH-NOTES.md#10-statement-prints-figures-the-box-did-not-measure)).
-Scope each Statement to what's real until the rest is stood up.
-
-## The richer-copy seam
-
-`localDNS` flags `compose_prose()` as the single point to swap in a Claude (Haiku) call
-for richer copy at ~$0.01/home, once wanted — the inputs are already assembled. That's
-the only generator change this stage would ever request, and it lives in `localDNS`.
+Some numbers are real and measured today (how many lookups, how much got blocked, uptime). Some
+aren't built yet (a breakdown by category in gigabytes; how you compare to the neighbors). **Don't
+put a number on the statement that the box didn't actually measure**
+([LAUNCH-NOTES #10](../LAUNCH-NOTES.md#10-statement-prints-figures-the-box-did-not-measure)). When
+in doubt, leave it off. A document people keep has to be true.
 
 ## Hand-offs
 
-- **← 05/08:** the provisioned, paid customer + the roster record drive the run.
-- **← 07 payments:** the paid/unpaid gate.
-- **→ 09 recruiting:** a "Connect in the Alliance" tap becomes an operator-interest record.
-- **→ 02 email:** the "Statement is ready" send + the in-Statement referral CTA.
+- **← 05/08:** the set-up, paid customers on the list are who the run is for.
+- **← 07 payments:** the paid / not-paid check that decides who gets a statement this month.
+- **→ 09 recruiting:** a "Connect in the Alliance" tap turns into an operator lead.
+- **→ 02 email:** the "your statement's ready" send, and the refer-a-neighbor ask inside it.

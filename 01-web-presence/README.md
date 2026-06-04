@@ -1,45 +1,44 @@
 # 01 — Web presence
 
-**Lives in:** Squarespace (Circle) · WordPress · Google Business Profile · GitHub Pages
-(the Statement gallery, served from `localDNS`).
-**Go-live / sync:** publish the site; verify the GBP listing; the gallery deploys from
-`localDNS` via its `pages.yml`.
+**Lives in:** Squarespace (the website) · the blog (for search) · Google Business Profile
+(the local listing) · the live statement gallery (served from `localDNS`).
+**Go-live:** publish the site, claim and fill in the Google listing; the gallery updates
+itself from `localDNS`.
 
-The storefront. Its **only job is to move a stranger into the funnel** (stage 03) — every
-page ends in a path to the intake form. It inherits everything visual from stage 00 and
-never hard-codes brand values.
+The storefront. It has exactly **one job: move a stranger to the booking form** (stage 03).
+A visitor should land, get the idea in ten seconds, see a real statement, and have one
+obvious next step. It wears the brand from stage 00 and never invents its own look.
 
 ---
 
-## Three surfaces, three intents — why not one
+## Three places people find us — and why each one earns its keep
 
-| Surface | Intent it catches | Why it earns its place |
-| ------- | ----------------- | ---------------------- |
-| **Google Business Profile** | *Local high-intent* ("network help near me") | The single biggest local-SEO lever, free, and most competitors neglect it |
-| **Squarespace (Circle)** | Brochure + funnel host | Fast, low-maintenance, dull to run — matches "keep everything dull"; Circle's agency tier lets one operator manage multiple client sites |
-| **WordPress** | Content / category SEO | Long-form education ranks better and is more ownable than locked-platform pages |
-| **GitHub Pages gallery** | *Proof* — the live Statement | The real artifact, not a mockup — served straight from `localDNS/docs/statements/` |
+| Where | Who it catches | Why it's worth it |
+| ----- | -------------- | ----------------- |
+| **Google Business listing** | The person typing "network help near me" at 9pm | The biggest free local-search lever there is, and most competitors don't bother |
+| **The website (Squarespace)** | Everyone — the brochure + the booking flow | Fast, low-fuss, easy to run; nothing fancy to break at 11pm |
+| **The blog** | The "should I worry about my smart TV" searcher | Plain-language posts rank well and are ours to keep, unlike a locked platform |
+| **The statement gallery** | Anyone who wants proof | The *real* artifact — scan-and-scroll on a phone, not a screenshot — served straight from `localDNS` |
 
-See [`site-map.md`](site-map.md) for the page inventory and where each CTA points.
+Page-by-page CTAs are in [`site-map.md`](site-map.md).
 
-## The published Statement gallery — link it, don't rebuild it
+## Show the real statement — never a screenshot
 
-The marketing site links to **`https://a777ance.github.io/localDNS/`** — the live,
-QR-scrollable gallery published by `localDNS`'s `pages.yml` workflow on every change to
-`docs/statements/`. Never screenshot the Statement into the marketing site: a screenshot
-loses the QR/scroll experience and drifts from the real artifact (see
-[LAUNCH-NOTES #2](../LAUNCH-NOTES.md#2-statement-gallery-link-points-at-a-mockup-not-the-live-pages-site)).
+The site links to the live gallery at **`https://a777ance.github.io/localDNS/`**, which
+updates on its own whenever the statements change. Never paste a screenshot of a statement
+into the site: a picture loses the scan-and-scroll, and it drifts out of date the moment a
+real one changes ([LAUNCH-NOTES #2](../LAUNCH-NOTES.md#2-statement-gallery-link-points-at-a-mockup-not-the-live-pages-site)).
 
-## What the storefront must do
+## What the storefront has to do
 
-1. Lead with the category line (00) and the **real Statement** as proof.
-2. End every page with one CTA → the intake form (03).
-3. Carry the GBP so local search resolves to a real, reviewed listing.
-4. Stay dull: low-maintenance, fast, debuggable at 11pm.
+1. Lead with the category line (00) and a **real statement** as proof.
+2. End every page with one button → the booking form (03). No dead ends, no competing asks.
+3. Keep the Google listing real and reviewed, so local search resolves to a trustworthy spot.
+4. Stay boring to run — fast, simple, debuggable at 11pm.
 
 ## Hand-offs
 
-- **← 00 brand-identity:** logo, palette, type, voice.
-- **→ 03 funnels:** every CTA targets the intake form / Setmore booking.
-- **↔ 06 statements:** links to the live gallery; the Statement's QR codes point *back*
-  to the status page and the online statement.
+- **← 00 brand:** logo, colors, type, voice.
+- **→ 03 funnels:** every button points at the booking form.
+- **↔ 06 statements:** links out to the live gallery; the QR codes on a statement point
+  *back* to the customer's status page and online statement.

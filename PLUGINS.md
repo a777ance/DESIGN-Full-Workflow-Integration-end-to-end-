@@ -6,10 +6,10 @@ the skills this workflow *exercises*; this one maps the off-the-shelf plugins th
 *accelerate* them.
 
 **The governing rule is this repo's own:** *"if it does none of those, it does not
-belong"* (`CLAUDE.md` §3). A plugin is not free — enabling one loads its skills and
-instructions into context and adds its tools to every turn, so a plugin that doesn't move
-a Statement closer to earned, produced, delivered, or paid-for is pure noise against the
-context budget. **Scope per repo, not globally:** this repo (the machine) wants the most;
+belong"* (`CLAUDE.md` §3). A plugin isn't free — turning one on loads its instructions and
+tools into every turn, so a plugin that doesn't move a Statement closer to earned, produced,
+delivered, or paid-for is just clutter in the way. **Scope per repo, not globally:** this repo
+(the machine) wants the most;
 `localDNS` (the stack) wants almost none; `MARKETING` (the why) wants a strategy subset.
 The fact that the right set differs by repo *is* the recommendation.
 
@@ -22,18 +22,18 @@ plugin almost one-to-one.
 
 **Enable (core) — these land straight on a stage:**
 
-- **Marketing** — stage `02-demand-generation/`: own "pest control for your network,"
-  local SEO, geo-targeted audiences, Mailchimp lifecycle. Also drafts the
-  category-education content the funnel runs on.
-  → `02-demand-generation/README.md`, `02-demand-generation/category-education.md`
-- **Sales** — stage `05-sales-and-onboarding/` (discovery → scoped quote → setup fee →
+- **Marketing** — stage `02-demand-generation/`: own "pest control for your internet,"
+  local search, one-neighborhood-at-a-time audiences, the email lifecycle. Also drafts the
+  category-education content and the pitch the funnel runs on.
+  → `02-demand-generation/category-education.md`, `00-brand-identity/the-pitch.md`
+- **Sales** — stage `05-sales-and-onboarding/` (consult → scoped quote → setup fee →
   close) *and* stage `09-recruiting-and-guild/`: the operator funnel is a sales funnel
   pointed at supply.
-  → `05-sales-and-onboarding/README.md`, `09-recruiting-and-guild/operator-funnel.md`
+  → `05-sales-and-onboarding/discovery-call.md`, `09-recruiting-and-guild/operator-funnel.md`
 - **Finance** — stage `07-payments-receivables/` (setup fee + retainer plans, dunning,
   reconciliation) and the contractor payouts in stage `10-gig-workers-compliance/`.
   → `07-payments-receivables/receivables.md`, `10-gig-workers-compliance/1099-checklist.md`
-- **Data** — stage `08-client-list-and-crm/`, the system of record: schema design,
+- **Data** — stage `08-client-list-and-crm/`, the master list: schema design,
   segmentation queries, and the roster the Statement generator reads. Touches stage
   `06`'s "How You Compare" cohort problem too.
   → `08-client-list-and-crm/schema.md`, `06-statements-delivery/monthly-run.md`

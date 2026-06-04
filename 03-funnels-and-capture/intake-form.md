@@ -1,44 +1,44 @@
-# Intake form — field schema
+# The booking form — every question, and where the answer goes
 
-The contract between marketing and the CRM. **Every field maps one-to-one to a field in
-[`../08-client-list-and-crm/schema.md`](../08-client-list-and-crm/schema.md)** — the
-`→ household.x` column is that mapping. Add a field here only if you add it there too.
+The form is the handshake between marketing and the customer list. **Every question maps to
+exactly one field on the customer record** ([`../08-client-list-and-crm/schema.md`](../08-client-list-and-crm/schema.md)) —
+that's the right-hand column. Only add a question here if you also add the field there.
 
-A sample submission is in [`data/sample-intake.json`](data/sample-intake.json).
+A sample filled-in submission is in [`data/sample-intake.json`](data/sample-intake.json).
 
 ---
 
-## Fields
+## The questions
 
-| Form field | Required | → maps to (household record) | Notes |
-| ---------- | :------: | ---------------------------- | ----- |
+| Question on the form | Required | Lands on the record as | Why we ask |
+| -------------------- | :------: | ---------------------- | ---------- |
 | Full name | ✓ | `name` | |
 | Email | ✓ | `email` | |
-| Phone | ✓ | `phone` | drives the call-back (04) |
+| Phone | ✓ | `phone` | so we can call them back (04) |
 | Street address | ✓ | `address.street` | |
-| City / State / ZIP | ✓ | `address.city/state/zip` | **ZIP assigns the route** (02) |
-| "How many connected devices, roughly?" | – | `home_profile.devices_est` | sets expectations for the consult |
-| "What's your main concern?" (multi-select) | – | `home_profile.concerns[]` | e.g. kids' safety, privacy, elderly relative, IoT |
+| City / State / ZIP | ✓ | `address.city/state/zip` | **the ZIP picks their route** (02) |
+| "Roughly how many things are on your Wi-Fi?" | – | `home_profile.devices_est` | sets expectations for the visit |
+| "What's your main worry?" (pick any) | – | `home_profile.concerns[]` | e.g. kids' safety, privacy, an elderly parent, the smart-home gear |
 | "Who's your internet provider?" | – | `home_profile.isp` | |
-| "How did you hear about us?" | ✓ | `source` | gbp / referral / ad / content |
-| "Referred by a neighbor?" (name/addr) | – | `referred_by` | feeds the density flywheel (02) |
-| Email opt-in checkbox (un-checked) | – | `consent` + `consent_source=intake` + `consent_ts` | **never pre-checked** (05/email rules) |
-| Preferred consult time | – | `booking.requested` | Setmore handles the actual slot |
+| "How'd you hear about us?" | ✓ | `source` | Google / a neighbor / an ad / a post |
+| "A neighbor send you?" (name or address) | – | `referred_by` | this is the referral flywheel (02) |
+| Email opt-in box (starts **un**-checked) | – | `consent` (+ source + timestamp) | **never pre-check it** |
+| Best time for a visit | – | `booking.requested` | Setmore handles the actual slot |
 
-## On submit (the automation, stage 11)
+## What happens the instant they hit submit (automatic — stage 11)
 
-1. Create a `household` record, `status = lead`, `id = HH-####`, `created_ts = now`.
-2. Resolve `address.zip` → `route_id` (existing route, or create a `candidate` route).
-3. If `consent`, write `consent_source` + `consent_ts`; add to the Leads email segment.
-4. If `referred_by`, link the referrer's record (credit the referral).
-5. Hand the booking to Setmore; write `booking.setmore_id` + `consult_ts` back on confirm.
-6. Notify the assigned/owning operator (or the founders) for the call (04).
+1. Create a lead on the customer list — `status = lead`, a new `id`, timestamped.
+2. Turn their ZIP into a route (an existing one, or a new candidate route).
+3. If they opted in, record the consent and add them to the Leads email list.
+4. If a neighbor referred them, link the two records so the neighbor gets credit.
+5. Hand the time slot to Setmore; write the confirmed appointment back onto the record.
+6. Ping the operator who covers that route (or the founders) to make the call (04).
 
-## Rules
+## The rules
 
-- **Minimal field set.** Every extra required field costs conversion; ask only what the
-  consult genuinely needs. Depth comes during the consult (05), not the form.
-- **One-to-one or it doesn't ship.** A form field with no schema target, or a required
-  schema field with no form source, is the bug in
+- **Keep it short.** Every extra required field loses you a booking. Ask only what the visit
+  genuinely needs; everything else comes up naturally in the consult (05).
+- **The form and the record move together.** A question with nowhere to land, or a required
+  record field the form never asks about, is the bug in
   [LAUNCH-NOTES #3](../LAUNCH-NOTES.md#3-intake-form-fields-do-not-map-to-the-crm-schema).
-- **No PII beyond what's needed**, and none of it committed to git — the sample is fake.
+- **Only what we need, and none of it in git.** The committed sample is fake.

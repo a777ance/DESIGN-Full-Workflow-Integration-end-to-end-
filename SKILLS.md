@@ -1,11 +1,11 @@
 # Skills demonstrated
 
-This document maps the go-to-market, RevOps, and small-business operations skills
-exercised in formalizing this workflow to the concrete artifacts in the repo. Every
-claim below points at the file(s) that prove it — nothing here is aspirational.
+A map from the go-to-market, revenue-ops, and small-business skills this workflow exercises to
+the actual files that prove them. Nothing here is aspirational — every line points at a file you
+can open.
 
-It is the business-operations companion to `localDNS`'s engineering `SKILLS.md`: that
-one proves the stack; this one proves the machine that sells, delivers, and bills it.
+It's the business-side companion to `localDNS`'s engineering skills doc: that one proves the
+tech; this one proves the machine that sells, delivers, and bills it.
 
 ---
 
@@ -21,88 +21,86 @@ one proves the stack; this one proves the machine that sells, delivers, and bill
 
 ## 0. Go-to-market & growth
 
-- **Category design** — owning an analogy ("pest control for your network") so a
-  market that doesn't know it has a problem can be taught it does.
-  → `02-demand-generation/README.md`, `02-demand-generation/category-education.md`
-- **Local / geo-targeted demand gen** — zip-code-at-a-time clustering into profitable
-  routes; density as the unit of marketing efficiency (the DoorDash-batching lesson).
+- **Category design** — owning one analogy ("pest control for your internet") so a market that
+  doesn't know it has a problem can be taught that it does, in words anyone gets.
+  → `02-demand-generation/category-education.md`, `00-brand-identity/the-pitch.md`
+- **Local / geo demand gen** — filling one neighborhood at a time into a profitable route;
+  density as the unit of marketing, not reach.
   → `02-demand-generation/geo-targeting.md`
-- **Funnel design & conversion** — landing page → intake form → self-booking → demo,
-  with the referral loop surfaced inside the monthly Statement.
+- **Funnel design & conversion** — website → booking form → self-booking → demo, with the
+  refer-a-neighbor loop built into the monthly statement.
   → `03-funnels-and-capture/README.md`, `03-funnels-and-capture/intake-form.md`
-- **Brand systems** — a single brand kit (logo, palette, voice, slogans, jingle brief)
-  that every downstream surface inherits.
-  → `00-brand-identity/brand-kit.md`, `00-brand-identity/slogans-and-jingles.md`
-- **Web presence** — multi-platform storefront (Squarespace, WordPress, Google Business
-  Profile) plus a first-party published artifact gallery.
+- **Brand systems & messaging** — one brand kit every surface inherits, plus the actual pitch
+  (the one-liner, the elevator, the price talk) a rep can use today.
+  → `00-brand-identity/brand-kit.md`, `00-brand-identity/the-pitch.md`
+- **Web presence** — a multi-surface storefront (website, blog, Google Business listing) plus a
+  live gallery of the real product.
   → `01-web-presence/README.md`, `01-web-presence/site-map.md`
-- **Email lifecycle marketing** — list hygiene, segmentation off the system of record,
-  consent discipline.
+- **Email & lifecycle marketing** — list hygiene, segmentation off the master list, consent
+  discipline, and the copy written and ready to send.
   → `02-demand-generation/email-lists.md`
 
 ---
 
 ## A. Sales, onboarding & customer ops
 
-- **Consultative sales** — discovery call → scoped quote → setup fee → close, with a
-  proposal/e-sign step and a clean handoff to provisioning.
-  → `05-sales-and-onboarding/README.md`, `05-sales-and-onboarding/onboarding-checklist.md`
-- **Telephony & front-desk ops** — business line, hours, greeting, routing, and a
-  call-logging discipline that writes back to the CRM.
+- **Consultative selling** — a discovery consult → scoped quote → setup fee → close, with a real
+  objection bank and a worked example quote.
+  → `05-sales-and-onboarding/discovery-call.md`, `05-sales-and-onboarding/quote-template.md`
+- **Phone & front-desk ops** — a business line, hours, greeting, routing, and a call-logging
+  habit that writes back to the customer list, with the actual scripts.
   → `04-phone-and-comms/README.md`, `04-phone-and-comms/call-scripts.md`
-- **Service delivery on a cadence** — turning a one-off install into a recurring monthly
-  artifact (the Statement) delivered by email, print/mail, and QR.
+- **Recurring service delivery** — turning a one-off install into a monthly artifact (the
+  statement) sent by email, mail, and QR.
   → `06-statements-delivery/README.md`, `06-statements-delivery/monthly-run.md`
-- **Self-service scheduling** — Setmore self-booking wired into both the customer funnel
-  and the operator-interview funnel.
-  → `03-funnels-and-capture/README.md`, `09-recruiting-and-guild/README.md`
+- **Self-service scheduling** — Setmore self-booking wired into both the customer funnel and the
+  operator-interview funnel.
+  → `03-funnels-and-capture/README.md`, `09-recruiting-and-guild/operator-funnel.md`
 
 ---
 
 ## B. Revenue operations & integration
 
-- **System-of-record design** — one normalized schema (household / operator / route)
-  that every stage reads and writes; no shadow spreadsheets.
+- **One master list** — a single shared definition for households, operators, and routes that
+  every stage reads and writes; no shadow spreadsheets.
   → `08-client-list-and-crm/schema.md`, `08-client-list-and-crm/data/sample-roster.json`
-- **Workflow automation / integration** — mapping each stage→stage hand-off to an
-  automation so no record is ever retyped between tools.
+- **Workflow automation** — mapping every stage-to-stage hand-off to an automation so a
+  customer's info is never retyped between tools.
   → `11-automations/automation-map.md`
-- **Billing & receivables** — setup fee + retainer plans, dunning, reconciliation, and
-  gating Statement delivery on a paid account.
+- **Billing & receivables** — setup fee + monthly plans, gentle dunning, reconciliation, and
+  gating delivery on a paid account.
   → `07-payments-receivables/README.md`, `07-payments-receivables/receivables.md`
-- **Data-driven document generation** — reusing `localDNS`'s JSON→HTML Statement
-  pipeline as the delivery engine instead of rebuilding it.
+- **Data-driven documents** — reusing `localDNS`'s data-file → statement tool as the delivery
+  engine instead of rebuilding it.
   → `06-statements-delivery/README.md`, `06-statements-delivery/monthly-run.md`
-- **Docs-as-system / self-verifying integration map** — the whole workflow is a
-  version-controlled spec where every cross-reference is link-checked in CI, so the map
-  can't silently rot (the analog of `localDNS`'s infra-as-config discipline).
+- **Docs that check themselves** — the whole workflow is a version-controlled playbook where
+  every cross-link is checked automatically, so the map can't quietly rot.
   → `tools/check-docs.py`, `CLAUDE.md`, `11-automations/automation-map.md`
 
 ---
 
 ## C. Finance, compliance & the gig workforce
 
-- **1099 contractor lifecycle** — W-9 collection, contractor agreement, payout records,
-  and 1099-NEC filing by the Jan 31 deadline.
+- **1099 contractor lifecycle** — W-9 collection, the agreement, payment tracking, and filing
+  the 1099-NEC by the Jan 31 deadline.
   → `10-gig-workers-compliance/1099-checklist.md`,
   `10-gig-workers-compliance/contractor-agreement-outline.md`
-- **Worker-classification awareness** — documenting the 1099 path while flagging
-  misclassification as the real risk to confirm with counsel.
+- **Classification awareness** — documenting the 1099 path while flagging misclassification as
+  the real risk to confirm with a lawyer.
   → `10-gig-workers-compliance/README.md`
-- **Trust infrastructure** — operator vetting, background-check and bonding posture as
-  the guild's headline, not overhead.
+- **Trust as infrastructure** — operator vetting, background checks, and bonding as the
+  headline, not overhead.
   → `09-recruiting-and-guild/vetting-checklist.md`
-- **The conversion flywheel** — instrumenting the customer→operator path that turns a
-  Statement recipient into a dues-paying member.
-  → `09-recruiting-and-guild/operator-funnel.md`
+- **The conversion flywheel** — the customer→operator path that turns a statement recipient into
+  a dues-paying member, with the recruit's-eye view and the earnings math.
+  → `09-recruiting-and-guild/operator-funnel.md`, `09-recruiting-and-guild/operator-day-one.md`
 
 ---
 
 ## 1. Professional background (beyond this repo)
 
-Domain skills from prior work that inform this workflow but are not exercised by it
-directly: PensionPro; Salesforce (custom dashboards, validated reports, workflow
-automation); advanced Microsoft Excel (XLOOKUP, macros, pivot tables); ESOP
-administration; TValue 6 (amortization); Microsoft Access; SharePoint; the Microsoft
-Office Suite. REST and Claude API integration for compliance and document workflows
-(also exercised in `localDNS`).
+Skills from prior work that inform this workflow but aren't directly exercised by it:
+PensionPro; Salesforce (custom dashboards, validated reports, workflow automation); advanced
+Excel (XLOOKUP, macros, pivot tables); ESOP administration; TValue 6 (amortization); Microsoft
+Access; SharePoint; the Office suite. REST and Claude API integration for compliance and
+document workflows (also exercised in `localDNS`).

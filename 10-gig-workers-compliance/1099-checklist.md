@@ -1,46 +1,46 @@
-# 1099 contractor checklist
+# The 1099 checklist
 
-The ordered steps from onboarding an operator to filing their 1099-NEC. Writes to the
-record at `operator.tax` (`../08-client-list-and-crm/schema.md`). **Not tax advice** —
-confirm current thresholds, forms, and worker classification with counsel/CPA
+The steps, in order, from onboarding an operator to filing their 1099-NEC. It writes to the
+operator's record (`operator.tax`). **This isn't tax advice** — confirm the current thresholds,
+forms, and the contractor-vs-employee question with a CPA or lawyer
 ([LAUNCH-NOTES #14](../LAUNCH-NOTES.md#14-worker-misclassification)).
 
 ---
 
-## 1. At onboarding (before the first payout — hard gate)
+## 1. At onboarding — before the first payment (hard stop)
 
-- [ ] **Collect Form W-9** from the operator (legal name, TIN, address). Store securely —
-      **never in git** (it's PII).
-- [ ] Set `operator.tax.w9_on_file = true`, `w9_ts`, and `tin_last4` (last 4 only on the
-      record; the full TIN lives in the payroll platform, not the CRM).
-- [ ] E-sign the **contractor agreement** ([`contractor-agreement-outline.md`](contractor-agreement-outline.md));
-      set `operator.vetting.agreement_signed_ts` (09).
-- [ ] Confirm the operator is `status = active` (09). **No W-9 → not payable.**
+- [ ] **Get the W-9** (legal name, taxpayer ID, address). Store it securely — **never in git**,
+      it's sensitive personal info.
+- [ ] On the record, mark the W-9 on file, the date, and the **last 4** of the tax ID only — the
+      full number lives in the payroll tool, not on the customer list.
+- [ ] **Sign the contractor agreement** ([`contractor-agreement-outline.md`](contractor-agreement-outline.md));
+      save the signed-on date (09).
+- [ ] Confirm they're **active** (09). **No W-9 → no payment.**
 
-## 2. Through the year (every payout)
+## 2. Through the year — every payment
 
-- [ ] Record each payout in the payroll/1099 platform.
-- [ ] Increment `operator.tax.ytd_paid` (keep it reconciled to the platform monthly).
-- [ ] Keep operator-payout records **separate** from customer receivables (07).
+- [ ] Record each payment in the payroll/1099 tool.
+- [ ] Add it to their year-to-date total on the record (reconcile to the tool monthly).
+- [ ] Keep operator payments **separate** from customer income (07).
 
-## 3. Year end
+## 3. Year-end
 
-- [ ] For each operator with `ytd_paid ≥` the IRS threshold (`CHANGE_ME`; historically
-      $600), prepare a **1099-NEC**.
-- [ ] **File by Jan 31** (to the contractor and the IRS).
-- [ ] Set `operator.tax.form_1099_filed_ts`.
-- [ ] Issue any state filings required (varies by state — confirm).
+- [ ] For each operator paid at or above the threshold (`CHANGE_ME`; it's been $600), prepare a
+      **1099-NEC**.
+- [ ] **File by January 31** — both to the operator and to the IRS.
+- [ ] Save the filed date on the record.
+- [ ] Handle any state filings too (varies by state — check).
 
-## Data-handling rules
+## Handling the sensitive stuff
 
-- W-9s and full TINs live in the payroll platform (access-controlled), **not** the CRM
-  and **not** git. The CRM stores only `tin_last4` and the booleans/timestamps above.
-- `.gitignore` already excludes `*-private.*` and `secrets/`; treat any tax document as
-  one of those.
+- W-9s and full tax IDs live in the payroll tool (locked down), **not** on the customer list and
+  **not** in git. The record keeps only the last-4 and the dates.
+- `.gitignore` already excludes `*-private.*` and `secrets/` — treat any tax document as one of
+  those.
 
-## Why these gates exist
+## Why the rules are what they are
 
-- W-9-first makes January's filing a button, not a scramble.
-- The threshold check prevents both over- and under-filing.
-- The separate ledger keeps customer revenue and contractor expense from contaminating
-  each other at tax time.
+- W-9-first turns January's filing into a button instead of a scramble.
+- The threshold check keeps you from over- or under-filing.
+- Separate ledgers keep customer income and operator expense from contaminating each other at
+  tax time.

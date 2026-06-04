@@ -1,70 +1,74 @@
-# CRM schema — the single source of truth
+# What we track on each customer — the shared definition
 
-Three record types: **household**, **operator**, **route**. A field exists only if it's
-here. The intake form (03) maps one-to-one to `household`; billing (07) owns
-`household.billing`; recruiting (09) owns `operator`; compliance (10) owns `operator.tax`.
-A fictional instance is in [`data/sample-roster.json`](data/sample-roster.json).
+The whole funnel agrees on one set of facts to keep about each **household**, each
+**operator**, and each **route**. If it's not listed here, we don't track it (no stray
+spreadsheet columns). The booking form (03) fills in the household basics; billing (07) owns
+the money fields; recruiting (09) owns the operator; compliance (10) owns the tax bits. A
+made-up filled-in example is in [`data/sample-roster.json`](data/sample-roster.json).
 
----
-
-## `household`
-
-| Field | Type | Owner stage | Notes |
-| ----- | ---- | ----------- | ----- |
-| `id` | `HH-####` | 03 | primary key |
-| `created_ts` | timestamp | 03 | |
-| `status` | enum | 03/05/07 | `lead` · `qualified` · `customer` · `churned` |
-| `route_id` | `RT-####` | 02 | assigned from ZIP |
-| `name` | string | 03 | contact name |
-| `email` | string | 03 | |
-| `phone` | string | 03 | |
-| `address` | `{street,city,state,zip}` | 03 | ZIP drives `route_id` |
-| `home_profile` | `{devices_est,concerns[],isp}` | 03 | sets consult + scope |
-| `source` | enum | 03 | `gbp`·`referral`·`ad`·`content` |
-| `referred_by` | `HH-####`\|null | 03 | the density flywheel (02) |
-| `consent` | bool | 02/03 | email opt-in, never pre-checked |
-| `consent_source` / `consent_ts` | string / ts | 02/03 | |
-| `unsubscribed_ts` | ts\|null | 02 | suppresses forever |
-| `call_log[]` | `[{ts,dir,by,summary,next}]` | 04 | every call appended |
-| `booking` | `{setmore_id,consult_ts,requested}` | 03 | |
-| `quote` | `{setup_fee,monthly_retainer,scope,sent_ts,signed_ts}` | 05 | |
-| `billing` | `{processor_customer_id,plan,status,setup_paid_ts,next_charge,last_payment_ts}` | 07 | `status`: `none`·`active`·`past_due`·`canceled` |
-| `operator_id` | `OP-####` | 05/09 | who services this home |
-| `statement` | `{home_json_path,last_generated,last_delivered,delivery_channels[]}` | 05/06 | `home_json_path` → `localDNS/docs/statements/data/clients/` |
-| `operator_interest` | bool | 06/09 | set on "Connect in the Alliance" hand-raise |
-
-## `operator`
-
-| Field | Type | Owner stage | Notes |
-| ----- | ---- | ----------- | ----- |
-| `id` | `OP-####` | 09 | primary key |
-| `name` / `email` / `phone` | string | 09 | |
-| `status` | enum | 09 | `applicant`·`vetting`·`active`·`suspended` |
-| `converted_from` | `HH-####`\|null | 09 | the dual-hat flywheel (a customer who became an operator) |
-| `routes[]` | `[RT-####]` | 09 | the book of homes, by route |
-| `dues` | `{subscription_id,status}` | 09 | platform member dues (amount TBD, `MARKETING`) |
-| `vetting` | `{background_check,bond,references[],agreement_signed_ts}` | 09 | gate to `active` |
-| `tax` | `{w9_on_file,w9_ts,tin_last4,ytd_paid,form_1099_filed_ts}` | 10 | the 1099-NEC trail |
-
-## `route`
-
-| Field | Type | Owner stage | Notes |
-| ----- | ---- | ----------- | ----- |
-| `id` | `RT-####` | 02 | primary key |
-| `name` | string | 02 | e.g. neighborhood/HOA |
-| `zips[]` | `[string]` | 02 | the campaign-targeting unit |
-| `operator_id` | `OP-####`\|null | 02/09 | null = unassigned (recruiting trigger) |
-| `home_count` | int | derived | live customers on the route |
-| `target_density` | int | 02 | `CHANGE_ME` (e.g. 8) — "live" threshold |
-| `status` | enum | 02 | `candidate`·`building`·`live` |
+> This is the one genuinely technical page in the repo — it's a field list, by necessity. The
+> "Filled in by" column tells you which stage is responsible for each fact.
 
 ---
 
-## Invariants
+## A household
 
-- **One record per real-world entity.** No duplicate households, no operator's private
-  spreadsheet ([LAUNCH-NOTES #11](../LAUNCH-NOTES.md#11-shadow-spreadsheet-becomes-a-second-source-of-truth)).
-- **Add the field here first**, then to the form/tool that writes it.
-- **Business data here; network data in `localDNS`.** The two meet only via
-  `household.statement.home_json_path`.
-- **No real PII in git.** Samples are fictional; live records stay in the CRM.
+| Fact | Looks like | Filled in by | Notes |
+| ---- | ---------- | ------------ | ----- |
+| `id` | `HH-####` | 03 | their unique number |
+| `created_ts` | a date | 03 | |
+| `status` | `lead` · `qualified` · `customer` · `churned` | 03/05/07 | where they are in the funnel |
+| `route_id` | `RT-####` | 02 | their neighborhood, from their ZIP |
+| `name` | text | 03 | |
+| `email` | text | 03 | |
+| `phone` | text | 03 | |
+| `address` | street/city/state/zip | 03 | the ZIP decides the route |
+| `home_profile` | devices, worries, internet provider | 03 | sizes up the consult + quote |
+| `source` | `gbp`·`referral`·`ad`·`content` | 03 | how they found us |
+| `referred_by` | a `HH-####` or nothing | 03 | the refer-a-neighbor flywheel (02) |
+| `consent` | yes/no | 02/03 | email opt-in, never pre-checked |
+| `consent_source` / `consent_ts` | text / date | 02/03 | where and when they opted in |
+| `unsubscribed_ts` | a date or nothing | 02 | set on opt-out; we never email again |
+| `call_log` | a running list of call notes | 04 | every call, jotted down |
+| `booking` | the appointment | 03 | from Setmore |
+| `quote` | setup fee, monthly, what's covered, signed-on date | 05 | |
+| `billing` | plan, paid up / behind / canceled, payment dates | 07 | Stripe moves money; this is the truth |
+| `operator_id` | `OP-####` | 05/09 | who looks after this home |
+| `statement` | where the data file is, last built, last sent, how it's delivered | 05/06 | the data file lives in `localDNS` |
+| `operator_interest` | yes/no | 06/09 | flips on when they tap "Connect in the Alliance" |
+
+## An operator
+
+| Fact | Looks like | Filled in by | Notes |
+| ---- | ---------- | ------------ | ----- |
+| `id` | `OP-####` | 09 | |
+| `name` / `email` / `phone` | text | 09 | |
+| `status` | `applicant`·`vetting`·`active`·`suspended` | 09 | |
+| `converted_from` | a `HH-####` or nothing | 09 | the customer they used to be (the dual-hat flywheel) |
+| `routes` | a list of `RT-####` | 09 | their book of homes, by neighborhood |
+| `dues` | their platform membership | 09 | amount still TBD (`MARKETING`) |
+| `vetting` | background check, bond, references, signed agreement | 09 | the gate to going active |
+| `tax` | W-9 on file, last-4 of their TIN, paid this year, 1099 filed | 10 | the year-end 1099 trail |
+
+## A route
+
+| Fact | Looks like | Filled in by | Notes |
+| ---- | ---------- | ------------ | ----- |
+| `id` | `RT-####` | 02 | |
+| `name` | text | 02 | e.g. the neighborhood or HOA |
+| `zips` | a list of ZIP codes | 02 | what a campaign targets |
+| `operator_id` | `OP-####` or nothing | 02/09 | empty = nobody's covering it yet (go recruit) |
+| `home_count` | a number | (counted) | live customers on the route |
+| `target_density` | a number | 02 | `CHANGE_ME` (e.g. 8) — the "now it's profitable" line |
+| `status` | `candidate`·`building`·`live` | 02 | |
+
+---
+
+## The rules
+
+- **One entry per real thing.** No duplicate households, no operator's private "my homes" tab
+  ([LAUNCH-NOTES #11](../LAUNCH-NOTES.md#11-shadow-spreadsheet-becomes-a-second-source-of-truth)).
+- **Add it here first**, then to the form or tool that fills it in.
+- **Business facts here; network facts in `localDNS`.** The two meet only at the pointer to
+  the home's data file.
+- **No real personal info in git.** The samples are fake; live records stay in the CRM.

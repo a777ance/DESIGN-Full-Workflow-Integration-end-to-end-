@@ -1,60 +1,68 @@
-# Brand kit — single source of truth
+# Brand kit — the one place the look lives
 
-Every downstream surface (web, forms, comms) **links to this file**; it never hard-codes
-a value. A brand change is a one-file edit here plus a re-export from Figma. Values
-marked `CHANGE_ME` are decisions not yet locked — see [CLAUDE.md § 1](../CLAUDE.md#1-known-issues--open-decisions).
+Every surface (website, forms, emails, the phone greeting) points back to this file. Nobody
+hard-codes a color or re-uploads the logo somewhere else. Change the brand here, re-export
+from Figma, done. Anything marked `CHANGE_ME` is a decision we haven't locked yet — see
+[CLAUDE.md § 1](../CLAUDE.md#1-known-issues--open-decisions).
+
+> For *what to say* (the words, the pitch, the price talk), go to
+> [`the-pitch.md`](the-pitch.md). This file is the *look*.
 
 ---
 
-## Asset links (the binaries live in the asset host, not git)
+## Where the files live (binaries aren't in git)
 
 | Asset | Format | Link |
 | ----- | ------ | ---- |
-| Figma source | Figma | `CHANGE_ME` (Figma project URL — the master) |
+| Figma master | Figma | `CHANGE_ME` (project URL — the source everything exports from) |
 | Logo (primary) | SVG | `CHANGE_ME` |
-| Logo (mono / reversed) | SVG | `CHANGE_ME` |
+| Logo (one-color / reversed for dark backgrounds) | SVG | `CHANGE_ME` |
 | Favicon / app icon | PNG 512² | `CHANGE_ME` |
-| Intro video | MP4 | `CHANGE_ME` (≤60s; see brief in `slogans-and-jingles.md`) |
+| Intro video | MP4 | `CHANGE_ME` (≤60s; brief in `slogans-and-jingles.md`) |
 | Jingle | MP3/WAV | `CHANGE_ME` |
 | Press kit (zip of the above) | — | `CHANGE_ME` |
 
-## Color palette
+## Color
 
-| Role | Token | Hex | Use |
-| ---- | ----- | --- | --- |
-| Primary | `--brand` | `CHANGE_ME` | Logo, primary buttons, links |
-| Ink | `--ink` | `#1a1a1a` | Body text |
-| Paper | `--paper` | `#ffffff` | Backgrounds |
-| Quiet (good) | `--good` | `CHANGE_ME` (green) | "all clear" / positive sentiment — matches the Statement's compare-axis green |
-| Watch | `--watch` | `CHANGE_ME` (amber) | attention, never alarm-red unless a real incident |
+| Where it's used | Name | Hex | Notes |
+| --------------- | ---- | --- | ----- |
+| Logo, buttons, links | `--brand` | `CHANGE_ME` | the one brand color |
+| Body text | `--ink` | `#1a1a1a` | |
+| Backgrounds | `--paper` | `#ffffff` | |
+| "All clear / good" | `--good` | `CHANGE_ME` (green) | the calm green the statement uses for good news |
+| "Worth a look" | `--watch` | `CHANGE_ME` (amber) | attention — never alarm-red unless something's actually wrong |
 
-> Sentiment, not decoration: green means *good regardless of direction* (the rule the
-> Statement's "How You Compare" axis uses). Keep the palette aligned with the live
-> Statement CSS in `localDNS/docs/statements/tools/style.css` — that file owns the
-> Statement's own rendering; this kit keeps the *marketing* surfaces in step with it.
+> Color carries meaning, not decoration: green = good, amber = keep an eye on it, red = a
+> real problem (rare). Keep these in step with the live statement's palette so the postcard
+> and the statement feel like the same family.
 
-## Typography
+## Type
 
-| Role | Family | Notes |
-| ---- | ------ | ----- |
-| Headings | `CHANGE_ME` | Humanist sans; calm, not techy |
-| Body | `CHANGE_ME` | High legibility at small sizes (statements get printed) |
-| Mono | system mono | Only for figures/IDs, sparingly |
+| Where | Family | Notes |
+| ----- | ------ | ----- |
+| Headlines | `CHANGE_ME` | a warm, human sans — calm, not techy |
+| Body | `CHANGE_ME` | easy to read small (statements get printed and mailed) |
+| Numbers / IDs | system mono | only for figures and account numbers, used sparingly |
 
-## Logo usage
+## Logo do's and don'ts
 
-- Clear space: ≥ the height of the logo mark on all sides.
-- Minimum size: 24px tall digital / 0.4in print.
-- Don't: recolor outside the palette, add effects, stretch, or place on a busy photo.
+- Give it room: clear space all around equal to the height of the logo mark.
+- Don't go smaller than 24px tall on screen / 0.4in in print.
+- Don't recolor it outside the palette, add shadows, stretch it, or drop it on a busy photo.
 
 ## Voice & tone
 
-- **Pest control, not lawn care.** We sell the quiet, not the fear. Calm, specific,
-  reassuring.
-- **Your home, by name.** "*Your living-room TV*," "*your appliance was patched — Jose*."
-  Never generic IT-speak.
-- **Honest.** Never claim a number the data doesn't support (the kept-document rule).
-- **Plain.** A grandparent should understand every customer-facing sentence.
+Four rules. They're the whole brand.
 
-Canonical voice sample: the "Handled For You" log in the live client Statement
-(`localDNS/docs/statements/`).
+1. **Pest control, not lawn care.** We sell the quiet — the absence of trouble — not fear.
+   Calm and reassuring beats dramatic every time. Fear converts once and churns; calm keeps
+   people for years.
+2. **Your home, by name.** "*Your living-room TV.*" "*Your appliance was patched while you
+   slept — Jose.*" Never "the endpoint," never "the device fleet."
+3. **Honest.** We never print a number we can't stand behind. If we didn't measure it, it
+   doesn't go on the statement. (More in [CLAUDE.md § 1](../CLAUDE.md#1-known-issues--open-decisions).)
+4. **Plain.** A grandparent should understand every customer-facing sentence. The
+   plain-English swap table is in [`the-pitch.md`](the-pitch.md) — use it everywhere.
+
+The canonical voice sample is the "Handled For You" log on the live Statement
+(`localDNS/docs/statements/`). Read one before you write anything customer-facing.

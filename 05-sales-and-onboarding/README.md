@@ -1,12 +1,12 @@
 # 05 — Sales & onboarding
 
-**Lives in:** the CRM + a proposal / e-sign tool → handoff to the `localDNS` deploy.
-**Go-live / sync:** send the quote; on close, provision the stack and collect the setup
-fee (07).
+**Lives in:** the customer list + a proposal/e-sign tool → then the hand-off to set up the box.
+**Go-live:** send the quote; when they say yes, set up the box and collect the setup fee (07).
 
-Lead → customer. A consultative path — discovery consult, a *scoped* quote, e-sign, and
-the clean hand-off to provisioning, at which point `localDNS` deploys the stack on the
-household's t630.
+Where a lead becomes a customer. It's a consult, not a hard sell: you sit with someone like
+David, walk his house, show him a real statement, put a fair number on it, and — if it's a
+fit — get him set up. The whole thing should feel like hiring a good tradesperson, because
+that's what it is.
 
 ---
 
@@ -14,39 +14,41 @@ household's t630.
 
 | File | What it is |
 | ---- | ---------- |
-| [`quote-template.md`](quote-template.md) | The scoped quote: setup fee + retainer, with default figures |
-| [`onboarding-checklist.md`](onboarding-checklist.md) | Close → provision → first Statement, as an owned checklist |
+| [`discovery-call.md`](discovery-call.md) | **The consult, start to finish** — how to open, what to ask, how to present the number, and how to handle the pushback |
+| [`quote-template.md`](quote-template.md) | The quote — David Allum's worked end-to-end, plus a blank to copy |
+| [`onboarding-checklist.md`](onboarding-checklist.md) | The steps from "yes" to their first statement, in order |
 
 ## The path
 
 ```
-warm consult (04 logged) ─► scope the home ─► quote (setup fee + retainer)
-        ─► e-sign ─► CLOSE ─► collect setup fee (07) ─► PROVISION (localDNS) ─► first Statement (06)
+warm consult (04 wrote it up) ─► look at the home ─► quote ($175 setup + $32/mo)
+        ─► they sign ─► collect the setup fee (07) ─► set up the box ─► first statement (06)
 ```
 
-## Why a setup fee that's never discounted
+## Why the setup fee never gets discounted
 
-The setup fee (~$150–200, a `MARKETING` hypothesis, `CHANGE_ME`) is deliberately **not**
-discounted — it's about psychology, not margin. It covers real install labor and sets
-the expectation that this is a professional service, not a free app. A prospect who
-balks at the setup fee will balk at the retainer; better to learn that before the truck
-rolls. The quote is **scoped** (it names the homes/devices) so the retainer is anchored
-to delivered value, not a round number. Full rationale in
-[`../workflow-context.md`](../workflow-context.md#stage-05-sales--why-a-setup-fee-that-is-never-discounted).
+The $175 setup fee (a working number — see `MARKETING`) is **never** discounted, and that's
+about psychology, not margin. It pays for a real visit and a real install, and it sets the
+tone that this is a professional service, not a free app. Someone who balks at the setup fee
+is someone who'll balk at the monthly too — better to find that out before you drive out
+there. And the quote is **specific to their house** (it names their devices and their worry),
+so the monthly is anchored to real value, not a number you pulled from the air. Fuller reasoning
+in [`../workflow-context.md`](../workflow-context.md#stage-05-sales--why-a-setup-fee-that-is-never-discounted).
 
-## The provisioning hand-off (this repo → localDNS)
+## Setting up the box (the hand-off to localDNS)
 
-The riskiest seam in the funnel is a closed deal nobody provisions — a refund waiting to
-happen ([LAUNCH-NOTES #7](../LAUNCH-NOTES.md#7-close--provision-hand-off-is-undocumented)).
-So "provision the t630" is an explicit, owned step on the onboarding checklist, and the
-actual deploy follows **`localDNS`'s setup guide** — this repo does not duplicate it, it
-points at the one that does. On completion, the household's home-JSON exists in
-`localDNS` and the CRM record is stamped `status = customer`.
+The riskiest moment in the whole funnel is a deal that closes and then nobody sets up — that's
+a refund waiting to happen ([LAUNCH-NOTES #7](../LAUNCH-NOTES.md#7-close--provision-hand-off-is-undocumented)).
+So "set up the box" is a real, checked-off step on the [onboarding checklist](onboarding-checklist.md).
+The actual install — putting the appliance on their network and confirming it's working —
+follows **`localDNS`'s install guide**; we don't repeat those steps here, we point at the guide
+that has them. When it's done, the customer's data file exists in `localDNS` and their record
+is stamped "customer."
 
 ## Hand-offs
 
-- **← 03/04:** a booked, warm, logged consult is the input.
-- **→ 07 payments:** on close, create the plan and collect the setup fee.
-- **→ localDNS:** provision the stack per its setup guide; create the home-JSON.
-- **→ 06 statements:** a provisioned, paid customer is eligible for the monthly run.
-- **→ 08 CRM:** writes the quote, signature, and `status` transitions onto the record.
+- **← 03/04:** a booked, warmed-up, written-up consult is the input.
+- **→ 07 payments:** on "yes," set up the plan and collect the setup fee.
+- **→ localDNS:** install the box per its guide; create the customer's data file.
+- **→ 06 statements:** a set-up, paid-up customer is in line for the next monthly run.
+- **→ 08 customer list:** writes the quote, the signature, and the "lead → customer" flip.

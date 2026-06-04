@@ -1,52 +1,65 @@
-# Call scripts & logging discipline
+# What to say on the phone
 
-Scripts exist so the human touch is **consistent, not improvised** — and so the calm
-voice (00) survives a busy day. They are scaffolding, not a cage: stay human, stay calm,
-never alarmist. Every call ends with a write to the CRM (`call_log[]`).
+These scripts exist so the calm voice survives a busy Tuesday — they're a handrail, not a
+cage. Stay human, stay calm, never alarmist. Every call ends the same way: a couple of lines
+jotted onto the customer's record.
 
 ---
 
-## Inbound (someone found us and called)
+## Someone found us and called (inbound)
 
-1. **Warm open:** "Thanks for calling A777ance, this is `NAME`." Match the calm voice.
-2. **Listen first:** let them describe the worry in their words. Don't pitch over it.
-3. **Reframe to the category:** "What we do is a bit like pest control for your home
-   network — we keep the bad stuff out quietly, and every month we send you a simple
-   statement that shows what we handled."
-4. **One next step:** book the consult in Setmore (03), or confirm an existing one.
-5. **Set expectations:** mention the one-time setup fee + the monthly retainer plainly
-   (defaults from `MARKETING`, `CHANGE_ME`) — never surprise them at the quote (05).
-6. **Log it.**
+1. **Warm open.** "Thanks for calling A777ance, this is [name]." Match the calm voice.
+2. **Let them talk first.** Let them describe the worry in their own words — "the grandkids
+   are always on their tablets here and I don't know what they're getting into." Don't pitch
+   over the top of them.
+3. **Name the category.** "What we do is a bit like pest control, but for your home internet
+   — we quietly keep the bad stuff out, and every month we send you a simple statement that
+   shows what we handled."
+4. **One next step.** Book the free look in Setmore (03), or confirm the one they already have.
+5. **Money, said plainly.** Mention the one-time $175 setup and the $32/month up front — never
+   spring it on them at the quote (05). "There's no contract; you can cancel anytime."
+6. **Write it down.**
 
-## Booking-confirmation call/text
+## A few questions worth asking (warming up the consult)
 
-- Confirm date/time, address, and who's arriving (named — the trust touch).
-- "You'll get a reminder the day before." (SMS, stage 04.)
-- Log it.
+You don't need many. These tee up a personal quote later:
 
-## Voicemail greeting (brand voice)
+- "Roughly how many things are on your Wi-Fi these days?"
+- "Anybody in the house you especially worry about online — kids, an older parent?"
+- "Anything been bugging you — slow video calls, a device acting weird?"
+- "Who's your internet company?"
 
-> "You've reached A777ance — pest control for your home network. Leave your name, number,
-> and your neighborhood, and we'll call you back within `CHANGE_ME` hours. If you'd rather
-> just pick a time, the link's on our site."
+## Confirming the visit (call or text)
 
-## Objection quick-reference
+- Confirm the day, the time, the address, and **who's coming, by name** — that's the trust
+  touch. "Jose will be by Thursday around 4."
+- "You'll get a text the day before."
+- Write it down.
 
-| They say | Calm reply (don't over-promise) |
-| -------- | ------------------------------- |
-| "Isn't this what my ISP's $10 security does?" | "Theirs does a little; ours does meaningfully more and you actually *see* it each month — but we're a person you can call, not a checkbox." |
-| "Why the setup fee?" | "It covers the real install on your equipment. We don't discount it because it's real work — but there's no contract trapping you after." |
-| "Can't I just buy NextDNS?" | "You could get some of the tech for ~$30/yr. What you can't buy is a vetted local person who patched your TV while you slept. That's the guild." |
+## Voicemail greeting
 
-## Logging discipline (the non-negotiable)
+> "You've reached A777ance — pest control for your home internet. Leave your name, number,
+> and your neighborhood, and we'll call you back within `CHANGE_ME` hours. Or if it's easier,
+> there's a link on our site to just pick a time."
 
-After **every** call, append to the household's `call_log[]`:
+## When they push back (keep it calm, don't over-promise)
 
-```json
-{ "ts": "2026-06-03T16:20:00Z", "dir": "inbound", "by": "NAME",
-  "summary": "Worried about kids' tablets; booked consult Thu PM.",
-  "next": "Confirm address day-before via SMS" }
-```
+| They say | What you say |
+| -------- | ------------ |
+| "Isn't this what my internet company's $10 security does?" | "Theirs does a little. Ours does a lot more, and you actually *see* it every month — but mostly, we're a person you can call, not a checkbox on a bill." |
+| "Why is there a setup fee?" | "It covers the real visit and install on your equipment. We don't discount it because it's real work — but there's no contract trapping you afterward." |
+| "Can't I just buy one of those apps?" | "You could get some of the tech for about $30 a year. What you can't buy is a vetted local person who patched your TV while you slept and put their name on it. That's the part we sell." |
+| "I need to think about it." | "Totally fair. Want me to just hold a free-look slot? If the number doesn't feel worth it after, you cancel, no hard feelings." |
 
-A call that isn't logged didn't happen, as far as the consult (05) is concerned —
-[LAUNCH-NOTES #6](../LAUNCH-NOTES.md#6-call-not-logged-to-the-crm--consult-starts-cold).
+## The one rule: write down every call
+
+After **every** call, add a couple of lines to that household's record — who you talked to,
+what they care about, what's next:
+
+> *June 3, inbound, talked to Margaret. Worried about the grandkids' tablets when they visit.
+> Booked a free look for Thursday PM. Next: text her the address reminder Wednesday.*
+
+A call nobody wrote down didn't happen, as far as the consult is concerned
+([LAUNCH-NOTES #6](../LAUNCH-NOTES.md#6-call-not-logged-to-the-crm--consult-starts-cold)). On the
+record this is the `call_log` — the field's the same, the point is just: don't lose what they
+told you.

@@ -1,14 +1,15 @@
 # 00 — Brand & identity
 
-**Lives in:** Figma (source of truth) + an asset host / press-kit folder.
-**Go-live / sync:** export assets; update the brand-kit links every other stage inherits.
+**Lives in:** Figma (the master) + a folder of exported logo/audio/video files.
+**Go-live:** export the assets, update the links in `brand-kit.md`, and every other stage
+picks up the change.
 
-The foundation every downstream surface inherits. Brand is **stage 00** because a trust
-business is judged on consistency: if the logo, voice, and color drift between the
-website (01), the intake form (03), and the Statement itself (06), the household reads
-"amateur" — fatal for a service you let inside the home network. So brand is defined
-**once** and *linked*, never re-pasted. This is the `tuning.conf` rule from `localDNS`
-applied to identity: one place a value lives, so it cannot diverge.
+A customer should see the same calm logo, the same plain voice, and the same blue on the
+postcard, the website, the booking page, and the monthly statement — and never once
+wonder if they're dealing with the same outfit. That consistency *is* the trust pitch. A
+service you let onto your home Wi-Fi can't look like it was thrown together. So the brand
+is settled **once**, here, and every other surface points back to it instead of inventing
+its own.
 
 ---
 
@@ -16,35 +17,39 @@ applied to identity: one place a value lives, so it cannot diverge.
 
 | File | What it is |
 | ---- | ---------- |
-| [`brand-kit.md`](brand-kit.md) | The single source of truth: logo, palette, type, voice, asset links |
-| [`slogans-and-jingles.md`](slogans-and-jingles.md) | Approved taglines + the jingle/intro-video brief |
+| [`the-pitch.md`](the-pitch.md) | **What to actually say** — the one-liner, the elevator, the 2-minute open, the price talk. The most-used page in the repo. |
+| [`brand-kit.md`](brand-kit.md) | The look: logo, color, type, voice — and where the asset files live |
+| [`slogans-and-jingles.md`](slogans-and-jingles.md) | The taglines we've approved + the jingle and intro-video briefs |
 
-The binaries themselves (logo SVG/PNG, the intro video, the jingle audio) are **not**
-committed here — they live in the asset host and are linked from `brand-kit.md`, so this
-repo stays text and the heavy files have one home. (`.gitignore` excludes `*.psd`,
-`*.ai`, `*.mp4`, etc. for this reason.)
+The actual logo files, the jingle, and the video are **not** in this repo — they're big
+binaries that live in the asset folder and are linked from `brand-kit.md`. (That's why
+`.gitignore` skips `*.psd`, `*.mp4`, and friends.)
 
-## The deliverables (from the original DESIGN brief)
+## The voice, in one breath
 
-Intro video · logo · slogans · jingle · the visual system (color/type) · the Figma
-source. Each maps to a section of `brand-kit.md` or a line in `slogans-and-jingles.md`.
+**Pest control, not lawn care.** We sell the quiet, not the fear — calm, specific, and
+plain enough that a grandparent gets every word. We talk about *your living-room TV* and
+*your kids' tablets*, never "endpoints." We put a real person's name on the work.
 
-## The voice, in one rule
+The gold-standard sample of this voice is the "Handled For You" log on the live customer
+Statement:
 
-Set by the category analogy — **pest control, not lawn care:** calm, specific, never
-alarmist. We sell *quiet*, not fear. The canonical sample of this voice is the
-Statement's "Handled For You" copy in `localDNS` ("*Cloudflare pushed a security update;
-your appliance was patched the same day — Jose*") — always *your home*, *your
-appliance*, attributed by name. When in doubt about tone, match that line.
+> *"Cloudflare pushed a security update to its encrypted-DNS service. Your appliance was
+> updated the same day — your private lookups kept flowing, a little faster than before."*
+> — Patched on your t630 by Jose
 
-## Who inherits this
+When you're unsure how anything should sound, go read a real one and match it.
+
+## Who picks this up
 
 | Stage | Inherits |
 | ----- | -------- |
-| 01 web-presence | Logo, palette, type on Squarespace / WordPress / GBP |
-| 03 funnels | Form styling + confirmation-page voice |
-| 04 phone & comms | Greeting + voicemail script tone |
-| 06 statements | Visual alignment with the `localDNS` Statement (which owns its own CSS) |
+| 01 web presence | The logo, colors, and type on the website and Google listing |
+| 02 demand gen | The voice in every ad, post, and email |
+| 03 funnels | The look and tone of the booking form + thank-you page |
+| 04 phone | The greeting and voicemail script |
+| 06 statements | Visual family resemblance to the live Statement (which sets its own styling) |
 
-**Invariant:** a downstream surface links to the brand kit; it never hard-codes a hex
-value or re-uploads a logo. A brand change is a one-file edit here plus a re-export.
+**The one rule:** a downstream surface *links* to the brand kit — it never re-types a hex
+code or re-uploads a logo. Change the brand here, once, and re-export. That's the whole
+job of stage 00.

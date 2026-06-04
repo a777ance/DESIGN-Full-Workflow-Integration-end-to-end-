@@ -1,9 +1,9 @@
 {
-  "_comment": "Fictional sample roster. Mirrors the localDNS statement archetypes (prime-time, home-office, connected-family) so the two repos line up. Never commit real PII. CHANGE_ME = placeholder.",
+  "_comment": "Fictional sample roster — all names and addresses are made up. Mirrors the localDNS statement archetypes so the two repos line up: David Allum = prime-time (statement A77-001), Okonkwo = home-office, Delgado = connected-family. Jose Marín is the operator, himself a converted customer (the dual-hat flywheel). Never commit real PII. CHANGE_ME = placeholder.",
   "routes": [
     {
       "id": "RT-0001",
-      "name": "Sampleton — Maple HOA (fictional)",
+      "name": "Maple Grove — Maple HOA",
       "zips": ["78701", "78702"],
       "operator_id": "OP-0001",
       "home_count": 4,
@@ -12,7 +12,7 @@
     },
     {
       "id": "RT-0002",
-      "name": "Sampleton — Outlying (fictional)",
+      "name": "Maple Grove — Riverside",
       "zips": ["78745"],
       "operator_id": null,
       "home_count": 0,
@@ -23,7 +23,7 @@
   "operators": [
     {
       "id": "OP-0001",
-      "name": "Jose (fictional)",
+      "name": "Jose Marín",
       "email": "jose@example.com",
       "phone": "+1-555-0142",
       "status": "active",
@@ -51,11 +51,11 @@
       "created_ts": "2026-04-01T00:00:00Z",
       "status": "customer",
       "route_id": "RT-0001",
-      "name": "Prime-Time Household (fictional)",
-      "email": "prime-time@example.com",
+      "name": "David Allum",
+      "email": "david@example.com",
       "phone": "+1-555-0100",
-      "address": { "street": "100 Example St", "city": "Sampleton", "state": "TX", "zip": "78701" },
-      "home_profile": { "devices_est": 14, "concerns": ["kids' safety", "streaming reliability"], "isp": "Spectrum" },
+      "address": { "street": "100 Example St", "city": "Maple Grove", "state": "TX", "zip": "78701" },
+      "home_profile": { "devices_est": 12, "concerns": ["privacy", "streaming reliability"], "isp": "Spectrum" },
       "source": "referral",
       "referred_by": "HH-0007",
       "consent": true,
@@ -71,11 +71,11 @@
       "created_ts": "2026-04-10T00:00:00Z",
       "status": "customer",
       "route_id": "RT-0001",
-      "name": "Home-Office Household (fictional)",
-      "email": "home-office@example.com",
+      "name": "Okonkwo Household",
+      "email": "okonkwo@example.com",
       "phone": "+1-555-0101",
-      "address": { "street": "102 Example St", "city": "Sampleton", "state": "TX", "zip": "78701" },
-      "home_profile": { "devices_est": 9, "concerns": ["privacy", "video-conf reliability", "upload sensitivity"], "isp": "Spectrum" },
+      "address": { "street": "102 Example St", "city": "Maple Grove", "state": "TX", "zip": "78701" },
+      "home_profile": { "devices_est": 9, "concerns": ["privacy", "video-call reliability", "upload sensitivity"], "isp": "Spectrum" },
       "source": "content",
       "referred_by": null,
       "consent": true,
@@ -91,10 +91,10 @@
       "created_ts": "2026-02-20T00:00:00Z",
       "status": "customer",
       "route_id": "RT-0001",
-      "name": "Connected-Family Household (fictional)",
-      "email": "connected-family@example.com",
+      "name": "Delgado Household",
+      "email": "delgado@example.com",
       "phone": "+1-555-0102",
-      "address": { "street": "104 Example St", "city": "Sampleton", "state": "TX", "zip": "78702" },
+      "address": { "street": "104 Example St", "city": "Maple Grove", "state": "TX", "zip": "78702" },
       "home_profile": { "devices_est": 18, "concerns": ["kids' safety", "device sprawl"], "isp": "Spectrum" },
       "source": "gbp",
       "referred_by": null,
@@ -111,10 +111,10 @@
       "created_ts": "2026-01-05T00:00:00Z",
       "status": "customer",
       "route_id": "RT-0001",
-      "name": "Referrer Household (fictional)",
-      "email": "referrer@example.com",
+      "name": "Marín Household",
+      "email": "marin@example.com",
       "phone": "+1-555-0107",
-      "address": { "street": "120 Example St", "city": "Sampleton", "state": "TX", "zip": "78701" },
+      "address": { "street": "120 Example St", "city": "Maple Grove", "state": "TX", "zip": "78701" },
       "home_profile": { "devices_est": 11, "concerns": ["privacy"], "isp": "Spectrum" },
       "source": "ad",
       "referred_by": null,
@@ -125,7 +125,7 @@
       "billing": { "processor_customer_id": "CHANGE_ME", "plan": "retainer-32", "status": "active", "setup_paid_ts": "2026-02-15", "next_charge": "2026-07-01", "last_payment_ts": "2026-06-01" },
       "statement": { "home_json_path": "CHANGE_ME", "last_generated": "2026-06-01", "last_delivered": "2026-06-02", "delivery_channels": ["email"] },
       "operator_interest": false,
-      "_note": "Converted to operator OP-0001 (converted_from). Demonstrates the dual-hat flywheel."
+      "_note": "This is Jose's own home. He referred David Allum (HH-0001) and later became operator OP-0001 (converted_from). Demonstrates the dual-hat flywheel."
     }
   ]
 }
