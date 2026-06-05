@@ -5,6 +5,40 @@ New decisions go at the top — newest first, reverse-chronological per house st
 
 ---
 
+## FIN-005 — LLM spend: pay-per-token OpEx, zero capex at pilot (ADR-008)
+
+**Date:** 2026-06-05
+**Status:** Accepted (Phase 1 active) — cross-ref: CTO ADR-008
+
+**Decision:** LLM inference is funded as **pay-per-token OpEx with $0 capital outlay**. No GPU
+capex at pilot scale. Booked under the existing **AI Tooling** OpEx line (FIN-002 chart of
+accounts). The hard product constraint — **no vendor training on our session data** — is met by
+contract (no-training + zero-retention DPA), which carries **no price premium** over standard API
+usage, so the no-training commitment costs nothing extra.
+
+**Why:** Preserves runway — no capital is committed to depreciating hardware before revenue is
+validated (cf. pricing not yet validated, FIN-004). Per-token cost on capable open models is
+low (DeepSeek / Qwen are priced in pennies per typical call); frontier APIs cost more per token
+but still avoid all capex. This is the *liquidity-before-app* posture applied to compute: rent the
+capability, own nothing until volume justifies it.
+
+**Capex review triggers (when to escalate spend):**
+1. **Rent before buy** — if sustained monthly token spend clearly exceeds a rented-GPU baseline,
+   move the workload to a rented/single-tenant GPU (still OpEx, still zero capital) per ADR-008
+   Phase 2.
+2. **Buy only on custody + economics** — owned GPUs (capex) only when sustained spend beats
+   amortized hardware *and* a customer/regulation requires physical data custody (ADR-008 Phase 3).
+   That is a deliberate capital decision requiring a new FIN entry.
+
+**Validation / watch:** Track monthly LLM token spend as an actuals line against the AI Tooling
+budget; the rent-vs-buy math is only meaningful once there is real usage volume.
+
+**What this rules out:** GPU purchase at pilot scale. Budgeting LLM compute as capex. Modeling
+self-hosted-inference savings before token volume exists to justify it. Any tier or vendor that
+trains on our inputs, regardless of price.
+
+---
+
 ## FIN-004 — Pricing: $175 setup + $35/mo standard (ADR-007)
 
 **Date:** 2026-06-04

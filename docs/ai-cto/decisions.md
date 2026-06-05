@@ -5,6 +5,55 @@ New decisions go at the top — newest first, reverse-chronological per house st
 
 ---
 
+## ADR-008 — LLM sourcing: no-training API now; self-host only on a residency trigger
+
+**Date:** 2026-06-05
+**Status:** Accepted (Phase 1 active; Phase 2/3 trigger-gated)
+**Cross-ref:** FIN-005 (financial mirror)
+
+**Decision:** Any LLM workload that touches customer or session data runs through a
+**commercial inference API under a contractual no-training + zero-data-retention DPA**. No
+GPU purchase at pilot scale. The phased path:
+
+- **Phase 1 — now (no capital):** A pay-per-token API whose DPA states it does **not** train on
+  our data, with zero-retention enabled explicitly (not relied on as a default). Either a
+  serverless open-weight host (Together / Fireworks / DeepInfra running DeepSeek V3.x or Qwen3)
+  or a frontier API (Claude / OpenAI) — all of which contractually do not train on API/business-tier
+  data. PII stripped before egress where feasible; prompt logs kept on our side only.
+- **Phase 2 — trigger-gated:** A **rented-GPU or single-tenant/VPC** deployment of a
+  **permissive open-weight model** (MIT: DeepSeek; Apache 2.0: Qwen / gpt-oss / Gemma). Triggered
+  by *either* a customer/regulation demanding true data residency *or* monthly token spend
+  clearly exceeding a GPU rental. Still no capital — rent by the hour (Runpod / Lambda / Vast).
+- **Phase 3 — capex, deferred:** Owned GPUs only on sustained spend that beats amortized hardware
+  **and** a physical-custody requirement. A CFO/capex decision (see FIN-005), not a pilot move.
+
+**Why:** The commitment is **no training on our session data — non-negotiable**. That is a
+*contractual* guarantee the major APIs already provide and which is met at **$0 capital** — it
+does **not** require self-hosting. The trap to avoid: conflating "no training" (met by API + DPA)
+with "data never leaves our infra" (a stronger, zero-trust *residency* bar that *does* require
+self-hosting). With no capital and limited hardware, self-hosting forces a weaker small model
+and ops burden for no gain against the no-training bar. The t630 homelab box (AMD Carrizo iGPU,
+16 GB RAM) cannot serve useful LLM inference, so Phase 2 lives on rented GPU, never existing
+hardware. Aligns with the house philosophy: *liquidity before app, trust before tech* — spend on
+infrastructure only when a customer pulls it.
+
+**Context (the fact-check that prompted this):** A circulated self-hosting comparison claimed
+"only DeepSeek and Grok" offer viable open weights and that OpenAI/Google have none. That is
+wrong as of mid-2026: **only Anthropic is fully closed**; OpenAI ships gpt-oss (Apache 2.0) and
+Google ships Gemma (Apache 2.0), and the open frontier is a *cluster* — DeepSeek, Qwen, Kimi,
+GLM, MiniMax — not DeepSeek alone. None of that changes the decision, but it widens the Phase-2
+model menu and confirms permissive (MIT/Apache) weights are available if we ever self-host.
+
+**Threshold to revisit:** A signed customer or regulation requiring on-prem/in-tenant residency;
+or sustained monthly token spend exceeding a rented-GPU baseline. Either flips us to Phase 2.
+
+**What this rules out:** Buying GPUs at pilot scale. Treating self-hosting as *required* to honor
+the no-training commitment. Sending customer/session data to any free or consumer tier that trains
+on inputs by default. Relying on a vendor's no-training default without the DPA + zero-retention
+in writing.
+
+---
+
 ## ADR-007 — Customer pricing: $175 setup + $35/mo (market-validated band)
 
 **Date:** 2026-06-04
