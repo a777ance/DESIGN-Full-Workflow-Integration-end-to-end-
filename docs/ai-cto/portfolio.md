@@ -2,7 +2,7 @@
 
 NARF's working memory for the full portfolio. Read at session start; update at session end with new decisions, status changes, or priority shifts.
 
-**Last updated:** 2026-06-04 (first customer onboarded — `customers` repo + ADR-006; customer pricing set — ADR-007)
+**Last updated:** 2026-06-05 (hub reconciled to live state — see Recent Decisions: `customers` now private-on-GitHub; DESIGN path-integrity blocker resolved; TD-11 doc-checker is in CI)
 
 ---
 
@@ -26,7 +26,7 @@ NARF's working memory for the full portfolio. Read at session start; update at s
 | `azure-lab` | Azure infrastructure (stub, scope undefined) | Private |
 | `customers` | Real customer data: live roster, per-home statement data + rendered statements, founder personal workspace | **Private** |
 
-All repos develop on branch `claude/ai-cto-architecture-MZ2NF`.
+All repos push to `main`, no branching (founder's standing instruction, 2026-06-05).
 
 ---
 
@@ -58,26 +58,29 @@ All repos develop on branch `claude/ai-cto-architecture-MZ2NF`.
 | ---- | ------ | --------------------- | ---------- |
 | `localDNS` | Active | Statements PWA (#9); nftables layer shipped; generator renders to a **private** dir (`--data-dir/--out-dir`) and **self-scopes to honest sections** (omit-empty, `8dcb7fe`) | **Deploy nftables to t630** (SSH 192.168.1.118); first real `stats.json` not yet collected |
 | `MARKETING` | Stable | Business model + roadmap drafted | Open decisions: dues, pricing validation, vetting standard |
-| `DESIGN` | Active (path integrity issue) | Workflow overhauled, doc checker added | Stage 11 automations not wired; **hub files not at documented paths — see blocker** |
+| `DESIGN` | Active | Workflow overhauled; doc checker added + wired into CI (`check-docs.yml`) | Stage 11 automations not wired (TD-06) |
 | `claude-code-homelab` | Stable | Chronikomicon lessons added | — |
 | `azure-lab` | Stub | Initial commit only | Scope not defined |
-| `customers` | New (local only) | Repo built + committed locally: roster, HH-0001 (Dave) statement pipeline, personal OS | **Not yet on GitHub** — integration can't create repos (403); founder must create the private remote, then push |
+| `customers` | Active (private on GitHub) | Repo built + pushed: roster, HH-0001 (Dave) statement pipeline, personal OS | First real `stats.json` not yet collected (t630 access — see Blocker #1) |
 
 ---
 
-## Active Blockers (surfaced 2026-06-04)
+## Active Blockers
 
 1. **t630 access is the Phase-1 critical path.** Both top items (#1, #2) and the P2
    security items (TD-01, TD-02) require SSH/physical access to `192.168.1.118`.
    If founder access is intermittent, that is the true bottleneck — everything real
    in Phase 1 is downstream of it. Bundle the security cleanup into the same visit.
-2. **DESIGN hub files not found at documented paths.** This review could not read
-   `DESIGN-Full-Workflow-Integration-end-to-end-/README.md` or `.../docs/ai-cto/portfolio.md`
-   at the paths the spoke context files reference. This breaks the one-source-of-truth
-   premise (Stage 08 master list = business facts). **Next action:** verify the DESIGN
-   repo's actual layout and correct the path references in all spoke `context.md` files.
-3. **Client data file source is ambiguous.** Context says it comes from "Stage 05/08
-   in DESIGN," but the hub can't currently be located (see #2). Resolve #2 to unblock #2-priority.
+
+**Resolved in the 2026-06-05 reconcile** (numbers kept for reference):
+
+2. ~~**DESIGN hub files not found at documented paths.**~~ Verified false in the
+   co-located clone: the spoke `context.md` files reference `…/docs/ai-cto/portfolio.md`,
+   which resolves. The 2026-06-04 miss was an artifact of the repos not being checked out
+   side by side — no path edits were needed.
+3. ~~**Client data file source is ambiguous.**~~ Was premised on #2. With the hub located,
+   the data file flows as documented: business facts from Stage 05/08 (DESIGN), network
+   facts from the t630. The remaining dependency is t630 access (Blocker #1), not paths.
 
 ---
 
@@ -100,6 +103,7 @@ Resolve these before starting Phase 2. Each one has a downstream blocker listed.
 
 | Date | Decision | See |
 | ---- | -------- | --- |
+| 2026-06-05 | Hub reconciled to live state (triggered by the 2026-06-05 Codex cross-repo review, item #3): `customers` is private-on-GitHub (was "local only"); DESIGN path-integrity blocker (#2) verified resolved; TD-11 closed — `check-docs.py` runs in CI. | this reconcile |
 | 2026-06-04 | Customer pricing set vs. 2026 comparables: **$175 + $35/mo** standard (band $29–39, headroom to $39 on proven ROI); setup never discounted; founding cohort **$29/mo locked 12mo** (monthly concession, not a setup cut) | `decisions.md` ADR-007 |
 | 2026-06-04 | Real customer data → new private `customers` repo (one repo, per-household folders); `localDNS` generator renders privately via `--data-dir/--out-dir`; founder personal workspace under HH-0001 | `decisions.md` ADR-006 |
 | 2026-06-04 | Hub-and-spoke AI CTO: single agent, DESIGN as hub, per-repo context files in spoke repos | `decisions.md` ADR-001 |
