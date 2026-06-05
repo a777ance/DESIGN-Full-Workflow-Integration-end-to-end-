@@ -114,35 +114,35 @@ The statement is that proof.
 Each stage has its own README (the full detail) plus the concrete templates and scripts beside
 it. Summaries here; open the folder for the rest.
 
-- **[00 — Brand & identity](00-brand-identity/)** — the look, the voice, and **the words to
-  say** ([`the-pitch.md`](00-brand-identity/the-pitch.md)). Set once, inherited everywhere.
-- **[01 — Web presence](01-web-presence/)** — the website, the Google listing, and the live
-  statement gallery. One job: move a stranger to the booking form.
-- **[02 — Demand generation](02-demand-generation/)** — own "pest control for your internet,"
-  fill one block at a time, and run an email list with the [copy ready to
-  send](02-demand-generation/email-lists.md).
-- **[03 — Funnels & capture](03-funnels-and-capture/)** — the booking form that turns interest
-  into a real lead, with every question mapped to the list.
-- **[04 — Phone & comms](04-phone-and-comms/)** — a real person answers; here's [what to
-  say](04-phone-and-comms/call-scripts.md).
+- **[11 — Automations](11-automations/)** — the glue that carries a customer stage→stage so
+  nothing's ever retyped.
+
+- **[10 — Gig workers & compliance](10-gig-workers-compliance/)** — W-9, the agreement, the
+  1099, and the contractor-classification risk to confirm with a lawyer.
+- **[09 — Recruiting & the guild](09-recruiting-and-guild/)** — turn a happy customer into a
+  vetted operator; here's [what the job is](09-recruiting-and-guild/operator-day-one.md).
+- **[08 — Client list & CRM](08-client-list-and-crm/)** — the one master list every stage reads
+  and writes.
+- **[07 — Payments & receivables](07-payments-receivables/)** — the setup fee, the monthly, and
+  the rule that the statement only goes to people who've paid.
+- **[06 — Statements delivery](06-statements-delivery/)** — the center. We *deliver* the
+  statement (built in `localDNS`), we don't rebuild it; and we write the human notes that make
+  it personal.
 - **[05 — Sales & onboarding](05-sales-and-onboarding/)** — the [consult, start to
   finish](05-sales-and-onboarding/discovery-call.md), a [worked
   quote](05-sales-and-onboarding/quote-template.md), and the steps from "yes" to the first
   statement.
-- **[06 — Statements delivery](06-statements-delivery/)** — the center. We *deliver* the
-  statement (built in `localDNS`), we don't rebuild it; and we write the human notes that make
-  it personal.
-- **[07 — Payments & receivables](07-payments-receivables/)** — the setup fee, the monthly, and
-  the rule that the statement only goes to people who've paid.
-- **[08 — Client list & CRM](08-client-list-and-crm/)** — the one master list every stage reads
-  and writes.
-- **[09 — Recruiting & the guild](09-recruiting-and-guild/)** — turn a happy customer into a
-  vetted operator; here's [what the job is](09-recruiting-and-guild/operator-day-one.md).
-- **[10 — Gig workers & compliance](10-gig-workers-compliance/)** — W-9, the agreement, the
-  1099, and the contractor-classification risk to confirm with a lawyer.
-- **[11 — Automations](11-automations/)** — the glue that carries a customer stage→stage so
-  nothing's ever retyped.
-
+- **[04 — Phone & comms](04-phone-and-comms/)** — a real person answers; here's [what to
+  say](04-phone-and-comms/call-scripts.md).
+- **[03 — Funnels & capture](03-funnels-and-capture/)** — the booking form that turns interest
+  into a real lead, with every question mapped to the list.
+- **[02 — Demand generation](02-demand-generation/)** — own "pest control for your internet,"
+  fill one block at a time, and run an email list with the [copy ready to
+  send](02-demand-generation/email-lists.md).
+- **[01 — Web presence](01-web-presence/)** — the website, the Google listing, and the live
+  statement gallery. One job: move a stranger to the booking form.
+- **[00 — Brand & identity](00-brand-identity/)** — the look, the voice, and **the words to
+  say** ([`the-pitch.md`](00-brand-identity/the-pitch.md)). Set once, inherited everywhere.
 ## Follow one customer all the way through
 
 The same household — this time as the path the [verification walk](CLAUDE.md#2-verification) checks:

@@ -18,8 +18,30 @@ it. The plain-English swap table is in
 
 ---
 
+## House style: ordering & typography
+
+These conventions apply across **every** A777ance repo — current and future. (Adopted 2026-06-05.)
+
+- **Time-based content reads newest-first (reverse-chronological).** Logs, changelogs,
+  decision logs (ADR / FIN), known-issues and issue trackers, FAQs, metrics and review
+  logs, and "Handled For You" entries all lead with the most recent item. Apply this
+  within the time-based *section* even when the whole file isn't time-based.
+- **Alphabetical lists run Z → A** (descending).
+- **Walkthroughs: reverse the blocks, keep the steps.** In a step-by-step guide, present
+  the major sections/blocks in reverse order (last block first — it helps "block" the
+  work), but keep the numbered steps *within* each block in forward order so every
+  procedure stays followable. A walkthrough's table of contents mirrors the reversed
+  block order. **Never renumber** — step and stage numbers stay fixed, so the intended
+  execution order is always readable from the numbers.
+- **Font: Gill Sans MT everywhere.** Every surface — customer-facing or internal — uses
+  Gill Sans MT. Web/CSS stack:
+  `'Gill Sans MT', 'Gill Sans', Calibri, 'Trebuchet MS', sans-serif`.
+
+---
+
 ## Contents
 
+- [House style: ordering & typography](#house-style-ordering--typography)
 - [0. What this repo is](#0-what-this-repo-is)
 - [A. The funnel at a glance](#a-the-funnel-at-a-glance)
 - [B. Roles & money flow](#b-roles--money-flow)
@@ -178,14 +200,14 @@ that discipline: a Statement goes out for money only with numbers the box actual
 
 | Issue | What to do |
 | ----- | ---------- |
-| The "How You Compare" neighbor data | Still a placeholder — don't print made-up neighbor averages on a document people keep. Carried from `localDNS`/`MARKETING`. |
-| A by-category gigabyte breakdown | The measuring layer is scaffolded in `localDNS`, not stood up yet — keep statements to the figures we *do* measure until it's real. |
-| Member dues amount + what they include | Working ballpark ~$50/mo flat (a price test, not final); what it *unlocks* is still open in `MARKETING`. |
-| Pricing | $175 setup + $35/mo — **market-validated band $29–39/mo** (ADR-007 / `MARKETING`); setup never discounted; founding cohort (first ~5) gets **$29/mo locked 12mo**, not a setup cut. *Validation* = first cohort renews at price. |
-| The vetting standard | "Guild-certified" isn't defined concretely yet — `09-recruiting-and-guild/vetting-checklist.md` is a first draft, not a legal standard. |
-| Contractor vs. employee | `10-gig-workers-compliance/` documents the 1099 path; confirm the classification with a lawyer before scaling — misclassification is the real risk. |
-| Secrets & personal info | Every key, password, and real record is a `CHANGE_ME`/`.env` placeholder here. Don't commit the real thing. |
 | Don't build the app to fake liquidity | The customer/operator toggle app is **tech, not moat** — don't build it to manufacture demand. Phase gates live in `MARKETING`. |
+| Secrets & personal info | Every key, password, and real record is a `CHANGE_ME`/`.env` placeholder here. Don't commit the real thing. |
+| Contractor vs. employee | `10-gig-workers-compliance/` documents the 1099 path; confirm the classification with a lawyer before scaling — misclassification is the real risk. |
+| The vetting standard | "Guild-certified" isn't defined concretely yet — `09-recruiting-and-guild/vetting-checklist.md` is a first draft, not a legal standard. |
+| Pricing | $175 setup + $35/mo — **market-validated band $29–39/mo** (ADR-007 / `MARKETING`); setup never discounted; founding cohort (first ~5) gets **$29/mo locked 12mo**, not a setup cut. *Validation* = first cohort renews at price. |
+| Member dues amount + what they include | Working ballpark ~$50/mo flat (a price test, not final); what it *unlocks* is still open in `MARKETING`. |
+| A by-category gigabyte breakdown | The measuring layer is scaffolded in `localDNS`, not stood up yet — keep statements to the figures we *do* measure until it's real. |
+| The "How You Compare" neighbor data | Still a placeholder — don't print made-up neighbor averages on a document people keep. Carried from `localDNS`/`MARKETING`. |
 
 ## 2. Verification
 

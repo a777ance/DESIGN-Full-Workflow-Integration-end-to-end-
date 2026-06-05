@@ -1,37 +1,24 @@
 # Financial Decisions Log
 
 FIN-ADR style. Each decision records what was chosen, why, and what it explicitly rules out.
-New decisions go at the bottom. Do not edit past decisions — add a superseding entry if anything changes.
+New decisions go at the top — newest first, reverse-chronological per house style. Do not edit past decisions — add a superseding entry if anything changes.
 
 ---
 
-## FIN-001 — Member dues: $50/mo flat
+## FIN-004 — Pricing: $175 setup + $35/mo standard (ADR-007)
 
 **Date:** 2026-06-04
-**Status:** Accepted (working number — revisit once real operator economics exist)
+**Status:** Set (cross-ref: MARKETING ADR-007) — **not yet validated by renewals**
 
-**Decision:** Operator/member dues to the platform are **$50/mo flat**. Recorded in `MARKETING/README.md`. Cross-referenced as ADR-005 in the CTO decisions log.
+**Decision:** $175 one-time setup + $35/mo standard subscription. Price band $29–39/mo.
+Founding cohort (first ~5 customers): $29/mo locked for 12 months.
 
-**Why:** Stage 09 recruiting and the operator pitch were blocked on a concrete number. $50 sits in the middle of the $40–60/mo range that covers platform tooling, match priority, and brand while leaving operators a viable margin at even 2 homes ($35 × 2 = $70 > $50 dues).
+**Why:** Anchored against ISP "advanced security" (~$10/mo, far less capability). $35/mo is defensible and covers tooling with margin. The setup fee covers real install labor and anchors the relationship — never discount it. Founding rate ($29/mo) creates urgency without cutting the setup fee.
 
-**What's still open:** Exactly what the dues unlock — tooling tier access, match priority, bonding/background-check coverage. Revisit once real operator supply and per-operator unit economics exist.
+**Validation required:** First cohort renews at $29/mo (founding) or $35/mo (standard) after 3+ months. Until then, all revenue projections are hypotheses.
 
-**What this rules out:** Per-job platform rake (the model is subscriptions, not a cut of every job). Treating $50 as permanent before it is tested with a real operator.
+**What this rules out:** Discounting the setup fee. Treating any projection as validated before the first cohort renews. Adjusting the standard rate without a new FIN decision.
 
----
-
-## FIN-002 — Accounting system: QuickBooks (not yet connected)
-
-**Date:** 2026-06-04
-**Status:** Decided; not yet implemented
-
-**Decision:** QuickBooks Online is the accounting system of record. Set it up before the first customer payment clears. Chart of accounts: Customer Subscriptions, Setup Fees, Operator Dues (revenue); Statement Production, Operator Payments (COGS); AI Tooling, Dev Tooling, Infrastructure, Compliance, Legal (OpEx).
-
-**Why:** Need a real general ledger before revenue starts. QuickBooks has MCP integration available in Claude Code sessions for read/write access. Setting it up later (retrofitting) is always harder.
-
-**What this rules out:** Spreadsheet-only accounting at any revenue level. Setting it up "after the first few customers" — that's how you lose track of deductible expenses.
-
-**Next action:** Connect QuickBooks Online account; configure chart of accounts; wire Stripe → QuickBooks sync.
 
 ---
 
@@ -54,16 +41,30 @@ New decisions go at the bottom. Do not edit past decisions — add a superseding
 
 ---
 
-## FIN-004 — Pricing: $175 setup + $35/mo standard (ADR-007)
+## FIN-002 — Accounting system: QuickBooks (not yet connected)
 
 **Date:** 2026-06-04
-**Status:** Set (cross-ref: MARKETING ADR-007) — **not yet validated by renewals**
+**Status:** Decided; not yet implemented
 
-**Decision:** $175 one-time setup + $35/mo standard subscription. Price band $29–39/mo.
-Founding cohort (first ~5 customers): $29/mo locked for 12 months.
+**Decision:** QuickBooks Online is the accounting system of record. Set it up before the first customer payment clears. Chart of accounts: Customer Subscriptions, Setup Fees, Operator Dues (revenue); Statement Production, Operator Payments (COGS); AI Tooling, Dev Tooling, Infrastructure, Compliance, Legal (OpEx).
 
-**Why:** Anchored against ISP "advanced security" (~$10/mo, far less capability). $35/mo is defensible and covers tooling with margin. The setup fee covers real install labor and anchors the relationship — never discount it. Founding rate ($29/mo) creates urgency without cutting the setup fee.
+**Why:** Need a real general ledger before revenue starts. QuickBooks has MCP integration available in Claude Code sessions for read/write access. Setting it up later (retrofitting) is always harder.
 
-**Validation required:** First cohort renews at $29/mo (founding) or $35/mo (standard) after 3+ months. Until then, all revenue projections are hypotheses.
+**What this rules out:** Spreadsheet-only accounting at any revenue level. Setting it up "after the first few customers" — that's how you lose track of deductible expenses.
 
-**What this rules out:** Discounting the setup fee. Treating any projection as validated before the first cohort renews. Adjusting the standard rate without a new FIN decision.
+**Next action:** Connect QuickBooks Online account; configure chart of accounts; wire Stripe → QuickBooks sync.
+
+---
+
+## FIN-001 — Member dues: $50/mo flat
+
+**Date:** 2026-06-04
+**Status:** Accepted (working number — revisit once real operator economics exist)
+
+**Decision:** Operator/member dues to the platform are **$50/mo flat**. Recorded in `MARKETING/README.md`. Cross-referenced as ADR-005 in the CTO decisions log.
+
+**Why:** Stage 09 recruiting and the operator pitch were blocked on a concrete number. $50 sits in the middle of the $40–60/mo range that covers platform tooling, match priority, and brand while leaving operators a viable margin at even 2 homes ($35 × 2 = $70 > $50 dues).
+
+**What's still open:** Exactly what the dues unlock — tooling tier access, match priority, bonding/background-check coverage. Revisit once real operator supply and per-operator unit economics exist.
+
+**What this rules out:** Per-job platform rake (the model is subscriptions, not a cut of every job). Treating $50 as permanent before it is tested with a real operator.

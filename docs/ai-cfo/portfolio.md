@@ -160,8 +160,8 @@ Do not start Phase 2 financial planning until all of these are true:
 
 | Date | Decision | See |
 | ---- | -------- | --- |
-| 2026-06-04 | Member dues set to **$50/mo flat** | decisions.md FIN-001 |
-| 2026-06-04 | QuickBooks chosen as system of record (now proposed to defer — FIN-005) | decisions.md FIN-002 |
-| 2026-06-04 | Alliance coin: open, legal review required, do not model as revenue | decisions.md FIN-003 |
-| 2026-06-04 | Pricing set (ADR-007): $175 setup + $35/mo std; founding $29/mo locked 12mo | MARKETING ADR-007 / FIN-004 |
 | 2026-06-04 | **ZORT review #1:** logged $0 baseline; flagged Stripe blocker (#1) + QB defer (#2); recorded founder mandate (90-day cash flow, 6-yr LLC, lean tooling) | metrics.md, Issues #1–2 |
+| 2026-06-04 | Pricing set (ADR-007): $175 setup + $35/mo std; founding $29/mo locked 12mo | MARKETING ADR-007 / FIN-004 |
+| 2026-06-04 | Alliance coin: open, legal review required, do not model as revenue | decisions.md FIN-003 |
+| 2026-06-04 | QuickBooks chosen as system of record (now proposed to defer — FIN-005) | decisions.md FIN-002 |
+| 2026-06-04 | Member dues set to **$50/mo flat** | decisions.md FIN-001 |

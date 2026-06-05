@@ -1,76 +1,38 @@
 # Architecture Decisions Log
 
 ADR-style. Each decision records what was chosen, why, and what it explicitly rules out.
-New decisions go at the bottom. Do not edit past decisions — add a superseding ADR if anything changes.
+New decisions go at the top — newest first, reverse-chronological per house style. Do not edit past decisions — add a superseding ADR if anything changes.
 
 ---
 
-## ADR-001 — AI CTO: hub-and-spoke, single agent
+## ADR-007 — Customer pricing: $175 setup + $35/mo (market-validated band)
 
 **Date:** 2026-06-04
-**Status:** Accepted
+**Status:** Accepted (working numbers; *validation* = first cohort renews at price)
 
-**Decision:** Use a single AI CTO agent rather than one agent per repo. The `DESIGN` repo is the portfolio hub (`docs/ai-cto/portfolio.md`). Each spoke repo has `docs/ai-cto/context.md`. The agent reads hub + relevant spoke at session start and updates the hub at session end.
+**Decision:** Standard customer price is **$175 one-time setup + $35/mo**, confirmed against
+2026 comparables rather than guessed (the playbook's prior $32 nudged to $35 — cleaner, signals
+"managed," still in-band). Defensible band: **$29–39/mo, $150–199 setup**, with headroom toward
+$39 once the Statement demonstrates ROI (threats blocked, uptime). The **setup fee is never
+discounted** — it filters for serious buyers and signals a real service. **Founding cohort
+(first ~5 homes):** hold the $175 setup and concede on the recurring instead — **$29/mo locked
+12 months + a referral credit** — in exchange for a testimonial/case study.
 
-**Why:** The 5 repos are tightly coupled — decisions in `MARKETING` directly affect `localDNS` deliverables and `DESIGN` stage specs. For a solo operation, coordinating independent agents adds overhead without benefit. Context stays manageable with well-structured files.
+**Why:** Comparables (2026): DIY managed DNS $2–6/mo (NextDNS, Control D); router-security
+bundle $10/mo (eero Plus); family digital-safety $30/mo (Aura); in-home setup visits $99–250
+(Geek Squad / HelloTech). A777ance is a superset — on-prem appliance + encrypted DNS + VPN +
+monitoring + QoS + a human who handles incidents + a monthly Statement that proves the work —
+so it prices above the consumer-app tier and around the household "safety subscription" anchor.
 
-**Threshold for revisiting:** Any repo needs more than one agent-day of independent work per week, or a repo diverges enough that shared context becomes noise.
+**What's still open:** Validation (a cohort renewing at the posted price) is pending. The
+two-sided split — customer *platform membership* vs. *operator fee*, and whether the $50
+operator dues (ADR-005) hold against a $35 retainer — only needs resolving when a *separate*
+operator runs homes; that math will push either the customer price up or dues down.
 
-**What this rules out:** Fully autonomous per-repo CTO agents with their own decision loops. A portfolio manager layer above repo agents (revisit if the portfolio grows beyond ~8 repos or gains a second human operator).
+**What this rules out:** Discounting the setup fee (including for founders — the founding break
+is on the monthly). Competing on price with DIY tools — the pitch is "we run it and prove it,"
+not "cheapest DNS."
 
----
-
-## ADR-002 — DNS split: streaming domains → Cloudflare DoT, everything else recursive
-
-**Date:** (pre-existing; documented in `localDNS/network-context.md`)
-**Status:** Accepted
-
-**Decision:** `streaming-forward.conf` is the single decision point for resolver selection. High-volume, low-sensitivity domains (Netflix, YouTube, Spotify, Steam, etc.) are forwarded to Cloudflare over DNS-over-TLS (`1.1.1.1@853`, `forward-tls-upstream: yes`). Everything else resolves recursively with DNSSEC via Unbound.
-
-**Why:** The ISP sees an encrypted channel instead of cleartext lookups for streaming traffic. Personal and sensitive domains never reach Cloudflare. Fails closed to recursion via `forward-first` if port 853 is blocked.
-
-**What this rules out:** Adding sensitive domains to the forward-path. Running `cloudflared proxy-dns` locally (Cloudflare removed that feature in v2026.2.0).
-
----
-
-## ADR-003 — Pi-hole and Uptime Kuma: network_mode: host
-
-**Date:** (pre-existing; documented in `localDNS/network-context.md`)
-**Status:** Accepted
-
-**Decision:** Both containers run `network_mode: host` with no `ports:` mapping.
-
-**Why:** Pi-hole must answer DNS queries from WireGuard peers over `wg0` — Docker DNAT was intercepting those packets. Uptime Kuma must reach Unbound at `127.0.0.1:5335` directly. Host networking resolves both. A side effect is that Pi-hole also answers on `10.8.0.1:53`, making VPN peer DNS work without extra routing rules.
-
-**What this rules out:** Bridge-mode networking for either container.
-
----
-
-## ADR-004 — Statements: static HTML in Phase 1, PWA in Phase 2
-
-**Date:** (pre-existing; from `MARKETING` roadmap)
-**Status:** Accepted for Phase 1; Phase 2 revisits
-
-**Decision:** Monthly Statements in Phase 1 are static HTML files built by a generator script and served from `localDNS/docs/statements/`. No app, no login, no dynamic rendering.
-
-**Why:** Liquidity before app. The Statement does three jobs today (value receipt, salesperson, referral engine) without requiring any infrastructure beyond GitHub Pages. Building an app before proving customers pay would burn time on surface instead of moat.
-
-**What this rules out:** A customer/operator toggle app, in-app payments, and dynamic statement rendering until the Phase 2 gate conditions are met (see `portfolio.md`).
-
----
-
-## ADR-005 — Member dues: $50/mo flat
-
-**Date:** 2026-06-04
-**Status:** Accepted (working number)
-
-**Decision:** Operator/member dues to the platform are **$50/mo flat**, recorded in `MARKETING/README.md`. This sits in the middle of NARF's recommended $40–60/mo range.
-
-**Why:** Stage 09 (recruiting) and the operator pitch were blocked on a concrete number — a `CHANGE_ME` can't be used in an onboarding flow or a sales conversation. $50 is a clean, defensible mid-point: high enough to fund tooling, matching, and the brand; low enough that an operator covers it with a single home's margin.
-
-**What's still open:** Exactly what the dues *unlock* (tooling tier, match priority, bonding/background-check coverage). Revisit the amount once real operator supply and per-operator economics exist — this is a price test, not gospel.
-
-**What this rules out:** Per-job platform rake (the model is subscriptions, not a cut of every job — see ADR/MARKETING). Treating $50 as locked: it's the working number for the pilot, explicitly revisitable.
 
 ---
 
@@ -102,30 +64,69 @@ Repo-per-customer sprawl at pilot scale.
 
 ---
 
-## ADR-007 — Customer pricing: $175 setup + $35/mo (market-validated band)
+## ADR-005 — Member dues: $50/mo flat
 
 **Date:** 2026-06-04
-**Status:** Accepted (working numbers; *validation* = first cohort renews at price)
+**Status:** Accepted (working number)
 
-**Decision:** Standard customer price is **$175 one-time setup + $35/mo**, confirmed against
-2026 comparables rather than guessed (the playbook's prior $32 nudged to $35 — cleaner, signals
-"managed," still in-band). Defensible band: **$29–39/mo, $150–199 setup**, with headroom toward
-$39 once the Statement demonstrates ROI (threats blocked, uptime). The **setup fee is never
-discounted** — it filters for serious buyers and signals a real service. **Founding cohort
-(first ~5 homes):** hold the $175 setup and concede on the recurring instead — **$29/mo locked
-12 months + a referral credit** — in exchange for a testimonial/case study.
+**Decision:** Operator/member dues to the platform are **$50/mo flat**, recorded in `MARKETING/README.md`. This sits in the middle of NARF's recommended $40–60/mo range.
 
-**Why:** Comparables (2026): DIY managed DNS $2–6/mo (NextDNS, Control D); router-security
-bundle $10/mo (eero Plus); family digital-safety $30/mo (Aura); in-home setup visits $99–250
-(Geek Squad / HelloTech). A777ance is a superset — on-prem appliance + encrypted DNS + VPN +
-monitoring + QoS + a human who handles incidents + a monthly Statement that proves the work —
-so it prices above the consumer-app tier and around the household "safety subscription" anchor.
+**Why:** Stage 09 (recruiting) and the operator pitch were blocked on a concrete number — a `CHANGE_ME` can't be used in an onboarding flow or a sales conversation. $50 is a clean, defensible mid-point: high enough to fund tooling, matching, and the brand; low enough that an operator covers it with a single home's margin.
 
-**What's still open:** Validation (a cohort renewing at the posted price) is pending. The
-two-sided split — customer *platform membership* vs. *operator fee*, and whether the $50
-operator dues (ADR-005) hold against a $35 retainer — only needs resolving when a *separate*
-operator runs homes; that math will push either the customer price up or dues down.
+**What's still open:** Exactly what the dues *unlock* (tooling tier, match priority, bonding/background-check coverage). Revisit the amount once real operator supply and per-operator economics exist — this is a price test, not gospel.
 
-**What this rules out:** Discounting the setup fee (including for founders — the founding break
-is on the monthly). Competing on price with DIY tools — the pitch is "we run it and prove it,"
-not "cheapest DNS."
+**What this rules out:** Per-job platform rake (the model is subscriptions, not a cut of every job — see ADR/MARKETING). Treating $50 as locked: it's the working number for the pilot, explicitly revisitable.
+
+---
+
+## ADR-004 — Statements: static HTML in Phase 1, PWA in Phase 2
+
+**Date:** (pre-existing; from `MARKETING` roadmap)
+**Status:** Accepted for Phase 1; Phase 2 revisits
+
+**Decision:** Monthly Statements in Phase 1 are static HTML files built by a generator script and served from `localDNS/docs/statements/`. No app, no login, no dynamic rendering.
+
+**Why:** Liquidity before app. The Statement does three jobs today (value receipt, salesperson, referral engine) without requiring any infrastructure beyond GitHub Pages. Building an app before proving customers pay would burn time on surface instead of moat.
+
+**What this rules out:** A customer/operator toggle app, in-app payments, and dynamic statement rendering until the Phase 2 gate conditions are met (see `portfolio.md`).
+
+---
+
+## ADR-003 — Pi-hole and Uptime Kuma: network_mode: host
+
+**Date:** (pre-existing; documented in `localDNS/network-context.md`)
+**Status:** Accepted
+
+**Decision:** Both containers run `network_mode: host` with no `ports:` mapping.
+
+**Why:** Pi-hole must answer DNS queries from WireGuard peers over `wg0` — Docker DNAT was intercepting those packets. Uptime Kuma must reach Unbound at `127.0.0.1:5335` directly. Host networking resolves both. A side effect is that Pi-hole also answers on `10.8.0.1:53`, making VPN peer DNS work without extra routing rules.
+
+**What this rules out:** Bridge-mode networking for either container.
+
+---
+
+## ADR-002 — DNS split: streaming domains → Cloudflare DoT, everything else recursive
+
+**Date:** (pre-existing; documented in `localDNS/network-context.md`)
+**Status:** Accepted
+
+**Decision:** `streaming-forward.conf` is the single decision point for resolver selection. High-volume, low-sensitivity domains (Netflix, YouTube, Spotify, Steam, etc.) are forwarded to Cloudflare over DNS-over-TLS (`1.1.1.1@853`, `forward-tls-upstream: yes`). Everything else resolves recursively with DNSSEC via Unbound.
+
+**Why:** The ISP sees an encrypted channel instead of cleartext lookups for streaming traffic. Personal and sensitive domains never reach Cloudflare. Fails closed to recursion via `forward-first` if port 853 is blocked.
+
+**What this rules out:** Adding sensitive domains to the forward-path. Running `cloudflared proxy-dns` locally (Cloudflare removed that feature in v2026.2.0).
+
+---
+
+## ADR-001 — AI CTO: hub-and-spoke, single agent
+
+**Date:** 2026-06-04
+**Status:** Accepted
+
+**Decision:** Use a single AI CTO agent rather than one agent per repo. The `DESIGN` repo is the portfolio hub (`docs/ai-cto/portfolio.md`). Each spoke repo has `docs/ai-cto/context.md`. The agent reads hub + relevant spoke at session start and updates the hub at session end.
+
+**Why:** The 5 repos are tightly coupled — decisions in `MARKETING` directly affect `localDNS` deliverables and `DESIGN` stage specs. For a solo operation, coordinating independent agents adds overhead without benefit. Context stays manageable with well-structured files.
+
+**Threshold for revisiting:** Any repo needs more than one agent-day of independent work per week, or a repo diverges enough that shared context becomes noise.
+
+**What this rules out:** Fully autonomous per-repo CTO agents with their own decision loops. A portfolio manager layer above repo agents (revisit if the portfolio grows beyond ~8 repos or gains a second human operator).

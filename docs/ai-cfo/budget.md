@@ -48,7 +48,7 @@ budget or any new expense before it's committed. Pre-revenue burn target: <$30/m
 
 ## Budget vs. Actual — Monthly Log
 
-Entries appended after each monthly close. Format: `YYYY-MM | Total actual | vs. budget | Notes`
+Entries appended after each monthly close — newest first (reverse-chronological). Format: `YYYY-MM | Total actual | vs. budget | Notes`
 
 _(no entries yet — first close after June 2026)_
 

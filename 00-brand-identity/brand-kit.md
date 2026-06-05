@@ -38,11 +38,14 @@ from Figma, done. Anything marked `CHANGE_ME` is a decision we haven't locked ye
 
 ## Type
 
+**Gill Sans MT everywhere** — house style (see [CLAUDE.md](../CLAUDE.md#house-style-ordering--typography)).
+Web/CSS stack: `'Gill Sans MT', 'Gill Sans', Calibri, 'Trebuchet MS', sans-serif`.
+
 | Where | Family | Notes |
 | ----- | ------ | ----- |
-| Headlines | `CHANGE_ME` | a warm, human sans — calm, not techy |
-| Body | `CHANGE_ME` | easy to read small (statements get printed and mailed) |
-| Numbers / IDs | system mono | only for figures and account numbers, used sparingly |
+| Headlines | Gill Sans MT | a warm, human sans — calm, not techy |
+| Body | Gill Sans MT | easy to read small (statements get printed and mailed) |
+| Numbers / IDs | Gill Sans MT | tabular figures (`font-feature-settings: "tnum"`) for figures and account numbers |
 
 ## Logo do's and don'ts
 
