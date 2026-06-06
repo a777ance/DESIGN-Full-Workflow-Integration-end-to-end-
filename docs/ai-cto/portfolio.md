@@ -2,7 +2,7 @@
 
 NARF's working memory for the full portfolio. Read at session start; update at session end with new decisions, status changes, or priority shifts.
 
-**Last updated:** 2026-06-06 (ADR-008 — founder workstation: inherited XPS 13 9340 → clean Ubuntu 24.04 LTS host + KVM VMs)
+**Last updated:** 2026-06-06 (ADR-008 — "the Controller": inherited XPS 13 9340 installed as the Ubuntu 24.04 control node; as-built recorded, encryption declined)
 
 ---
 
@@ -103,7 +103,7 @@ Resolve these before starting Phase 2. Each one has a downstream blocker listed.
 
 | Date | Decision | See |
 | ---- | -------- | --- |
-| 2026-06-06 | Founder workstation (inherited XPS 13 9340) → clean **Ubuntu 24.04 LTS** host (parity with the t630) w/ LUKS + BIOS password as a security reset; **KVM** VMs (Windows for Gill Sans MT proofing; ephemeral clean-Ubuntu for localDNS install rehearsal); **local DeepSeek** distills via Ollama into the Open WebUI stack. macOS, Windows-host/WSL2, dual-boot, and a standing t630 clone all ruled out. | `decisions.md` ADR-008 |
+| 2026-06-06 | **"The Controller"** — the inherited XPS 13 9340 is now the A777ance control node / founder workstation. Installed clean **Ubuntu 24.04 LTS** (parity with the t630), AHCI/NVMe, BIOS admin password, VT-x/VT-d on; **KVM** VMs (Windows for Gill Sans MT proofing; ephemeral clean-Ubuntu for localDNS install rehearsal); **local DeepSeek** distills via Ollama into the Open WebUI stack. **Founder declined disk encryption** (mitigation noted in ADR). macOS, Windows-host/WSL2, dual-boot, and a standing t630 clone all ruled out. | `decisions.md` ADR-008 |
 | 2026-06-05 | Hub reconciled to live state (triggered by the 2026-06-05 Codex cross-repo review, item #3): `customers` is private-on-GitHub (was "local only"); DESIGN path-integrity blocker (#2) verified resolved; TD-11 closed — `check-docs.py` runs in CI. | this reconcile |
 | 2026-06-04 | Customer pricing set vs. 2026 comparables: **$175 + $35/mo** standard (band $29–39, headroom to $39 on proven ROI); setup never discounted; founding cohort **$29/mo locked 12mo** (monthly concession, not a setup cut) | `decisions.md` ADR-007 |
 | 2026-06-04 | Real customer data → new private `customers` repo (one repo, per-household folders); `localDNS` generator renders privately via `--data-dir/--out-dir`; founder personal workspace under HH-0001 | `decisions.md` ADR-006 |

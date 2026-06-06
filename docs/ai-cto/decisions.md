@@ -11,12 +11,15 @@ New decisions go at the top — newest first, reverse-chronological per house st
 **Status:** Accepted
 
 **Decision:** The inherited **Dell XPS 13 9340** (Core Ultra / Meteor Lake, integrated Intel
-Arc iGPU, 1 TB Micron NVMe, no discrete GPU) is provisioned as a **clean, single-OS Ubuntu
+Arc iGPU, 1 TB Micron NVMe, no discrete GPU) becomes **"the Controller"** — the A777ance
+**control node / founder workstation**: the single machine from which the t630, the repos, and
+the live tooling are administered. It is provisioned as a **clean, single-OS Ubuntu
 24.04 LTS** workstation — matching the t630 production target (same OS, kernel 6.17 series, and
 therefore identical `systemd` / Docker / `nftables` / WireGuard behavior). Because the machine
-was **inherited**, the install is treated as a security reset: wipe the drive, **LUKS
-full-disk encryption**, set a **BIOS/firmware admin + boot password**, and **update the BIOS**
-(from 1.23.0) before installing. **KVM/QEMU** provides the VM layer: (a) a **Windows VM** for the
+was **inherited**, the install is treated as a security reset: wipe the drive, set a
+**BIOS/firmware admin password**, and **update the BIOS** (from 1.23.0) before installing.
+**The founder declined full-disk encryption (LUKS)** — see *As-built* below for the
+mitigation. **KVM/QEMU** provides the VM layer: (a) a **Windows VM** for the
 occasional Windows-only need — chiefly **Gill Sans MT** proofing in Office (the house-style font
 ships with MS Office, not Linux); (b) **ephemeral, blank clean-Ubuntu VMs** as the localDNS
 install-**rehearsal** rig — spun up empty, run the README from zero, then discarded. **Local
@@ -31,6 +34,16 @@ tooling (Stripe, QuickBooks, Setmore, Squarespace, Mailchimp, e-sign) is web-bas
 OS-agnostic. Local DeepSeek is better supported on Linux (IPEX-LLM / SYCL) and reuses
 infrastructure already running. Gaming was **deprioritized by the founder (2026-06-06)**, so it
 exerts no pull toward Windows.
+
+**As-built (2026-06-06):** Installed clean **Ubuntu 24.04 LTS** to `nvme0n1` — AHCI/NVMe mode
+confirmed (the installer saw the disk; the old RAID/RST mode would have hidden it), standard
+**EFI (fat32) + ext4 root** layout, **no disk encryption** (founder's call), codecs +
+third-party drivers enabled, **VT-x + VT-d ON** for KVM. Hostname `a777ance-XPS-13-9340`, user
+`a777ance`. **Mitigation for the unencrypted disk:** the Controller relies on a strong login
+password + physical custody; keep the t630 **SSH key passphrase-protected**, and keep real
+customer PII **off the disk at rest** (it lives in the private `customers` repo / on the box,
+per ADR-006). Revisit encryption if the Controller starts traveling or holding sensitive data
+locally — it can be re-enabled later only by reinstalling.
 
 **Threshold to revisit:** A serious local-LLM need (models beyond ~14B) or serious gaming →
 stand up a **separate GPU machine** rather than re-OS this laptop; this chassis (iGPU only) can't
