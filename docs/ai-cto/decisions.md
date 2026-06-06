@@ -39,7 +39,14 @@ exerts no pull toward Windows.
 confirmed (the installer saw the disk; the old RAID/RST mode would have hidden it), standard
 **EFI (fat32) + ext4 root** layout, **no disk encryption** (founder's call), codecs +
 third-party drivers enabled, **VT-x + VT-d ON** for KVM. Hostname `a777ance-XPS-13-9340`, user
-`a777ance`. **Mitigation for the unencrypted disk:** the Controller relies on a strong login
+`a777ance`. **Stage-4 provisioning complete & verified:** SSH key (passphrase-protected,
+ed25519) installed to the t630 (`david-allum@192.168.1.118`) and login confirmed; KVM
+groups (`libvirt`, `kvm`) live and `kvm-ok` passes; Docker running rootless-group (`docker run
+hello-world` OK); **local LLM stack operational** — Ollama serving `deepseek-r1:8b` (CPU-only;
+no Arc accel yet) with **Open WebUI** as the daily ChatGPT-style front end at
+`http://localhost:8080` (container on `--network=host`, `OLLAMA_HOST=0.0.0.0` so the UI reaches
+Ollama). VS Code skipped (founder's call; Claude Code can run as the terminal CLI instead).
+**Mitigation for the unencrypted disk:** the Controller relies on a strong login
 password + physical custody; keep the t630 **SSH key passphrase-protected**, and keep real
 customer PII **off the disk at rest** (it lives in the private `customers` repo / on the box,
 per ADR-006). Revisit encryption if the Controller starts traveling or holding sensitive data

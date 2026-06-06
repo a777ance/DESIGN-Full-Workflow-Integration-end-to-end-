@@ -2,7 +2,7 @@
 
 NARF's working memory for the full portfolio. Read at session start; update at session end with new decisions, status changes, or priority shifts.
 
-**Last updated:** 2026-06-06 (ADR-008 — "the Controller": inherited XPS 13 9340 installed as the Ubuntu 24.04 control node; as-built recorded, encryption declined)
+**Last updated:** 2026-06-06 (ADR-008 — "the Controller" built & Stage-4 verified: Ubuntu 24.04, t630 SSH, KVM, Docker, local DeepSeek + Open WebUI operational)
 
 ---
 
