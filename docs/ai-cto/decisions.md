@@ -46,6 +46,7 @@ hello-world` OK); **local LLM stack operational** — Ollama serving `deepseek-r
 no Arc accel yet) with **Open WebUI** as the daily ChatGPT-style front end at
 `http://localhost:8080` (container on `--network=host`, `OLLAMA_HOST=0.0.0.0` so the UI reaches
 Ollama). VS Code skipped (founder's call; Claude Code can run as the terminal CLI instead).
+**Proof — first boot:** ![Controller first boot — 22 threads / 32 GB on fresh Ubuntu 24.04](assets/controller-first-boot-2026-06-06.jpeg)
 **Mitigation for the unencrypted disk:** the Controller relies on a strong login
 password + physical custody; keep the t630 **SSH key passphrase-protected**, and keep real
 customer PII **off the disk at rest** (it lives in the private `customers` repo / on the box,
