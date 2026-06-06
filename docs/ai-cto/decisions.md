@@ -5,6 +5,51 @@ New decisions go at the top — newest first, reverse-chronological per house st
 
 ---
 
+## ADR-008 — Founder workstation: clean Ubuntu 24.04 LTS host + KVM VMs (inherited XPS 13 9340)
+
+**Date:** 2026-06-06
+**Status:** Accepted
+
+**Decision:** The inherited **Dell XPS 13 9340** (Core Ultra / Meteor Lake, integrated Intel
+Arc iGPU, 1 TB Micron NVMe, no discrete GPU) is provisioned as a **clean, single-OS Ubuntu
+24.04 LTS** workstation — matching the t630 production target (same OS, kernel 6.17 series, and
+therefore identical `systemd` / Docker / `nftables` / WireGuard behavior). Because the machine
+was **inherited**, the install is treated as a security reset: wipe the drive, **LUKS
+full-disk encryption**, set a **BIOS/firmware admin + boot password**, and **update the BIOS**
+(from 1.23.0) before installing. **KVM/QEMU** provides the VM layer: (a) a **Windows VM** for the
+occasional Windows-only need — chiefly **Gill Sans MT** proofing in Office (the house-style font
+ships with MS Office, not Linux); (b) **ephemeral, blank clean-Ubuntu VMs** as the localDNS
+install-**rehearsal** rig — spun up empty, run the README from zero, then discarded. **Local
+LLM** inference (DeepSeek-R1 *distills*, ~7B/8B via Ollama/llama.cpp with Intel Arc acceleration)
+runs on the host and registers into the existing **Open WebUI / LiteLLM** stack (localDNS stage 10).
+
+**Why:** Parity with production means what runs on the laptop runs on the t630 — no translation
+layer. The blank-Ubuntu rehearsal VM directly serves the standing rule *"every commit to main
+must leave README able to reproduce a working system on clean Ubuntu 24.04"* and de-risks the
+**#1 Phase-1 blocker (t630 access)** by letting the install be proven off-box. The business
+tooling (Stripe, QuickBooks, Setmore, Squarespace, Mailchimp, e-sign) is web-based and
+OS-agnostic. Local DeepSeek is better supported on Linux (IPEX-LLM / SYCL) and reuses
+infrastructure already running. Gaming was **deprioritized by the founder (2026-06-06)**, so it
+exerts no pull toward Windows.
+
+**Threshold to revisit:** A serious local-LLM need (models beyond ~14B) or serious gaming →
+stand up a **separate GPU machine** rather than re-OS this laptop; this chassis (iGPU only) can't
+do either well regardless of OS.
+
+**What this rules out:**
+- **macOS on this hardware** — Apple's EULA restricts macOS to Apple-branded machines and a
+  hackintosh VM is fragile; use real Apple hardware or a cloud Mac if macOS is ever needed.
+- **Windows as the host / WSL2 as the primary dev environment** — inverts the priority (daily
+  Linux infra work in the weaker environment) and can't faithfully rehearse
+  `systemd-resolved` / `nftables` / `wg-quick`.
+- **Dual-boot Windows** — gaming deprioritized; a Windows VM can't game on a single-iGPU laptop
+  (no GPU passthrough; anti-cheat blocks VMs) and Proton wasn't needed. Revisit only if a
+  kernel-anti-cheat title becomes a real need.
+- **A standing clone/mirror of the t630** — it remains the single source of truth; rehearsal VMs
+  are blank and disposable, holding no t630 state or secrets.
+
+---
+
 ## ADR-007 — Customer pricing: $175 setup + $35/mo (market-validated band)
 
 **Date:** 2026-06-04
