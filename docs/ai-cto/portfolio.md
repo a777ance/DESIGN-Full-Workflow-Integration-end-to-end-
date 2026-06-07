@@ -2,7 +2,7 @@
 
 NARF's working memory for the full portfolio. Read at session start; update at session end with new decisions, status changes, or priority shifts.
 
-**Last updated:** 2026-06-05 (hub reconciled to live state — see Recent Decisions: `customers` now private-on-GitHub; DESIGN path-integrity blocker resolved; TD-11 doc-checker is in CI)
+**Last updated:** 2026-06-07 (added a 2-day *Shipped* digest below for collaborators catching up; localDNS LLM-router orchestration layer landed and consolidated to `main`)
 
 ---
 
@@ -27,6 +27,45 @@ NARF's working memory for the full portfolio. Read at session start; update at s
 | `customers` | Real customer data: live roster, per-home statement data + rendered statements, founder personal workspace | **Private** |
 
 All repos push to `main`, no branching (founder's standing instruction, 2026-06-05).
+
+---
+
+## Shipped — rolling digest (newest-first)
+
+Plain-language log of what actually landed, for collaborators catching up. This is the
+*activity* record; for the *decisions* behind it, see Recent Decisions further down.
+
+### 2026-06-07 · localDNS — the local-first AI brain got an orchestration layer
+- **Deterministic dispatcher** (`10-llm-router/dispatcher.py`): a plain rule table decides
+  which model handles a task — *no AI in the routing decision*, so the same input always
+  routes the same way, at zero token cost. Swapping a model is a config edit, not a code edit.
+- **Privacy enforced in code, not by trust:** anything tagged sensitive (bank / tax / health /
+  legal …) is pinned to a local-only model and can never be sent to a cloud provider.
+- **Heat fix:** heavy reasoning (full DeepSeek-R1) offloads to a rented GPU on demand; light
+  work stays on a cool local model — resolves the "heavy R1 cooks the CPU" known issue.
+- **Reflection log made reviewable:** routes are logged and readable back (`--reflect`); the
+  log keeps a one-line takeaway even on sensitive tasks while redacting the actual content.
+- Engineer-facing design in `10-llm-router/ORCHESTRATION-BLUEPRINT.md`. Consolidated to `main`;
+  feature branch retired.
+
+### 2026-06-05 · House style adopted across ALL five repos
+- Every repo (localDNS, MARKETING, DESIGN, claude-code-homelab, azure-lab) now follows the
+  shared conventions: **Gill Sans MT** everywhere, **newest-first** time-based content,
+  **Z→A** alphabetical lists, reversed walkthrough blocks. This is why every doc now leads
+  with its most recent item.
+
+### 2026-06-05 · localDNS — Stage 10 LLM router born
+- Local-first LLM router stood up (LiteLLM + Ollama on the t630) with an Open WebUI chat
+  front-end; "push-to-main, no branches" recorded as the standing rule.
+
+### 2026-06-05 · MARKETING — "Rainbow Bridge" knowledge sync
+- A Google Drive → NotebookLM sync pipeline built end-to-end (Apps Script + GitHub Actions +
+  sync scripts, credential-guarded), plus the A777ance master spreadsheet and content folders.
+  Finalized under the name **Rainbow Bridge**.
+
+### 2026-06-05 · DESIGN — governance refresh
+- Portfolio hub reconciled to live state; NARF (CTO) and ZORT (CFO) session updates filed;
+  Codex cross-repo review recorded under `docs/ai-cto/reviews/`.
 
 ---
 
