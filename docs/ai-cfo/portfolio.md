@@ -2,7 +2,7 @@
 
 ZORT's working memory for financial health across the portfolio. Read at session start; update at session end with new metrics, decisions, or financial status changes.
 
-**Last updated:** 2026-06-04 (ZORT review #1)
+**Last updated:** 2026-06-10 (doc sync: corrected stale $32/mo figures in `MARKETING/docs/ai-cfo/context.md` to the ADR-007 $35/mo standard; no financial state change since review #1)
 
 ---
 
@@ -160,6 +160,7 @@ Do not start Phase 2 financial planning until all of these are true:
 
 | Date | Decision | See |
 | ---- | -------- | --- |
+| 2026-06-10 | **Doc sync (no new decision):** corrected stale pre-ADR-007 figures ($32/mo, ~$3,600/yr) in `MARKETING/docs/ai-cfo/context.md` to $35/mo / ~$4,200/yr | MARKETING ai-cfo context |
 | 2026-06-04 | **ZORT review #1:** logged $0 baseline; flagged Stripe blocker (#1) + QB defer (#2); recorded founder mandate (90-day cash flow, 6-yr LLC, lean tooling) | metrics.md, Issues #1–2 |
 | 2026-06-04 | Pricing set (ADR-007): $175 setup + $35/mo std; founding $29/mo locked 12mo | MARKETING ADR-007 / FIN-004 |
 | 2026-06-04 | Alliance coin: open, legal review required, do not model as revenue | decisions.md FIN-003 |
