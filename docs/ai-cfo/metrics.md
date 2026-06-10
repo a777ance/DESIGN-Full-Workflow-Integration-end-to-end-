@@ -39,3 +39,5 @@ Appended by ZORT's `log_metric` tool — newest first (reverse-chronological). E
 `2026-06-04` | net_burn | ~$11-27/mo | Within <$30 pre-revenue target. Recommend staying on free tiers (Wave/GitHub Pages/Google Voice) to customer #3; defer QuickBooks.
 `2026-06-04` | MRR | $0 | No active subscriptions. $0 is $0. All revenue figures in files are labeled hypotheses until first transaction clears.
 `2026-06-04` | paying_customers | 0 | 2026-06-04 first ZORT review. Pre-revenue. Phase 1 gate not met. Blocker: Stripe not connected (Stage 07) — no way to collect a dollar today.
+`2026-06-10` | paying_customers | 0 | ZORT review #2 (2026-06-10). Still pre-revenue, no change since #1. Phase 1 gate not met (0/6). Two RED blockers: Stripe not connected (Stage 07, CEO sign-up) AND honest Statement #1 not deployable (localDNS flow-accounting not stood up + placeholder peer data violates house honesty rule). Both gate revenue.
+`2026-06-10` | net_burn | ~$11-27/mo | Within <$30 target. WATCH: localDNS Step 12 LLM router has an Anthropic cloud-overflow tier that could push the AI line above its $15/mo budget. Recommend local-models-only default until customer #1.
