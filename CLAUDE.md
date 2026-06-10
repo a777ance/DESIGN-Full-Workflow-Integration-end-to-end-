@@ -68,8 +68,8 @@ into the real tool.
 
 **Three repos, one business:**
 
-| Repo | Holds | Who sees it |
-| ---- | ----- | ----------- |
+| Repo | Holds | Visibility |
+| ---- | ----- | ---------- |
 | **[`localDNS`](https://a777ance.github.io/localDNS/)** | The tech **and** the Statements (`docs/statements/`) — the product | **Public** |
 | **`MARKETING`** | The business model, pricing, guild mechanics — the *why* | **Private** |
 | **`DESIGN-…` (this repo)** | The workflow around the Statements — the *how* | **Private / internal** |
