@@ -24,6 +24,7 @@ README is the stage-by-stage guide.
 - [The rules we don't break](#the-rules-we-dont-break)
 - [Still being figured out](#still-being-figured-out)
 - [Further reading](#further-reading)
+- [Patch Notes](#patch-notes)
 
 ---
 
@@ -213,3 +214,15 @@ by `MARKETING`, and all committed data is fictional.
 - **`MARKETING`** (private) — the business model and pricing this executes.
 - **[`localDNS`](https://a777ance.github.io/localDNS/)** (public) — the tech and the statement
   artifacts this workflow surrounds.
+
+---
+
+## Patch Notes
+
+Time-based — newest first.
+
+---
+
+### 2026-06-11
+
+**No changes.** No pull requests were merged across any A777ance repo on 2026-06-10.
