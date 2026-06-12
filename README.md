@@ -16,6 +16,7 @@ README is the stage-by-stage guide.
 
 ## Contents
 
+- [Patch Notes](#patch-notes)
 - [Follow one household](#follow-one-household)
 - [The whole funnel, one page](#the-whole-funnel-one-page)
 - [How the money works](#how-the-money-works)
@@ -213,3 +214,11 @@ by `MARKETING`, and all committed data is fictional.
 - **`MARKETING`** (private) — the business model and pricing this executes.
 - **[`localDNS`](https://a777ance.github.io/localDNS/)** (public) — the tech and the statement
   artifacts this workflow surrounds.
+
+---
+
+## Patch Notes
+
+### 2026-06-11
+
+No changes — no pull requests were merged across any A777ance repo on this date.
