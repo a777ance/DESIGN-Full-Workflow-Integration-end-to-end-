@@ -256,6 +256,8 @@ can gate CI.
 
 - **README.md** — the full stage-by-stage guide, with the funnel diagram.
 - **workflow-context.md** — why this tool at each stage, why this order, the economics.
+- **LEAN-PLAN.md** — one-page strategy snapshot (the managed-service model, *not* OSS
+  monetization); a derived summary reconciled to ADR-007 / FIN-001–005.
 - **LAUNCH-NOTES.md** — every break point between an empty funnel and a paying customer, with
   its fix.
 - **SKILLS.md** — the skills this workflow exercises, each tied to a real file.
