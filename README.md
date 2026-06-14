@@ -24,6 +24,7 @@ README is the stage-by-stage guide.
 - [The rules we don't break](#the-rules-we-dont-break)
 - [Still being figured out](#still-being-figured-out)
 - [Further reading](#further-reading)
+- [Patch Notes](#patch-notes)
 
 ---
 
@@ -213,3 +214,13 @@ by `MARKETING`, and all committed data is fictional.
 - **`MARKETING`** (private) — the business model and pricing this executes.
 - **[`localDNS`](https://a777ance.github.io/localDNS/)** (public) — the tech and the statement
   artifacts this workflow surrounds.
+
+---
+
+## Patch Notes
+
+Cross-repo daily digest — newest first. Covers: `customers`, `DESIGN-…`, `localDNS`, `MARKETING`, `Azure-lab`, `claude-code-homelab`, `Chronikomicon`.
+
+### 2026-06-13
+
+No changes — no pull requests were merged across any A777ance repository on 2026-06-13.
