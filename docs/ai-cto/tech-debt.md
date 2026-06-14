@@ -7,6 +7,7 @@ Update this file when items are resolved or new ones are found. New items go at 
 
 | ID | Item | Severity | Repo | Status |
 | -- | ---- | -------- | ---- | ------ |
+| TD-15 | AI-loop token waste: ~11K tokens of standing context (7 repo `CLAUDE.md`s, house-style block pasted 6×) loaded every session regardless of task; bulk work runs on Opus 4.8 instead of Haiku/local; the t630 LiteLLM router (built) is unused for cheap tasks. Fixes ranked in `docs/ai-cto/process-efficiency.md`: slim CLAUDE.mds to pointers, scope repos per task, verify prompt caching hits, route routine work to local/Haiku (blocked on TD-14 fail-closed fix for sensitive tasks). | P2 | DESIGN/all | Open (found 2026-06-14) |
 | TD-14 | LLM-router privacy fallback gap: a `sensitive`-tagged task routes to `local-reason`, but `config.yaml` gives `local-reason` a `["cloud-gpu-reason", "cloud-overflow"]` fallback — so a sensitive prompt can fail over to `cloud-overflow` (Claude cloud) if the local model is down. The dispatcher's `allow_cloud=False` is not enforced at the LiteLLM failover layer, and its own docstring requires a local-only chain here. Fix: give `local-reason` a local-only fallback (fail closed). No privacy guarantee until then. | P1 | localDNS | Open (found 2026-06-07) |
 | TD-13 | Statement PWA: merged but not deployed or tested on real mobile devices | P1 | localDNS | Open |
 | TD-12 | WireGuard IPv6 black hole: peers routing ::/0 black-hole IPv6 traffic | P3 | localDNS | Documented; ULA+NAT66 fix in network-context.md |
