@@ -11,7 +11,7 @@ budget or any new expense before it's committed. Pre-revenue burn target: <$30/m
 
 | Category | Item | Budget/mo | Actual/mo | Status |
 | -------- | ---- | --------- | --------- | ------ |
-| AI tooling | Anthropic API (NARF + ZORT) | $15 | ~$5–15 | Estimated; check console monthly |
+| AI tooling | Anthropic API (NARF + ZORT) | $15 | ~$5–15 | Estimated; check console monthly. **2026-06-15: autonomous usage (routines, GitHub Actions, `claude -p`) now bills against a capped programmatic credit ($20 Pro / $100 Max-5x / $200 Max-20x), then API rates. Model plan tier vs. expected overage — see `docs/ai-cto/ai-process-efficiency.md` (TD-15).** |
 | Dev tooling | GitHub Team (private repos) | $4 | $0–4 | Free tier current |
 | Infrastructure | Domain (annual ÷ 12) | $2 | ~$2 | |
 | Infrastructure | Email forwarding | $0 | $0 | Gmail alias currently free |
