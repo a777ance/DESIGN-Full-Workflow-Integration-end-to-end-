@@ -7,6 +7,7 @@ Update this file when items are resolved or new ones are found. New items go at 
 
 | ID | Item | Severity | Repo | Status |
 | -- | ---- | -------- | ---- | ------ |
+| TD-15 | AI process cost: (a) June 15 Anthropic billing change meters scheduled/`claude-p` runs against a separate no-rollover credit pool at full API rates — broad routines on Opus burn it fast; (b) session-start ritual eager-loads large CLAUDE.md + 10 hub docs every session. Make routines scoped, make hub-doc loading conditional, and shift the cheap 60–70% of work onto the existing local LLM router (blocked on TD-14 fail-open). Full analysis: `docs/ai-cto/reviews/2026-06-15-ai-process-efficiency.md` | P2 | DESIGN | Open (found 2026-06-15) |
 | TD-14 | LLM-router privacy fallback gap: a `sensitive`-tagged task routes to `local-reason`, but `config.yaml` gives `local-reason` a `["cloud-gpu-reason", "cloud-overflow"]` fallback — so a sensitive prompt can fail over to `cloud-overflow` (Claude cloud) if the local model is down. The dispatcher's `allow_cloud=False` is not enforced at the LiteLLM failover layer, and its own docstring requires a local-only chain here. Fix: give `local-reason` a local-only fallback (fail closed). No privacy guarantee until then. | P1 | localDNS | Open (found 2026-06-07) |
 | TD-13 | Statement PWA: merged but not deployed or tested on real mobile devices | P1 | localDNS | Open |
 | TD-12 | WireGuard IPv6 black hole: peers routing ::/0 black-hole IPv6 traffic | P3 | localDNS | Documented; ULA+NAT66 fix in network-context.md |
