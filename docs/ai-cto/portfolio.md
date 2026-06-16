@@ -67,6 +67,12 @@ privacy-fallback gap flagged).
    $40–60/mo per operator; write it into `MARKETING/README.md` and remove the
    `CHANGE_ME`. Unblocks Stage 09 onboarding + the operator pitch.
 
+**New watch item (2026-06-16):** Anthropic's June 15 billing split moves Agent SDK / `claude -p` /
+Claude Code GitHub Actions to a separate per-user credit at full API rates (5–10× for heavy agent
+use) — our scheduled NARF/ZORT routines now cost real money per run. Set a credit ceiling and
+right-size routines to Sonnet/local. Full analysis: [`process-efficiency.md`](process-efficiency.md);
+filed as [TD-15](tech-debt.md).
+
 ---
 
 ## Cross-Repo Status

@@ -3,7 +3,7 @@
 Single source of truth for costs. ZORT reviews this monthly and flags any line that exceeds
 budget or any new expense before it's committed. Pre-revenue burn target: <$30/mo.
 
-**Last updated:** 2026-06-04
+**Last updated:** 2026-06-16
 
 ---
 
@@ -11,7 +11,7 @@ budget or any new expense before it's committed. Pre-revenue burn target: <$30/m
 
 | Category | Item | Budget/mo | Actual/mo | Status |
 | -------- | ---- | --------- | --------- | ------ |
-| AI tooling | Anthropic API (NARF + ZORT) | $15 | ~$5–15 | Estimated; check console monthly |
+| AI tooling | Anthropic API (NARF + ZORT) | $15 | ~$5–15 | Estimated; check console monthly. ⚠️ 2026-06-15 billing split: Agent SDK / `claude -p` / Claude Code GitHub Actions now bill a **separate per-user credit at full API rates** (Anthropic: 5–10× for heavy agent use). Scheduled routines on Opus 4.8 are the priciest shape — set a credit ceiling and right-size routines to Sonnet/local. See `docs/ai-cto/process-efficiency.md`, TD-15. |
 | Dev tooling | GitHub Team (private repos) | $4 | $0–4 | Free tier current |
 | Infrastructure | Domain (annual ÷ 12) | $2 | ~$2 | |
 | Infrastructure | Email forwarding | $0 | $0 | Gmail alias currently free |

@@ -7,6 +7,7 @@ Update this file when items are resolved or new ones are found. New items go at 
 
 | ID | Item | Severity | Repo | Status |
 | -- | ---- | -------- | ---- | ------ |
+| TD-15 | Agent SDK billing exposure (post 2026-06-15): scheduled NARF/ZORT routines + Claude Code GitHub Actions now bill a separate per-user credit at **full API rates** (5–10× heavier than the old flat subscription), and run on Opus 4.8 ($5/$25 per M) with all repo CLAUDE.mds loaded each time. Fix: set a hard credit ceiling, right-size routines to Sonnet/local (Opus only for architecture/security), make web-research routines monthly + append-only. See `docs/ai-cto/process-efficiency.md` and `docs/ai-cfo/budget.md`. | P2 | DESIGN | Open (found 2026-06-16) |
 | TD-14 | LLM-router privacy fallback gap: a `sensitive`-tagged task routes to `local-reason`, but `config.yaml` gives `local-reason` a `["cloud-gpu-reason", "cloud-overflow"]` fallback — so a sensitive prompt can fail over to `cloud-overflow` (Claude cloud) if the local model is down. The dispatcher's `allow_cloud=False` is not enforced at the LiteLLM failover layer, and its own docstring requires a local-only chain here. Fix: give `local-reason` a local-only fallback (fail closed). No privacy guarantee until then. | P1 | localDNS | Open (found 2026-06-07) |
 | TD-13 | Statement PWA: merged but not deployed or tested on real mobile devices | P1 | localDNS | Open |
 | TD-12 | WireGuard IPv6 black hole: peers routing ::/0 black-hole IPv6 traffic | P3 | localDNS | Documented; ULA+NAT66 fix in network-context.md |
