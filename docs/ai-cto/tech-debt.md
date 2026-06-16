@@ -7,6 +7,7 @@ Update this file when items are resolved or new ones are found. New items go at 
 
 | ID | Item | Severity | Repo | Status |
 | -- | ---- | -------- | ---- | ------ |
+| TD-15 | AI process cost: the deterministic dispatcher is specced + `dispatcher.py` exists but is not deployed, so all agentic work hits Opus instead of routing the ~60–70% simple share to local Ollama / Haiku. Plus per-session context bloat: every session loads all 7 repos' full `CLAUDE.md` (House-style block duplicated 6×). Fix: deploy the dispatcher (after TD-14), trim `CLAUDE.md` to a thin always-load core, right-size routine models. Full audit: `docs/ai-cto/process-efficiency.md`. | P2 | DESIGN / localDNS | Open (found 2026-06-16) |
 | TD-14 | LLM-router privacy fallback gap: a `sensitive`-tagged task routes to `local-reason`, but `config.yaml` gives `local-reason` a `["cloud-gpu-reason", "cloud-overflow"]` fallback — so a sensitive prompt can fail over to `cloud-overflow` (Claude cloud) if the local model is down. The dispatcher's `allow_cloud=False` is not enforced at the LiteLLM failover layer, and its own docstring requires a local-only chain here. Fix: give `local-reason` a local-only fallback (fail closed). No privacy guarantee until then. | P1 | localDNS | Open (found 2026-06-07) |
 | TD-13 | Statement PWA: merged but not deployed or tested on real mobile devices | P1 | localDNS | Open |
 | TD-12 | WireGuard IPv6 black hole: peers routing ::/0 black-hole IPv6 traffic | P3 | localDNS | Documented; ULA+NAT66 fix in network-context.md |
