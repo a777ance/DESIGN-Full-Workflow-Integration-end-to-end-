@@ -7,6 +7,7 @@ Update this file when items are resolved or new ones are found. New items go at 
 
 | ID | Item | Severity | Repo | Status |
 | -- | ---- | -------- | ---- | ------ |
+| TD-15 | Scheduled AI runs are open-ended and daily: a "find any inefficiency / keep up to date day by day" routine re-derives standing advice and re-searches the same topics every run, on Opus tier, for a session nobody watches — high token cost, near-zero delta. Fix: keep the deep analysis a one-off (done — `docs/ai-cto/ai-process-efficiency.md`); replace daily monitoring with a cheap *weekly delta* pinned to named sources, notify-only-on-change, on Haiku/`local-reason`. See ai-process-efficiency.md F-1. | P2 | DESIGN | Open (found 2026-06-19) |
 | TD-14 | LLM-router privacy fallback gap: a `sensitive`-tagged task routes to `local-reason`, but `config.yaml` gives `local-reason` a `["cloud-gpu-reason", "cloud-overflow"]` fallback — so a sensitive prompt can fail over to `cloud-overflow` (Claude cloud) if the local model is down. The dispatcher's `allow_cloud=False` is not enforced at the LiteLLM failover layer, and its own docstring requires a local-only chain here. Fix: give `local-reason` a local-only fallback (fail closed). No privacy guarantee until then. | P1 | localDNS | Open (found 2026-06-07) |
 | TD-13 | Statement PWA: merged but not deployed or tested on real mobile devices | P1 | localDNS | Open |
 | TD-12 | WireGuard IPv6 black hole: peers routing ::/0 black-hole IPv6 traffic | P3 | localDNS | Documented; ULA+NAT66 fix in network-context.md |
