@@ -7,6 +7,7 @@ Update this file when items are resolved or new ones are found. New items go at 
 
 | ID | Item | Severity | Repo | Status |
 | -- | ---- | -------- | ---- | ------ |
+| TD-15 | Token-efficiency debt in the human↔AI loop: DESIGN session-start ritual reads ~18–19k tokens before any work; CLAUDE.md files are large (localDNS 5.1k, DESIGN 4.5k) and re-sent every turn; `docs/ai-cfo/metrics.md` is ~4k. Fixes ranked in `docs/ai-cto/token-efficiency-review.md` — make the reading ritual lazy, trim CLAUDE.md, split the metrics actuals-log from definitions, finish local/Haiku routing for routine work. | P2 | DESIGN | Open (found 2026-06-19) |
 | TD-14 | LLM-router privacy fallback gap: a `sensitive`-tagged task routes to `local-reason`, but `config.yaml` gives `local-reason` a `["cloud-gpu-reason", "cloud-overflow"]` fallback — so a sensitive prompt can fail over to `cloud-overflow` (Claude cloud) if the local model is down. The dispatcher's `allow_cloud=False` is not enforced at the LiteLLM failover layer, and its own docstring requires a local-only chain here. Fix: give `local-reason` a local-only fallback (fail closed). No privacy guarantee until then. | P1 | localDNS | Open (found 2026-06-07) |
 | TD-13 | Statement PWA: merged but not deployed or tested on real mobile devices | P1 | localDNS | Open |
 | TD-12 | WireGuard IPv6 black hole: peers routing ::/0 black-hole IPv6 traffic | P3 | localDNS | Documented; ULA+NAT66 fix in network-context.md |
