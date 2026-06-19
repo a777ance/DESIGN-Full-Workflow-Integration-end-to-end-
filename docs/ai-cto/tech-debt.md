@@ -7,6 +7,7 @@ Update this file when items are resolved or new ones are found. New items go at 
 
 | ID | Item | Severity | Repo | Status |
 | -- | ---- | -------- | ---- | ------ |
+| TD-15 | Process token waste: a dual-hat DESIGN session loads ~19k tokens of preamble (CLAUDE.md + NARF/ZORT session-start reads) before any work, most of it irrelevant to a given task. Fixes: lean on prompt caching, make session-start reads lazy/conditional, right-size model+effort, route cheap/bulk work to the local LiteLLM rig (blocked on TD-14 for sensitive data), de-dup the house-style block. Full analysis + sources in `docs/ai-cto/process-efficiency.md`. | P2 | all | Open (found 2026-06-19) |
 | TD-14 | LLM-router privacy fallback gap: a `sensitive`-tagged task routes to `local-reason`, but `config.yaml` gives `local-reason` a `["cloud-gpu-reason", "cloud-overflow"]` fallback — so a sensitive prompt can fail over to `cloud-overflow` (Claude cloud) if the local model is down. The dispatcher's `allow_cloud=False` is not enforced at the LiteLLM failover layer, and its own docstring requires a local-only chain here. Fix: give `local-reason` a local-only fallback (fail closed). No privacy guarantee until then. | P1 | localDNS | Open (found 2026-06-07) |
 | TD-13 | Statement PWA: merged but not deployed or tested on real mobile devices | P1 | localDNS | Open |
 | TD-12 | WireGuard IPv6 black hole: peers routing ::/0 black-hole IPv6 traffic | P3 | localDNS | Documented; ULA+NAT66 fix in network-context.md |
