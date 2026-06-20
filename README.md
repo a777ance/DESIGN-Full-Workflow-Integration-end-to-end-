@@ -24,6 +24,7 @@ README is the stage-by-stage guide.
 - [The rules we don't break](#the-rules-we-dont-break)
 - [Still being figured out](#still-being-figured-out)
 - [Further reading](#further-reading)
+- [Patch Notes](#patch-notes)
 
 ---
 
@@ -213,3 +214,15 @@ by `MARKETING`, and all committed data is fictional.
 - **`MARKETING`** (private) — the business model and pricing this executes.
 - **[`localDNS`](https://a777ance.github.io/localDNS/)** (public) — the tech and the statement
   artifacts this workflow surrounds.
+
+---
+
+## Patch Notes
+
+<!-- newest entry first -->
+
+### 2026-06-20
+
+**Coverage:** 2026-06-19 · Repos checked: customers, design-full-workflow-integration-end-to-end-, localDNS, MARKETING, azure-lab, claude-code-homelab, Chronikomicon
+
+No changes — no pull requests were merged on 2026-06-19.
