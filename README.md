@@ -24,6 +24,7 @@ README is the stage-by-stage guide.
 - [The rules we don't break](#the-rules-we-dont-break)
 - [Still being figured out](#still-being-figured-out)
 - [Further reading](#further-reading)
+- [Patch Notes](#patch-notes)
 
 ---
 
@@ -143,6 +144,7 @@ it. Summaries here; open the folder for the rest.
   statement gallery. One job: move a stranger to the booking form.
 - **[00 — Brand & identity](00-brand-identity/)** — the look, the voice, and **the words to
   say** ([`the-pitch.md`](00-brand-identity/the-pitch.md)). Set once, inherited everywhere.
+
 ## Follow one customer all the way through
 
 The same household — this time as the path the [verification walk](CLAUDE.md#2-verification) checks:
@@ -213,3 +215,13 @@ by `MARKETING`, and all committed data is fictional.
 - **`MARKETING`** (private) — the business model and pricing this executes.
 - **[`localDNS`](https://a777ance.github.io/localDNS/)** (public) — the tech and the statement
   artifacts this workflow surrounds.
+
+---
+
+## Patch Notes
+
+<!-- Newest entry first -->
+
+### 2026-06-21
+
+**No changes** — no PRs were merged across any A777ance repo on 2026-06-20.
