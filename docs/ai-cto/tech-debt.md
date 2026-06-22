@@ -7,6 +7,8 @@ Update this file when items are resolved or new ones are found. New items go at 
 
 | ID | Item | Severity | Repo | Status |
 | -- | ---- | -------- | ---- | ------ |
+| TD-16 | AI process cost: scheduled routines run on Opus 4.8 and reload all repo `CLAUDE.md`s + the full `claude-api` skill every fire — most of it irrelevant. Scope routines to their repos/skills, move watchers to Sonnet/Haiku + `effort:low`, slim `CLAUDE.md` to a lookup table. See `docs/ai-cto/reviews/2026-06-22-ai-process-efficiency.md`. Est. 60–90% agent token cut. | P2 | DESIGN | Open (found 2026-06-22) |
+| TD-15 | Expand local-tier (LiteLLM) routing for classify/extract/format + cheap routine work to capture ~60–80% cost cut — **blocked on TD-14 (privacy fallback must fail closed first)**. | P2 | localDNS | Blocked on TD-14 |
 | TD-14 | LLM-router privacy fallback gap: a `sensitive`-tagged task routes to `local-reason`, but `config.yaml` gives `local-reason` a `["cloud-gpu-reason", "cloud-overflow"]` fallback — so a sensitive prompt can fail over to `cloud-overflow` (Claude cloud) if the local model is down. The dispatcher's `allow_cloud=False` is not enforced at the LiteLLM failover layer, and its own docstring requires a local-only chain here. Fix: give `local-reason` a local-only fallback (fail closed). No privacy guarantee until then. | P1 | localDNS | Open (found 2026-06-07) |
 | TD-13 | Statement PWA: merged but not deployed or tested on real mobile devices | P1 | localDNS | Open |
 | TD-12 | WireGuard IPv6 black hole: peers routing ::/0 black-hole IPv6 traffic | P3 | localDNS | Documented; ULA+NAT66 fix in network-context.md |
