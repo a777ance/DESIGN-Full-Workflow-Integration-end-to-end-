@@ -7,6 +7,7 @@ Update this file when items are resolved or new ones are found. New items go at 
 
 | ID | Item | Severity | Repo | Status |
 | -- | ---- | -------- | ---- | ------ |
+| TD-15 | Standing-context tax: the identical ~20-line "House style" block is duplicated verbatim in all 6 CLAUDE.md files, and the CLAUDE.md files run well over the ~200-line guidance — so every session carries ~25–40K tokens of standing context before any work. Fix: hoist house-style to one `house-style.md` (link from each CLAUDE.md), trim CLAUDE.md to briefing+pointers, scope routines to the minimum repo set. Full audit + Batch/caching/hybrid recommendations in [`ai-process-efficiency.md`](ai-process-efficiency.md). | P2 | all | Open (found 2026-06-22) |
 | TD-14 | LLM-router privacy fallback gap: a `sensitive`-tagged task routes to `local-reason`, but `config.yaml` gives `local-reason` a `["cloud-gpu-reason", "cloud-overflow"]` fallback — so a sensitive prompt can fail over to `cloud-overflow` (Claude cloud) if the local model is down. The dispatcher's `allow_cloud=False` is not enforced at the LiteLLM failover layer, and its own docstring requires a local-only chain here. Fix: give `local-reason` a local-only fallback (fail closed). No privacy guarantee until then. | P1 | localDNS | Open (found 2026-06-07) |
 | TD-13 | Statement PWA: merged but not deployed or tested on real mobile devices | P1 | localDNS | Open |
 | TD-12 | WireGuard IPv6 black hole: peers routing ::/0 black-hole IPv6 traffic | P3 | localDNS | Documented; ULA+NAT66 fix in network-context.md |
