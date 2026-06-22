@@ -7,6 +7,8 @@ Update this file when items are resolved or new ones are found. New items go at 
 
 | ID | Item | Severity | Repo | Status |
 | -- | ---- | -------- | ---- | ------ |
+| TD-16 | AI process efficiency: model-tier defaults too rich (Opus where Sonnet/Haiku suffice), `cloud-overflow` path has no prompt caching configured, monthly Statement run not on the 50%-off Batch API, and the NARF+ZORT session-start ritual loads ~10 docs every session regardless of task. Full analysis + levers in [`ai-cost-efficiency.md`](ai-cost-efficiency.md). | P2 | all | Open (found 2026-06-22) |
+| TD-15 | Local model upgrade available: t630 runs `qwen2.5:7b`; Gemma 4 12B (released 2026-06-03) fits 16 GB with Ollama 0.23+ speculative decoding — quality/throughput bump on the same hardware. Bench before next statement cycle. | P3 | localDNS | Open (found 2026-06-22) |
 | TD-14 | LLM-router privacy fallback gap: a `sensitive`-tagged task routes to `local-reason`, but `config.yaml` gives `local-reason` a `["cloud-gpu-reason", "cloud-overflow"]` fallback — so a sensitive prompt can fail over to `cloud-overflow` (Claude cloud) if the local model is down. The dispatcher's `allow_cloud=False` is not enforced at the LiteLLM failover layer, and its own docstring requires a local-only chain here. Fix: give `local-reason` a local-only fallback (fail closed). No privacy guarantee until then. | P1 | localDNS | Open (found 2026-06-07) |
 | TD-13 | Statement PWA: merged but not deployed or tested on real mobile devices | P1 | localDNS | Open |
 | TD-12 | WireGuard IPv6 black hole: peers routing ::/0 black-hole IPv6 traffic | P3 | localDNS | Documented; ULA+NAT66 fix in network-context.md |
