@@ -7,6 +7,7 @@ Update this file when items are resolved or new ones are found. New items go at 
 
 | ID | Item | Severity | Repo | Status |
 | -- | ---- | -------- | ---- | ------ |
+| TD-15 | AI token spend not tuned: three cloud router tiers (`cloud-overflow`/`cloud-explore`/`cloud-vision`) point at Opus 4.8, and `local-fast`/`local-smart` fail over straight to Opus — routine prose should land on Haiku/Sonnet (~1/5th–3/5ths the cost). Statement gen (Stage 06) doesn't yet use Batch API (50% off) or prompt caching of the shared template prefix (up to 90% off). Large CLAUDE.md files re-read every session. Fix + full analysis: [`docs/ai-cto/ai-process-efficiency.md`](ai-process-efficiency.md). | P2 | localDNS / DESIGN | Open (found 2026-06-22) |
 | TD-14 | LLM-router privacy fallback gap: a `sensitive`-tagged task routes to `local-reason`, but `config.yaml` gives `local-reason` a `["cloud-gpu-reason", "cloud-overflow"]` fallback — so a sensitive prompt can fail over to `cloud-overflow` (Claude cloud) if the local model is down. The dispatcher's `allow_cloud=False` is not enforced at the LiteLLM failover layer, and its own docstring requires a local-only chain here. Fix: give `local-reason` a local-only fallback (fail closed). No privacy guarantee until then. | P1 | localDNS | Open (found 2026-06-07) |
 | TD-13 | Statement PWA: merged but not deployed or tested on real mobile devices | P1 | localDNS | Open |
 | TD-12 | WireGuard IPv6 black hole: peers routing ::/0 black-hole IPv6 traffic | P3 | localDNS | Documented; ULA+NAT66 fix in network-context.md |
