@@ -24,6 +24,7 @@ README is the stage-by-stage guide.
 - [The rules we don't break](#the-rules-we-dont-break)
 - [Still being figured out](#still-being-figured-out)
 - [Further reading](#further-reading)
+- [Patch Notes](#patch-notes)
 
 ---
 
@@ -143,6 +144,7 @@ it. Summaries here; open the folder for the rest.
   statement gallery. One job: move a stranger to the booking form.
 - **[00 — Brand & identity](00-brand-identity/)** — the look, the voice, and **the words to
   say** ([`the-pitch.md`](00-brand-identity/the-pitch.md)). Set once, inherited everywhere.
+
 ## Follow one customer all the way through
 
 The same household — this time as the path the [verification walk](CLAUDE.md#2-verification) checks:
@@ -213,3 +215,16 @@ by `MARKETING`, and all committed data is fictional.
 - **`MARKETING`** (private) — the business model and pricing this executes.
 - **[`localDNS`](https://a777ance.github.io/localDNS/)** (public) — the tech and the statement
   artifacts this workflow surrounds.
+
+---
+
+## Patch Notes
+
+_Daily digest of merged pull requests across all A777ance repos. Newest entry first._
+
+---
+
+### 2026-06-24
+
+_No changes_ — no pull requests were merged across any A777ance repository yesterday
+(customers, DESIGN, localDNS, MARKETING, Azure-lab, claude-code-homelab, Chronikomicon).
