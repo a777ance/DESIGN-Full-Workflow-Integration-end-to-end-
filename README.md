@@ -213,3 +213,15 @@ by `MARKETING`, and all committed data is fictional.
 - **`MARKETING`** (private) — the business model and pricing this executes.
 - **[`localDNS`](https://a777ance.github.io/localDNS/)** (public) — the tech and the statement
   artifacts this workflow surrounds.
+
+---
+
+## Patch Notes
+
+*Cross-repo daily digest — customers · DESIGN · localDNS · MARKETING · Azure-lab · claude-code-homelab · Chronikomicon. Newest entry first.*
+
+---
+
+### 2026-06-27
+
+**No changes.** No pull requests were merged across any A777ance repository on 2026-06-26.
