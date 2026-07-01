@@ -38,7 +38,7 @@ from Figma, done. Anything marked `CHANGE_ME` is a decision we haven't locked ye
 
 ## Type
 
-**Gill Sans MT everywhere** — house style (see [CLAUDE.md](../CLAUDE.md#house-style-ordering--typography)).
+**Gill Sans MT everywhere** — house style (see [house-style.md](../docs/house-style.md)).
 Web/CSS stack: `'Gill Sans MT', 'Gill Sans', Calibri, 'Trebuchet MS', sans-serif`.
 
 | Where | Family | Notes |

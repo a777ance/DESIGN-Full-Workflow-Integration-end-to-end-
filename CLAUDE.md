@@ -18,30 +18,18 @@ it. The plain-English swap table is in
 
 ---
 
-## House style: ordering & typography
+## House style
 
-These conventions apply across **every** A777ance repo — current and future. (Adopted 2026-06-05.)
-
-- **Time-based content reads newest-first (reverse-chronological).** Logs, changelogs,
-  decision logs (ADR / FIN), known-issues and issue trackers, FAQs, metrics and review
-  logs, and "Handled For You" entries all lead with the most recent item. Apply this
-  within the time-based *section* even when the whole file isn't time-based.
-- **Alphabetical lists run Z → A** (descending).
-- **Walkthroughs: reverse the blocks, keep the steps.** In a step-by-step guide, present
-  the major sections/blocks in reverse order (last block first — it helps "block" the
-  work), but keep the numbered steps *within* each block in forward order so every
-  procedure stays followable. A walkthrough's table of contents mirrors the reversed
-  block order. **Never renumber** — step and stage numbers stay fixed, so the intended
-  execution order is always readable from the numbers.
-- **Font: Gill Sans MT everywhere.** Every surface — customer-facing or internal — uses
-  Gill Sans MT. Web/CSS stack:
-  `'Gill Sans MT', 'Gill Sans', Calibri, 'Trebuchet MS', sans-serif`.
+Full rules + rationale: [`docs/house-style.md`](docs/house-style.md). In brief — newest-first
+(reverse-chronological) in time-based sections; alphabetical lists run **Z → A**; walkthroughs
+present blocks in reverse but keep steps forward and **never renumber**; font **Gill Sans MT**
+(`'Gill Sans MT', 'Gill Sans', Calibri, 'Trebuchet MS', sans-serif`). (Adopted 2026-06-05.)
 
 ---
 
 ## Contents
 
-- [House style: ordering & typography](#house-style-ordering--typography)
+- [House style](#house-style)
 - [0. What this repo is](#0-what-this-repo-is)
 - [A. The funnel at a glance](#a-the-funnel-at-a-glance)
 - [B. Roles & money flow](#b-roles--money-flow)
@@ -268,12 +256,14 @@ can gate CI.
 
 ## 5. NARF (AI CTO) state
 
-This repo is the portfolio hub. At session start, read:
+This repo is the portfolio hub. **At session start, read only `docs/ai-cto/portfolio.md`** — the
+cross-repo snapshot with current priorities and the phase gate. Open the others **only when the
+task needs them** (don't pre-load all four — that's the session-start token cost
+[`process-efficiency.md`](docs/ai-cto/process-efficiency.md) §① is about):
 
-1. `docs/ai-cto/portfolio.md` — cross-repo status, current priorities, phase gate
-2. `docs/ai-cto/roadmap.md` — what to build and when
-3. `docs/ai-cto/tech-debt.md` — tracked items across all repos
-4. `docs/ai-cto/decisions.md` — architecture decisions log
+- `docs/ai-cto/roadmap.md` — when planning what to build next
+- `docs/ai-cto/tech-debt.md` — when triaging or resolving debt
+- `docs/ai-cto/decisions.md` — when making or citing an architecture decision (ADR)
 
 At session end, update `portfolio.md` with any new decisions or status changes.
 
@@ -281,14 +271,16 @@ At session end, update `portfolio.md` with any new decisions or status changes.
 
 ## 6. ZORT (AI CFO) state
 
-This repo is also ZORT's hub. At session start, read:
+This repo is also ZORT's hub. **At session start, read only `docs/ai-cfo/portfolio.md`** — the
+financial snapshot, KPIs, and open decisions. Open the rest **only when the task touches them**
+(the reason is the same session-start cost as §5 — see
+[`process-efficiency.md`](docs/ai-cto/process-efficiency.md) §①):
 
-1. `docs/ai-cfo/portfolio.md` — financial snapshot, KPIs, open decisions
-2. `docs/ai-cfo/decisions.md` — financial decisions log (FIN-001, FIN-002, …)
-3. `docs/ai-cfo/metrics.md` — KPI definitions, targets, and actuals log
-4. `docs/ai-cfo/runway.md` — cost structure and break-even analysis
-5. `docs/ai-cfo/budget.md` — recurring costs, actuals vs. budget
-6. `MARKETING/docs/ai-cfo/context.md` — financial spoke context
+- `docs/ai-cfo/metrics.md` — KPI definitions + the latest reading (full log in `metrics-history.md`)
+- `docs/ai-cfo/decisions.md` — when making or citing a financial decision (FIN-…)
+- `docs/ai-cfo/runway.md` — for break-even / forecast work
+- `docs/ai-cfo/budget.md` — for recurring-cost / actuals-vs-budget work
+- `MARKETING/docs/ai-cfo/context.md` — financial spoke context, when working in MARKETING
 
 ZORT covers: payments (Stripe), accounts receivable, QuickBooks, budgeting & expense tracking,
 1099/compliance, reporting, bank reconciliation, operator economics, and capital decisions
