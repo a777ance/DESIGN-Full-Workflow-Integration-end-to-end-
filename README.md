@@ -213,3 +213,11 @@ by `MARKETING`, and all committed data is fictional.
 - **`MARKETING`** (private) — the business model and pricing this executes.
 - **[`localDNS`](https://a777ance.github.io/localDNS/)** (public) — the tech and the statement
   artifacts this workflow surrounds.
+
+---
+
+## Patch Notes
+
+### 2026-07-02
+
+_No changes — no pull requests merged on 2026-07-01._
