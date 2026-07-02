@@ -162,6 +162,10 @@ Rough combined effect: **~40–60% fewer tokens per typical single-repo session*
 #1–#3), plus ~50% on the batchable async jobs, with no loss of capability on the work that
 actually needs Claude.
 
+**Turnkey execution:** step-by-step commands for all six fixes are in
+[`../token-efficiency-rollout.md`](../token-efficiency-rollout.md); the canonical house-style
+source of truth is [`HOUSE-STYLE.md`](../../../HOUSE-STYLE.md).
+
 ---
 
 ## Sources
