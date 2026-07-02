@@ -13,6 +13,11 @@ NARF's working memory for the full portfolio. Read at session start; update at s
 3. Work on the highest-priority item in "Current Focus" unless the user directs otherwise.
 4. Before ending a session: record any decisions, status changes, or priority shifts here.
 
+**Working efficiently:** how we spend tokens on the Claude loop itself (context, hybrid
+routing, model tiering, prompting) is audited in
+[`ai-process-efficiency.md`](ai-process-efficiency.md) — read it before a long or repeated
+session. Move #2 there (route bulk work to the local ladder) is gated on **TD-14**.
+
 ---
 
 ## Repo Map
