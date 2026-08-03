@@ -31,3 +31,7 @@ __pycache__/
 
 # CI spoke checkouts (never commit; they are ephemeral workspace artifacts)
 spoke/
+
+# Momentum loop arm/state (per-session, local — never committed)
+.claude/.momentum-on
+.claude/.momentum-state
