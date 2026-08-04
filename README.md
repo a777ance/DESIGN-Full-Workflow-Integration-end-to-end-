@@ -213,3 +213,11 @@ by `MARKETING`, and all committed data is fictional.
 - **`MARKETING`** (private) — the business model and pricing this executes.
 - **[`localDNS`](https://a777ance.github.io/localDNS/)** (public) — the tech and the statement
   artifacts this workflow surrounds.
+
+---
+
+## 🌈 Bifrost
+
+This repo runs on **[Bifrost](https://a777ance.github.io/localDNS/bifrost.html)** — the
+A777ance keyboard-spatial command-composition schema, active from the first token of every
+session. The canonical spec lives in the public `localDNS` repo.
