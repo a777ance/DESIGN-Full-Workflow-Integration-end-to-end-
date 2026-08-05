@@ -18,6 +18,7 @@ its own.
 | File | What it is |
 | ---- | ---------- |
 | [`the-pitch.md`](the-pitch.md) | **What to actually say** — the one-liner, the elevator, the 2-minute open, the price talk. The most-used page in the repo. |
+| [`design-system.md`](design-system.md) | **Where the look actually lives** — the tokens and components in `localDNS/design-system/`, mirrored into Claude Design; which stages inherit them, and what may never travel with them |
 | [`brand-kit.md`](brand-kit.md) | The look: logo, color, type, voice — and where the asset files live |
 | [`slogans-and-jingles.md`](slogans-and-jingles.md) | The taglines we've approved + the jingle and intro-video briefs |
 

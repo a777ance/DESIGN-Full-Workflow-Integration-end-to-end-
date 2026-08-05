@@ -36,6 +36,11 @@ These conventions apply across **every** A777ance repo — current and future. (
 - **Font: Gill Sans MT everywhere.** Every surface — customer-facing or internal — uses
   Gill Sans MT. Web/CSS stack:
   `'Gill Sans MT', 'Gill Sans', Calibri, 'Trebuchet MS', sans-serif`.
+- **Design surfaces inherit all of the above.** The look itself — tokens, the Statement
+  components, and the rules for working on them — lives in `localDNS/design-system/`, and is
+  mirrored into **Claude Design** (claude.ai/design) by `/design-sync`. Take a color or a size
+  from `tokens.css`; never invent one or sample it off a screenshot. Newest-first is a
+  *component behavior* too: a log that renders oldest-first is a bug, not a preference.
 
 ---
 
@@ -155,7 +160,7 @@ where the work happens → what makes a change go live.
 
 | Folder | Lives in (the live tool) | Go live |
 | ------ | ------------------------ | ------- |
-| `00-brand-identity/` | Figma + the asset folder | Export assets; update the brand-kit links everything inherits |
+| `00-brand-identity/` | Figma + the asset folder · **the design system** (`localDNS/design-system/` → Claude Design) | Export assets; update the brand-kit links everything inherits. For the look itself: `build.py` then `/design-sync` — see [`00-brand-identity/design-system.md`](00-brand-identity/design-system.md) |
 | `01-web-presence/` | Squarespace · the blog · Google Business · the statement gallery (from `localDNS`) | Publish the site; verify the Google listing |
 | `02-demand-generation/` | Google/Meta ads · local search · Mailchimp | Launch a campaign on one block's ZIPs; sync the email list |
 | `03-funnels-and-capture/` | Landing pages + the booking form + Setmore | Publish the funnel; wire the form → the list (08) via the glue (11) |
@@ -269,6 +274,11 @@ can gate CI.
 ## 4. Further reading
 
 - **README.md** — the full stage-by-stage guide, with the funnel diagram.
+- **[`00-brand-identity/design-system.md`](00-brand-identity/design-system.md)** — where the
+  look actually lives: the tokens and Statement components in `localDNS/design-system/`,
+  mirrored into a **Claude Design** project. Which stages inherit them, what may never travel
+  with them, and the two current limitations. The working rules for design sessions are in
+  `localDNS/design-system/CONVENTIONS.md`.
 - **workflow-context.md** — why this tool at each stage, why this order, the economics.
 - **LAUNCH-NOTES.md** — every break point between an empty funnel and a paying customer, with
   its fix.

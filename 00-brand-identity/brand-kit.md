@@ -24,17 +24,30 @@ from Figma, done. Anything marked `CHANGE_ME` is a decision we haven't locked ye
 
 ## Color
 
-| Where it's used | Name | Hex | Notes |
-| --------------- | ---- | --- | ----- |
-| Logo, buttons, links | `--brand` | `CHANGE_ME` | the one brand color |
-| Body text | `--ink` | `#1a1a1a` | |
-| Backgrounds | `--paper` | `#ffffff` | |
-| "All clear / good" | `--good` | `CHANGE_ME` (green) | the calm green the statement uses for good news |
-| "Worth a look" | `--watch` | `CHANGE_ME` (amber) | attention — never alarm-red unless something's actually wrong |
+**The palette is not decided here.** It is extracted from the Statements that already ship
+and lives in `localDNS/design-system/tokens/tokens.css` — the full set, with a note on each
+token saying what it is for. See [`design-system.md`](design-system.md) for how that works.
+This table is the working subset; take any value not listed here from the tokens file rather
+than sampling it off a screenshot.
+
+| Where it's used | Token | Hex | Notes |
+| --------------- | ----- | --- | ----- |
+| Logo, headers, links, figures | `--navy` | `#13314f` | the one brand color |
+| The human hand — an operator's name, the rule under the header | `--bronze` | `#a9803f` | spend it sparingly or it stops meaning anything |
+| Body text | `--ink` | `#1f2733` | running prose drops to `--ink-body` `#3a4553` |
+| Backgrounds | `--paper` | `#fbfaf7` | warm, **not** `#ffffff` — it reads as paper |
+| "All clear / good" | `--pos` | `#3f7a4d` | the calm green the statement uses for good news |
+| "Worth a look" | `--amber` | `#c08a2e` | attention — never alarm-red unless something's actually wrong |
+| "A real problem" (rare) | `--alert` | `#b4542a` | high severity on the operator portfolio |
+
+> **Corrected 2026-08-05.** This table previously carried `--ink: #1a1a1a`,
+> `--paper: #ffffff`, and `CHANGE_ME` for the brand color — none of which matched what the
+> live Statements actually print. The values above are the shipped ones. A brand kit that
+> disagrees with the document in the customer's hand is worse than no brand kit.
 
 > Color carries meaning, not decoration: green = good, amber = keep an eye on it, red = a
-> real problem (rare). Keep these in step with the live statement's palette so the postcard
-> and the statement feel like the same family.
+> real problem (rare). **Never carry state by color alone** — every status on a Statement is
+> also spelled out in words, because these documents get printed and photocopied.
 
 ## Type
 
