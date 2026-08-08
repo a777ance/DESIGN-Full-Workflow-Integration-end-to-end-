@@ -5,6 +5,48 @@ New decisions go at the top — newest first, reverse-chronological per house st
 
 ---
 
+## ADR-008 — Branching: one standing `Yggdrasil` branch, `main` as the gated Well of Mimir
+
+**Date:** 2026-08-08
+**Status:** Accepted (founder's standing instruction; supersedes "push to `main`, no branches",
+2026-06-05)
+
+**Decision:** Every A777ance repo carries one standing working branch, **`Yggdrasil`**. All
+session work is pushed there and **never** to `main`. **`main` is the Well of Mimir** — the
+vetted tier — and moves only through a pull request the founder approves: **no cadence, no
+auto-merge.** Sessions pull `--ff-only` and nothing else. The policy is *generated* into all ten
+briefings from `localDNS/04-user-services/ai-orchestration/branch-policy-block.md` by
+`tools/sync-briefings.py`, and the commit gate blocks any briefing that still carries the retired
+directive.
+
+**Why:** The predecessor rule was stated in two briefings and **absent from the other eight**.
+Absence is not neutral — a session reading a briefing that says nothing about branching invents
+an answer, and the invented answer cut **337 stale `claude/*` branches, 226 of them carrying
+commits that exist nowhere else**. Fixing that meant fixing the generator, not the branches:
+the rule now has a site in every briefing rather than an author in two.
+
+The model maps onto doctrine already in force. `main` becomes the Bifrost **one-way door** at
+portfolio scale — the outermost `*`, which no inner gate may release past — and the merge is the
+**Provenance** promotion point, the one place a claim gets fresh contact with the founder rather
+than transmission from another transcript.
+
+**What's still open:** No merge cadence is defined, deliberately — the Well fills when the
+founder decides it does. The tracked risk is the inverse of the one this fixes: a long-lived
+branch that never merges does not remove merge debt, it **concentrates** it, and "the Well of
+true knowledge" becomes a fiction that is six months stale. Watch the gap; if `Yggdrasil` runs
+far ahead of `main` for long, that is the signal to merge, not to re-plan.
+
+**What this rules out:** Per-session `claude/*` branches. Pushing to `main` directly. Force-pushing
+either branch. Merging/rebasing/resetting a seed file over founder-authored text (`--ff-only` only).
+Auto-merge or a scheduled promotion — the gate is a human, by design.
+
+**Downstream:** GitHub Pages publishes **both** tiers to the one site a repo gets — Mimir at the
+root, Yggdrasil under `/yggdrasil/` — each page banner-stamped with its tier, so a working draft
+cannot be read as vetted doctrine. Two stale `claude/*` branches that could publish to the public
+site were removed from the workflow trigger.
+
+---
+
 ## ADR-007 — Customer pricing: $175 setup + $35/mo (market-validated band)
 
 **Date:** 2026-06-04
